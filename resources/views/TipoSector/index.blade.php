@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <button onclick="location.href='{{ route('sector.create') }}'" class="btn btn-primary">Nuevo</button>
+        <button onclick="location.href='{{ route('tipo-sector.create') }}'" class="btn btn-primary">Nuevo</button>
         <br><br>
         <table class="table">
             <thead>
@@ -14,16 +14,16 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($sectores as $sector)
+                @foreach ($tipoSectores as $tipoSector)
                     <tr>
-                        <th scope="row">{{ $sector->idSector }}</th>
-                        <td> {{ $sector->nomSector }} </td>
+                        <th scope="row">{{ $tipoSector->idTipoSec }}</th>
+                        <td> {{ $tipoSector->nomTipoSec }} </td>
                         <td>
-                            <button onclick="location.href='{{ route('sector.edit', $sector->idSector) }}'"
+                            <button onclick="location.href='{{ route('tipo-sector.edit', $tipoSector->idTipoSec) }}'"
                                 class="btn btn-outline-primary">Modificar</button>
                         </td>
                         <td>
-                            <form action="{{ route('sector.destroy', $sector->idSector) }}" method="POST">
+                            <form action="{{ route('tipo-sector.destroy', $tipoSector->idTipoSec) }}" method="POST">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-outline-danger">Eliminar</button>

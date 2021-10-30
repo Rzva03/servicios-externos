@@ -25,3 +25,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /* -------------------------------------------------------------------------- */
 use App\Http\Controllers\SectorController;
 Route::resource('sector', SectorController::class);
+
+use App\Http\Controllers\TipoSectorController;
+Route::resource('tipo-sector', TipoSectorController::class);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TipoSectorController extends Controller
 {
@@ -13,7 +14,10 @@ class TipoSectorController extends Controller
      */
     public function index()
     {
-        return view('TipoSector.index');
+        $tipoSector = DB::table('tiposector')->get();
+        return view('TipoSector.index', [
+            'tipoSectores' => $tipoSector
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class TipoSectorController extends Controller
      */
     public function create()
     {
-        //
+        return view('TipoSector.nuevo');
     }
 
     /**
@@ -34,7 +38,10 @@ class TipoSectorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tipoSector = DB::table('tiposector')->insert(array(
+            'nomTipoSec' => $request->input('txtNombre')
+        ));
+        return redirect()->route('tipo-sector.index');
     }
 
     /**
@@ -45,7 +52,7 @@ class TipoSectorController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
