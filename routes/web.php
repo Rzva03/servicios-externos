@@ -23,8 +23,21 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /* -------------------------------------------------------------------------- */
 /*                             rutas sector                             */
 /* -------------------------------------------------------------------------- */
+
 use App\Http\Controllers\SectorController;
+
 Route::resource('sector', SectorController::class);
+/* -------------------------------------------------------------------------- */
+/*                              rutas tipo sector                             */
+/* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\TipoSectorController;
+
 Route::resource('tipo-sector', TipoSectorController::class);
+/* -------------------------------------------------------------------------- */
+/*                                rutas tamanio                               */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\TamanioController;
+
+Route::resource('tamanio', TamanioController::class);
