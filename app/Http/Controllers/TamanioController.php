@@ -41,7 +41,7 @@ class TamanioController extends Controller
         $tamanio = DB::table('tamanio')->insert(array(
             'nomTamanio' => $request->input('txtNombre')
         ));
-        return redirect()->route('Tamanio.index');
+        return redirect()->route('tamanio.index');
     }
 
     /**
@@ -81,7 +81,7 @@ class TamanioController extends Controller
         $tamanio = DB::table('tamanio')->where('idTamanio', '=', $id)->update(array(
             'nomTamanio' => $request->input('txtNombre')
         ));
-        return redirect()->route('Tamanio.index');
+        return redirect()->route('tamanio.index');
     }
 
     /**
@@ -93,6 +93,6 @@ class TamanioController extends Controller
     public function destroy($id)
     {
         DB::table('tamanio')->where('idTamanio', '=', $id)->delete();
-        return redirect()->route('Tamanio.index');
+        return redirect()->route('tamanio.index');
     }
 }
