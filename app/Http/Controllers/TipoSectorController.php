@@ -52,7 +52,6 @@ class TipoSectorController extends Controller
      */
     public function show($id)
     {
-
     }
 
     /**
@@ -63,7 +62,10 @@ class TipoSectorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipoSector = DB::table('tiposector')->where('idTipoSec', '=', $id)->first();
+        return view('TipoSector.actualizar', [
+            'tipoSectores' => $tipoSector
+        ]);
     }
 
     /**
@@ -75,7 +77,10 @@ class TipoSectorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tipoSector = DB::table('tiposector')->where('idTipoSec', '=', $id)->update(array(
+            'nomTipoSec' => $request->input('txtNombre')
+        ));
+        return redirect()->route('tipo-sector.index');
     }
 
     /**
@@ -86,6 +91,7 @@ class TipoSectorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tiposector')->where('idTipoSec', '=', $id)->delete();
+        return redirect()->route('tipo-sector.index');
     }
 }
