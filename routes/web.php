@@ -41,3 +41,10 @@ Route::resource('tipo-sector', TipoSectorController::class);
 use App\Http\Controllers\TamanioController;
 
 Route::resource('tamanio', TamanioController::class);
+/* -------------------------------------------------------------------------- */
+/*                           rutas area conocimiento                          */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\AreaConocimientoController;
+
+Route::resource('area-conocimiento', AreaConocimientoController::class);
