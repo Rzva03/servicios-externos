@@ -28,7 +28,7 @@
                     @endforeach
                 </select>
                 <br>
-                <select name="sltAreaConocimiento class="form-select form-select-lg mb-3"
+                <select name="sltAreaConocimiento class=" form-select form-select-lg mb-3"
                     aria-label=".form-select-lg example" required>
                     <option selected>Eliga el área de conocimiento</option>
                     @foreach ($areaConocimientos as $areaConocimiento)
