@@ -62,3 +62,10 @@ Route::resource('giro', GiroController::class);
 use App\Http\Controllers\InstanciaController;
 
 Route::resource('instancia', InstanciaController::class);
+/* -------------------------------------------------------------------------- */
+/*                            rutas asesor externo                            */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\AsesorExternoController;
+
+Route::resource('asesor-externo', AsesorExternoController::class);
