@@ -48,3 +48,14 @@ Route::resource('tamanio', TamanioController::class);
 use App\Http\Controllers\AreaConocimientoController;
 
 Route::resource('area-conocimiento', AreaConocimientoController::class);
+/* -------------------------------------------------------------------------- */
+/*                                 rutas gito                                 */
+/* -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- */
+/*                               rutas instancia                              */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\InstanciaController;
+
+Route::resource('instancia', InstanciaController::class);

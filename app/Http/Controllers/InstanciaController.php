@@ -27,7 +27,14 @@ class InstanciaController extends Controller
      */
     public function create()
     {
-        return view('Instancia.nuevo');
+        $sector = DB::table('sector')->get();
+        $tipoSector = DB::table('tiposector')->get();
+        $areaConocimiento = DB::table('areaconoc')->get();
+        return view('Instancia.nuevo', [
+            'sectores' => $sector,
+            'tipoSectores' => $tipoSector,
+            'areaConocimientos' => $areaConocimiento
+        ]);
     }
 
     /**
