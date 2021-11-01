@@ -49,9 +49,12 @@ use App\Http\Controllers\AreaConocimientoController;
 
 Route::resource('area-conocimiento', AreaConocimientoController::class);
 /* -------------------------------------------------------------------------- */
-/*                                 rutas gito                                 */
+/*                                 rutas giro                                 */
 /* -------------------------------------------------------------------------- */
 
+use App\Http\Controllers\GiroController;
+
+Route::resource('giro', GiroController::class);
 /* -------------------------------------------------------------------------- */
 /*                               rutas instancia                              */
 /* -------------------------------------------------------------------------- */
