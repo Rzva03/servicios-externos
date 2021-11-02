@@ -13,13 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 /* -------------------------------------------------------------------------- */
 /*                             rutas sector                             */
 /* -------------------------------------------------------------------------- */
@@ -56,6 +56,13 @@ use App\Http\Controllers\GiroController;
 
 Route::resource('giro', GiroController::class);
 /* -------------------------------------------------------------------------- */
+/*                                rutas alcance                               */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\AlcanceController;
+
+Route::resource('alcance', AlcanceController::class);
+/* -------------------------------------------------------------------------- */
 /*                               rutas instancia                              */
 /* -------------------------------------------------------------------------- */
 
@@ -69,3 +76,52 @@ Route::resource('instancia', InstanciaController::class);
 use App\Http\Controllers\AsesorExternoController;
 
 Route::resource('asesor-externo', AsesorExternoController::class);
+/* -------------------------------------------------------------------------- */
+/*                            rutas asesor interno                            */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\AsesorInternoController;
+
+Route::resource('asesor-interno', AsesorInternoController::class);
+/* -------------------------------------------------------------------------- */
+/*                            rutas        Periodo                            */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\PeriodoController;
+
+Route::resource('periodo', PeriodoController::class);
+/* -------------------------------------------------------------------------- */
+/*                            rutas        Carrera                            */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\CarreraController;
+
+Route::resource('carrera', CarreraController::class);
+/* -------------------------------------------------------------------------- */
+/*                                rutas alumno                                */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\AlumnoController;
+
+Route::resource('alumno', AlumnoController::class);
+/* -------------------------------------------------------------------------- */
+/*                               rutas proyecto                               */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\ProyectoController;
+
+Route::resource('proyecto', ProyectoController::class);
+/* -------------------------------------------------------------------------- */
+/*                             rutas tipo convenio                            */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\TipoConvenioController;
+
+Route::resource('tipo-convenio', TipoConvenioController::class);
+/* -------------------------------------------------------------------------- */
+/*                             rutas      convenio                            */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\ConvenioController;
+
+Route::resource('convenio', ConvenioController::class);
