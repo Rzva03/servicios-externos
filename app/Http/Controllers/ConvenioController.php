@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ConvenioController extends Controller
 {
@@ -13,7 +14,10 @@ class ConvenioController extends Controller
      */
     public function index()
     {
-        //
+        $convenio = DB::table('convenio')->get();
+        return view('Convenio.index', [
+            'convenios' => $convenio
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class ConvenioController extends Controller
      */
     public function create()
     {
-        //
+        return view('Convenio.nuevo');
     }
 
     /**
@@ -34,7 +38,16 @@ class ConvenioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $convenio = DB::table('convenio')->insert(array(
+            'folio' => $request->input('txtFolio'),
+            'fechaFirma' => $request->input('txtFechaFirma'),
+            'fechaVigencia' => $request->input('txtFechaVigencia'),
+            'estatus' => $request->input('txtestatus'),
+            'idTipoCon' => $request->input('txtIdTipoCon'),
+            'idInstancia' => $request->input('txtIdInstancia'),
+            'idUsuario' => $request->input('txtIdUsuario'),
+        ));
+        return redirect()->route('convenio.index');
     }
 
     /**
@@ -45,7 +58,6 @@ class ConvenioController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -56,7 +68,10 @@ class ConvenioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $convenio = DB::table('convenio')->where('idConvenio', '=', $id)->first();
+        return view('Convenio.actualizar', [
+            'convenios' => $convenio
+        ]);
     }
 
     /**
@@ -68,7 +83,16 @@ class ConvenioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $convenio = DB::table('convenio')->where('idProyecto', '=', $id)->update(array(
+            'folio' => $request->input('txtFolio'),
+            'fechaFirma' => $request->input('txtFechaFirma'),
+            'fechaVigencia' => $request->input('txtFechaVigencia'),
+            'estatus' => $request->input('txtestatus'),
+            'idTipoCon' => $request->input('txtIdTipoCon'),
+            'idInstancia' => $request->input('txtIdInstancia'),
+            'idUsuario' => $request->input('txtIdUsuario'),
+        ));
+        return redirect()->route('convenio.index');
     }
 
     /**
@@ -79,6 +103,8 @@ class ConvenioController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        DB::table('convenio')->where('idConvenio', '=', $id)->delete();
+        return redirect()->route('convenio.index');
     }
 }

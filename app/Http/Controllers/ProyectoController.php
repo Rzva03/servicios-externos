@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProyectoController extends Controller
 {
@@ -13,7 +14,10 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        //
+        $proyecto = DB::table('proyecto')->get();
+        return view('proyecto.index', [
+            'proyectos' => $proyecto
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        //
+        return view('Proyecto.nuevo');
     }
 
     /**
@@ -34,7 +38,17 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proyecto = DB::table('proyecto')->insert(array(
+            'nomProyecto' => $request->input('txtNombre'),
+            'periodo' => $request->input('txtPeriodo'),
+            'modalidad' => $request->input('txtModalidad'),
+            'idAlumno' => $request->input('txtIdAlumno'),
+            'idPeriodo' => $request->input('txtIdPeriodo'),
+            'idAsesorI' => $request->input('txtIdAsesorI'),
+            'idAsesorE' => $request->input('txtIdAsesorE'),
+            'idInstancia' => $request->input('txtIdInstancia')
+        ));
+        return redirect()->route('proyecto.index');
     }
 
     /**
@@ -45,7 +59,6 @@ class ProyectoController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -56,7 +69,10 @@ class ProyectoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proyecto = DB::table('proyecto')->where('idProyecto', '=', $id)->first();
+        return view('Proyecto.actualizar', [
+            'proyectos' => $proyecto
+        ]);
     }
 
     /**
@@ -68,7 +84,18 @@ class ProyectoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $proyecto = DB::table('proyecto')->where('idProyecto', '=', $id)->update(array(
+            'nomProyecto' => $request->input('txtNombre'),
+            'periodo' => $request->input('txtPeriodo'),
+            'modalidad' => $request->input('txtModalidad'),
+            'idAlumno' => $request->input('txtIdAlumno'),
+            'idPeriodo' => $request->input('txtIdPeriodo'),
+            'idAsesorI' => $request->input('txtIdAsesorI'),
+            'idAsesorE' => $request->input('txtIdAsesorE'),
+            'idInstancia' => $request->input('txtIdInstancia')
+        ));
+        return redirect()->route('proyecto.index');
     }
 
     /**
@@ -79,6 +106,8 @@ class ProyectoController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        DB::table('proyecto')->where('idProyecto', '=', $id)->delete();
+        return redirect()->route('proyecto.index');
     }
 }

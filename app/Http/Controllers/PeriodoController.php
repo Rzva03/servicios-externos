@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PeriodoController extends Controller
 {
@@ -13,7 +14,10 @@ class PeriodoController extends Controller
      */
     public function index()
     {
-        //
+        $periodo = DB::table('periodo')->get();
+        return view('Periodo.index', [
+            'periodos' => $periodo
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class PeriodoController extends Controller
      */
     public function create()
     {
-        //
+        return view('Periodo.nuevo');
     }
 
     /**
@@ -34,7 +38,10 @@ class PeriodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $periodo = DB::table('periodo')->insert(array(
+            'nomperiodo' => $request->input('txtNombre')
+        ));
+        return redirect()->route('periodo.index');
     }
 
     /**
@@ -45,7 +52,6 @@ class PeriodoController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -56,7 +62,10 @@ class PeriodoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $periodo = DB::table('periodo')->where('idPeriodo', '=', $id)->first();
+        return view('Periodo.actualizar', [
+            'periodos' => $periodo
+        ]);
     }
 
     /**
@@ -68,7 +77,10 @@ class PeriodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $periodo = DB::table('periodo')->where('idPeriodo', '=', $id)->update(array(
+            'periodo' => $request->input('txtNombre')
+        ));
+        return redirect()->route('periodo.index');
     }
 
     /**
@@ -79,6 +91,8 @@ class PeriodoController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        DB::table('periodo')->where('idPeriodo', '=', $id)->delete();
+        return redirect()->route('periodo.index');
     }
 }

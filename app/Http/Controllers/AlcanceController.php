@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlcanceController extends Controller
 {
@@ -13,7 +14,10 @@ class AlcanceController extends Controller
      */
     public function index()
     {
-        //
+        $alcance = DB::table('alcance')->get();
+        return view('Alcance.index', [
+            'alcances' => $alcance
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class AlcanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('Alcance.nuevo');
     }
 
     /**
@@ -34,7 +38,10 @@ class AlcanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $alcance = DB::table('alcance')->insert(array(
+            'nomAlcance' => $request->input('txtNombre')
+        ));
+        return redirect()->route('alcance.index');
     }
 
     /**
@@ -45,7 +52,6 @@ class AlcanceController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -56,7 +62,10 @@ class AlcanceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alcance = DB::table('alcance')->where('idAlcance', '=', $id)->first();
+        return view('Alcance.actualizar', [
+            'alcances' => $alcance
+        ]);
     }
 
     /**
@@ -68,7 +77,10 @@ class AlcanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $alcance = DB::table('alcance')->where('idAlcance', '=', $id)->update(array(
+            'nomAlcance' => $request->input('txtNombre')
+        ));
+        return redirect()->route('alcance.index');
     }
 
     /**
@@ -79,6 +91,8 @@ class AlcanceController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        DB::table('alcance')->where('idAlcance', '=', $id)->delete();
+        return redirect()->route('alcance.index');
     }
 }

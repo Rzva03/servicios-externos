@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CarreraController extends Controller
 {
@@ -13,7 +14,10 @@ class CarreraController extends Controller
      */
     public function index()
     {
-        //
+        $carrera = DB::table('carrera')->get();
+        return view('Carrera.index', [
+            'carreras' => $carrera
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class CarreraController extends Controller
      */
     public function create()
     {
-        //
+        return view('Carrera.nuevo');
     }
 
     /**
@@ -34,7 +38,10 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $carrera = DB::table('carrera')->insert(array(
+            'nomCarrera' => $request->input('txtNombre')
+        ));
+        return redirect()->route('carrera.index');
     }
 
     /**
@@ -45,7 +52,6 @@ class CarreraController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -56,7 +62,10 @@ class CarreraController extends Controller
      */
     public function edit($id)
     {
-        //
+        $carrera = DB::table('carrera')->where('idCarrera', '=', $id)->first();
+        return view('Carrera.actualizar', [
+            'carreras' => $carrera
+        ]);
     }
 
     /**
@@ -68,7 +77,10 @@ class CarreraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $carrera = DB::table('carrera')->where('idcarrera', '=', $id)->update(array(
+            'carrera' => $request->input('txtNombre')
+        ));
+        return redirect()->route('carrera.index');
     }
 
     /**
@@ -79,6 +91,8 @@ class CarreraController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        DB::table('carrera')->where('idCarrera', '=', $id)->delete();
+        return redirect()->route('carrera.index');
     }
 }

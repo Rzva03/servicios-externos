@@ -30,7 +30,7 @@
                                         <th scope="row">{{ $areaConocimiento->idAreaC }}</th>
                                         <td> {{ $areaConocimiento->nomAreaC }} </td>
                                         <td>
-                                            <div style="display: flex; justify-content: start;">
+                                            <div style="display: flex; justify-content: start;">|
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('area-conocimiento.edit', $areaConocimiento->idAreaC) }}'"
                                                     class="btn btn-outline-primary">Modificar</button>

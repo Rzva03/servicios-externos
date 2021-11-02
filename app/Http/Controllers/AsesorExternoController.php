@@ -38,7 +38,7 @@ class AsesorExternoController extends Controller
      */
     public function store(Request $request)
     {
-        $asesor = DB::table('asesorexterno')->insert(array(
+        $asesorExterno = DB::table('asesorexterno')->insert(array(
             'nombre' => $request->input('txtNombre'),
             'email' => $request->input('txtEmail'),
             'telefono' => $request->input('txtTelefono')
