@@ -21,8 +21,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Sector</th>
-                                    <th scope="col">Modificar</th>
-                                    <th scope="col">Eliminar</th>
+                                    <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -35,8 +34,7 @@
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('sector.edit', $sector->idSector) }}'"
                                                     class="btn btn-outline-primary">Modificar</button>
-                                                <form
-                                                    action="{{ route('sector.destroy', $sector->idSector) }}"
+                                                <form action="{{ route('sector.destroy', $sector->idSector) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')

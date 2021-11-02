@@ -144,6 +144,10 @@
                                     <a class="dropdown-item" href="{{ route('carrera.index') }}">
                                         {{ __('Carrera') }}
                                     </a>
+                                    <hr class="dropdown-divider">
+                                    <a class="dropdown-item" href="{{ route('alumno.index') }}">
+                                        {{ __('Alumno') }}
+                                    </a>
                                 </div>
                             </li>
                             {{-- logout --}}
@@ -156,7 +160,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

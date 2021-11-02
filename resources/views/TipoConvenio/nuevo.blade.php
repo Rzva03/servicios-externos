@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('tipo.store') }}">
+                        <form method="POST" action="{{ route('tipo-convenio.store') }}">
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">Tipo Convenio</label>

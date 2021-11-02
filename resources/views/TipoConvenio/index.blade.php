@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <button onclick="location.href='{{ route('tipocon.create') }}'"
+                        <button onclick="location.href='{{ route('tipo-convenio.create') }}'"
                             class="btn btn-primary">Nuevo</button>
                         <br><br>
                         <table class="table">
@@ -21,22 +21,21 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Tipo Convenio</th>
-                                    <th scope="col">Modificar</th>
-                                    <th scope="col">Eliminar</th>
+                                    <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($tipos as $tipocon)
+                                @foreach ($tiposConvenios as $tipocon)
                                     <tr>
-                                        <th scope="row">{{ $tipocon->idTipoCon }}</th>
-                                        <td> {{ $tipocon->nomTipoconvenio }} </td>
+                                        <th scope="row">{{ $tipocon->idTipoConvenio }}</th>
+                                        <td> {{ $tipocon->nomTipoConvenio }} </td>
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
-                                                    onclick="location.href='{{ route('tipocon.edit', $tipocon->idTipoConvenio) }}'"
+                                                    onclick="location.href='{{ route('tipo-convenio.edit', $tipocon->idTipoConvenio) }}'"
                                                     class="btn btn-outline-primary">Modificar</button>
                                                 <form
-                                                    action="{{ route('tipocon.destroy', $tipocon->idTipoConvenio) }}"
+                                                    action="{{ route('tipo-convenio.destroy', $tipocon->idTipoConvenio) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')

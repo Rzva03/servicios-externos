@@ -21,8 +21,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Periodo</th>
-                                    <th scope="col">Modificar</th>
-                                    <th scope="col">Eliminar</th>
+                                    <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,11 +31,10 @@
                                         <td> {{ $periodo->periodo }} </td>
                                         <td>
                                             <div style="display: flex; justify-content: start;">
-                                                    <button style="margin-right: 1rem"
-                                                    onclick="location.href='{{ route('periodo.edit', $periodo->idPeirodo) }}'"
+                                                <button style="margin-right: 1rem"
+                                                    onclick="location.href='{{ route('periodo.edit', $periodo->idPeriodo) }}'"
                                                     class="btn btn-outline-primary">Modificar</button>
-                                                <form
-                                                    action="{{ route('periodo.destroy', $periodo->idPeriodo) }}"
+                                                <form action="{{ route('periodo.destroy', $periodo->idPeriodo) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
