@@ -41,7 +41,7 @@ class AlumnoController extends Controller
         $alumno = DB::table('alumno')->insert(array(
             'nomAlumno' => $request->input('txtNombre')
         ));
-        return redirect()->route('Alumno.index');
+        return redirect()->route('alumno.index');
     }
 
     /**

@@ -46,7 +46,16 @@ class InstanciaController extends Controller
     public function store(Request $request)
     {
         $instancia = DB::table('instancia')->insert(array(
-            'folio' => $request->input('txtFolio')
+            'responsable' => $request->input('txtResponsable'),
+            'nombre' => $request->input('txtNombre'),
+            'email' => $request->input('txtEmail'),
+            'telefono' => $request->input('txtTelefono'),
+            'idGiro' => $request->input('txtIdGiro'),
+            'idSector' => $request->input('txtIdSector'),
+            'idTipoSec' => $request->input('txtIdTipoSec'),
+            'idTamanio' => $request->input('txtIdTamanio'),
+            'idAlcance' => $request->input('txtIdAlcance'),
+            'idAreaC' => $request->input('txtIdAreaC')
         ));
         return redirect()->route('instancia.index');
     }
@@ -86,7 +95,16 @@ class InstanciaController extends Controller
     public function update(Request $request, $id)
     {
         $instancia = DB::table('instancia')->where('idInstancia', '=', $id)->update(array(
-            'folio' => $request->input('txtFolio')
+            'responsable' => $request->input('txtResponsable'),
+            'nombre' => $request->input('txtNombre'),
+            'email' => $request->input('txtEmail'),
+            'telefono' => $request->input('txtTelefono'),
+            'idGiro' => $request->input('txtIdGiro'),
+            'idSector' => $request->input('txtIdSector'),
+            'idTipoSec' => $request->input('txtIdTipoSec'),
+            'idTamanio' => $request->input('txtIdTamanio'),
+            'idAlcance' => $request->input('txtIdAlcance'),
+            'idAreaC' => $request->input('txtIdAreaC')
         ));
         return redirect()->route('instancia.index');
     }

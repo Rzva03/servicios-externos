@@ -83,7 +83,7 @@ class ConvenioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $convenio = DB::table('convenio')->where('idProyecto', '=', $id)->update(array(
+        $convenio = DB::table('convenio')->where('idConvenio', '=', $id)->update(array(
             'folio' => $request->input('txtFolio'),
             'fechaFirma' => $request->input('txtFechaFirma'),
             'fechaVigencia' => $request->input('txtFechaVigencia'),
