@@ -39,7 +39,7 @@ class PeriodoController extends Controller
     public function store(Request $request)
     {
         $periodo = DB::table('periodo')->insert(array(
-            'nomperiodo' => $request->input('txtNombre')
+            'periodo' => $request->input('txtNombre')
         ));
         return redirect()->route('periodo.index');
     }

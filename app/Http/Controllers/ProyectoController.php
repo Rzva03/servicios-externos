@@ -15,7 +15,7 @@ class ProyectoController extends Controller
     public function index()
     {
         $proyecto = DB::table('proyecto')->get();
-        return view('proyecto.index', [
+        return view('Proyecto.index', [
             'proyectos' => $proyecto
         ]);
     }
