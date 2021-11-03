@@ -78,7 +78,7 @@ class CarreraController extends Controller
     public function update(Request $request, $id)
     {
         $carrera = DB::table('carrera')->where('idCarrera', '=', $id)->update(array(
-            'carrera' => $request->input('txtNombre')
+            'nomCarrera' => $request->input('txtNombre')
         ));
         return redirect()->route('carrera.index');
     }

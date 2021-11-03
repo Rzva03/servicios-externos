@@ -29,15 +29,14 @@
                                 @foreach ($carreras as $carrera)
                                     <tr>
                                         <th scope="row">{{ $carrera->idCarrera }}</th>
-                                        <td> {{ $carrera->carrera }} </td>
+                                        <td> {{ $carrera->nomCarrera }} </td>
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('carrera.edit', $carrera->idCarrera) }}'"
                                                     class="btn btn-outline-primary">Modificar</button>
-                                                <form
-                                                    action="{{ route('carrera.destroy', $carrera->idCarrera) }}"
-                                                     method="POST">
+                                                <form action="{{ route('carrera.destroy', $carrera->idCarrera) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger">Eliminar</button>

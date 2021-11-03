@@ -28,13 +28,14 @@
                                 <input type="text" class="form-control" name="txtTelefono" id="txtTelefono">
                             </div>
                             <br>
-                                <select name="sltCarrera" class="form-select form-select-lg mb-3"
-                                    aria-label=".form-select-lg example" required>
-                                    <option selected>Elija la carrera</option>
-                                    @foreach ($carreras as $carrera)
-                                        <option value="{{ $carrera->idCarrera }}">{{ $carrera->carrera }}</option>
-                                    @endforeach
-                                </select>
+                            <select name="sltCarrera" class="form-select form-select-lg mb-3"
+                                aria-label=".form-select-lg example" required>
+                                <option selected>Elija la carrera</option>
+                                @foreach ($carreras as $carrera)
+                                    <option value="{{ $carrera->idCarrera }}">{{ $carrera->nomCarrera }}</option>
+                                @endforeach
+                            </select>
+                            <br>
                             <button type="submit" class="btn btn-primary">Agregar</button>
                         </form>
                     </div>

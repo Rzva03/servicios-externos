@@ -27,7 +27,10 @@ class AlumnoController extends Controller
      */
     public function create()
     {
-        return view('Alumno.nuevo');
+        $carrera = DB::table('carrera')->get();
+        return view('Alumno.nuevo', [
+            'carreras' => $carrera
+        ]);
     }
 
     /**
@@ -39,7 +42,10 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         $alumno = DB::table('alumno')->insert(array(
-            'nomAlumno' => $request->input('txtNombre')
+            'nombre' => $request->input('txtNombre'),
+            'email' => $request->input('txtEmail'),
+            'telefono' => $request->input('txtTelefono'),
+            'idCarrera' => $request->input('txtIdCarrera')
         ));
         return redirect()->route('alumno.index');
     }
