@@ -27,7 +27,12 @@ class ConvenioController extends Controller
      */
     public function create()
     {
-        return view('Convenio.nuevo');
+        $tipoConvenio = DB::table('tipoconvenio')->get();
+        $instancia = DB::table('instancia')->get();
+        return view('Convenio.nuevo', [
+            'tiposConvenios' => $tipoConvenio,
+            'instancias' => $instancia
+        ]);
     }
 
     /**
