@@ -18,12 +18,12 @@
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">Nombre del proyecto</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <div class="mb-3">
                                 <label for="txtModalidad" class="form-label">Modalidad</label>
                                 <input type="text" class="form-control" name="txtModalidad" id="txtModalidad"
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <br>
                             <select name="sltPeriodo" class="form-select form-select-lg mb-3"

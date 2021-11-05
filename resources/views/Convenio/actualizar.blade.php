@@ -18,22 +18,22 @@
                             <div class="mb-3">
                                 <label for="txtFolio" class="form-label">Folio</label>
                                 <input type="text" class="form-control" name="txtFolio" id="txtFolio"
-                                    value="{{ $convenios->convenio }}">
+                                    value="{{ $convenios->convenio }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">Nombre del convenio</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
-                                    value="{{ $convenios->convenio }}">
+                                    value="{{ $convenios->convenio }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="txtFechaF" class="form-label">Fecha de firma</label>
                                 <input type="text" class="form-control" name="txtFechaF" id="txtFechaF"
-                                    value="{{ $convenios->convenio }}">
+                                    value="{{ $convenios->convenio }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="txtFechaV" class="form-label">Fecha de vigencia</label>
                                 <input type="text" class="form-control" name="txtFechaV" id="txtFechaV"
-                                    value="{{ $convenios->convenio }}">
+                                    value="{{ $convenios->convenio }}" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Actualizar</button>
                         </form>

@@ -19,7 +19,7 @@
                                 <label for="txtNombre" class="form-label">Área Conocimiento</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
                                     value="{{ $areaConocimientos->nomAreaC }}"
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Actualizar</button>
                         </form>
