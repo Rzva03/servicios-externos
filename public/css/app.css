@@ -10019,3 +10019,12 @@ h3 {
     border-color: #dee2e6;
   }
 }
+/* -------------------------------------------------------------------------- */
+/*                                Custom style                                */
+/* -------------------------------------------------------------------------- */
+.text-uppercase{
+    text-transform: uppercase;
+}
+.text-capitalize{
+    text-transform: capitalize;
+}
