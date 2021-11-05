@@ -17,7 +17,8 @@
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">Tamaño</label>
-                                <input type="text" class="form-control" name="txtNombre" id="txtNombre">
+                                <input type="text" class="form-control" name="txtNombre" id="txtNombre"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <button type="submit" class="btn btn-primary">Agregar</button>
                         </form>

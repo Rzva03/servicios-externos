@@ -18,7 +18,8 @@
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">Giro</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
-                                    value="{{ $giros->nomGiro }}">
+                                    value="{{ $giros->nomGiro }}"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <button type="submit" class="btn btn-primary">Actualizar</button>
                         </form>

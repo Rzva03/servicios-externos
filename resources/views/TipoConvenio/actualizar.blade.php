@@ -18,7 +18,8 @@
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">Tipo Convenio</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
-                                    value="{{ $tiposConvenios->nomTipoConvenio }}">
+                                    value="{{ $tiposConvenios->nomTipoConvenio }}"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <button type="submit" class="btn btn-primary">Actualizar</button>
                         </form>

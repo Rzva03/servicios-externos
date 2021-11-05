@@ -17,19 +17,23 @@
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtFolio" class="form-label">Folio</label>
-                                <input type="text" class="form-control" name="txtFolio" id="txtFolio">
+                                <input type="text" class="form-control" name="txtFolio" id="txtFolio"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">Nombre del convenio</label>
-                                <input type="text" class="form-control" name="txtNombre" id="txtNombre">
+                                <input type="text" class="form-control" name="txtNombre" id="txtNombre"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <div class="mb-3">
                                 <label for="txtFechaF" class="form-label">Fecha de firma</label>
-                                <input type="text" class="form-control" name="txtFechaF" id="txtFechaF">
+                                <input type="text" class="form-control" name="txtFechaF" id="txtFechaF"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <div class="mb-3">
                                 <label for="txtFechaV" class="form-label">Fecha de vigencia</label>
-                                <input type="text" class="form-control" name="txtFechaV" id="txtFechaV">
+                                <input type="text" class="form-control" name="txtFechaV" id="txtFechaV"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <br>
                             <select name="sltTipo" class="form-select form-select-lg mb-3"

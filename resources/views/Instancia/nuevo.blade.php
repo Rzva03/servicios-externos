@@ -17,11 +17,14 @@
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtResponsable" class="form-label">Responsable</label>
-                                <input type="text" class="form-control" name="txtResponsable" id="txtResponsable" required>
+                                <input type="text" class="form-control" name="txtResponsable" id="txtResponsable" required
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 <label for="txtEmail" class="form-label">Email</label>
-                                <input type="email" class="form-control" name="txtEmail" id="txtEmail" required>
+                                <input type="email" class="form-control" name="txtEmail" id="txtEmail" required
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 <label for="txtTelefono" class="form-label">Teléfono</label>
-                                <input type="tel" class="form-control" name="txtTelefono" id="txtTelefono" required>
+                                <input type="tel" class="form-control" name="txtTelefono" id="txtTelefono" required
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                                 <br>
                                 <select name="sltSector" class="form-select form-select-lg mb-3"
                                     aria-label=".form-select-lg example" required>
@@ -40,7 +43,7 @@
                                     @endforeach
                                 </select>
                                 <br>
-                                <select name="sltAreaConocimiento class="    form-select form-select-lg mb-3"
+                                <select name="sltAreaConocimiento class="     form-select form-select-lg mb-3"
                                     aria-label=".form-select-lg example" required>
                                     <option selected>Eliga el área de conocimiento</option>
                                     @foreach ($areaConocimientos as $areaConocimiento)
