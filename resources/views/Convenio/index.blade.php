@@ -33,7 +33,12 @@
                                 @foreach ($convenios as $convenio)
                                     <tr>
                                         <th scope="row">{{ $convenio->idConvenio }}</th>
-                                        <td> {{ $convenio->convenio }} </td>
+                                        <td> {{ $convenio->folio }} </td>
+                                        <td> {{ $convenio->fechaFirma }} </td>
+                                        <td> {{ $convenio->fechaVigencia }} </td>
+                                        <td> {{ $convenio->estatus }} </td>
+                                        <td> {{ $convenio->idTipoCon }} </td>
+                                        <td> {{ $convenio->idInstancia }} </td>
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
@@ -43,7 +48,8 @@
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                                    <button type="submit" class="btn btn-outline-danger"
+                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $convenio->folio }}?') ">Eliminar</button>
                                                 </form>
                                             </div>
 

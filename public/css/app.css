@@ -10028,3 +10028,7 @@ h3 {
 .text-capitalize{
     text-transform: capitalize;
 }
+input{
+    text-transform: uppercase;
+}
+

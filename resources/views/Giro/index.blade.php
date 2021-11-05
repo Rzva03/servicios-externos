@@ -36,7 +36,8 @@
                                                 <form action="{{ route('giro.destroy', $giro->idGiro) }}" method="POST">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                                    <button type="submit" class="btn btn-outline-danger"
+                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $giro->nomGiro }}?') ">Eliminar</button>
                                                 </form>
                                             </div>
                                         </td>

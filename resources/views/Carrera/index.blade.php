@@ -21,8 +21,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Carrera</th>
-                                    <th scope="col">Modificar</th>
-                                    <th scope="col">Eliminar</th>
+                                    <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,7 +38,8 @@
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                                    <button type="submit" class="btn btn-outline-danger"
+                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $carrera->nomCarrera }}?') ">Eliminar</button>
                                                 </form>
                                             </div>
 

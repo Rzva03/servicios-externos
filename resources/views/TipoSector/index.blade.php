@@ -38,7 +38,8 @@
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                                    <button type="submit" class="btn btn-outline-danger"
+                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $tipoSector->nomTipoSec }}?') ">Eliminar</button>
                                                 </form>
                                             </div>
 

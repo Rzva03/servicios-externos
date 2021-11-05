@@ -34,17 +34,17 @@
                                         <td> {{ $asesorExterno->email }} </td>
                                         <td> {{ $asesorExterno->telefono }} </td>
                                         <td>
-                                            <div style="display: flex; justify-content: space-evenly;">
-                                                <button style="margin-right: 1rem"
+                                            <div style="display: flex; justify-content: start;">
+                                                <button style="margin-right: 1rem;"
                                                     onclick="location.href='{{ route('asesor-externo.edit', $asesorExterno->idAsesorE) }}'"
                                                     class="btn btn-outline-primary">Modificar</button>
-                                                <br><br>
                                                 <form
                                                     action="{{ route('asesor-externo.destroy', $asesorExterno->idAsesorE) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                                    <button type="submit" class="btn btn-outline-danger"
+                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $asesorExterno->nombre }}?') ">Eliminar</button>
                                                 </form>
                                             </div>
                                         </td>

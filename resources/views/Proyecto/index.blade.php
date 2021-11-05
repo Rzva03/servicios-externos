@@ -28,26 +28,32 @@
                                     <th scope="col">Asesor Interno</th>
                                     <th scope="col">Asesor Externo</th>
                                     <th scope="col">Instancia</th>
-                                    <th scope="col">Modificar</th>
-                                    <th scope="col">Eliminar</th>
+                                    <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($proyectos as $proyecto)
                                     <tr>
                                         <th scope="row">{{ $proyecto->idProyecto }}</th>
-                                        <td> {{ $proyecto->proyecto }} </td>
+                                        <td> {{ $proyecto->nomProyecto }} </td>
+                                        <td> {{ $proyecto->periodo }} </td>
+                                        <td> {{ $proyecto->modalidad }} </td>
+                                        <td> {{ $proyecto->idAlumno }} </td>
+                                        <td> {{ $proyecto->idPeriodo }} </td>
+                                        <td> {{ $proyecto->idAsesorI }} </td>
+                                        <td> {{ $proyecto->idAsesorE }} </td>
+                                        <td> {{ $proyecto->idInstancia }} </td>
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('proyecto.edit', $proyecto->idProyecto) }}'"
                                                     class="btn btn-outline-primary">Modificar</button>
-                                                <form
-                                                    action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
-                                                     method="POST">
+                                                <form action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+                                                    <button type="submit" class="btn btn-outline-danger"
+                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $proyecto->nomProyecto }}?') ">Eliminar</button>
                                                 </form>
                                             </div>
 
