@@ -26,7 +26,7 @@
     <div id="app">
         <div style="background-color:#1B3A6D; width=100%; height=50px">
             <img src="https://plataforma.voaxaca.tecnm.mx/pluginfile.php/1/theme_moove/logo/1629958313/logo-itvo.png"
-                alt="TecNM/I.T.V.O." width="50%" height="50px">
+                alt="TecNM/I.T.V.O." width="40%" height="50px">
         </div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
@@ -164,7 +164,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 
