@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('alumno.store') }}">
+                        <form method="POST" action="{{ route('alumno.store') }}" id="form" name="form">
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">Nombre</label>
@@ -31,13 +31,19 @@
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <br>
-                            <select name="sltCarrera" class="form-select form-select-lg mb-3"
-                                aria-label=".form-select-lg example" required>
-                                <option selected>Elija la carrera</option>
-                                @foreach ($carreras as $carrera)
-                                    <option value="{{ $carrera->idCarrera }}">{{ $carrera->nomCarrera }}</option>
-                                @endforeach
-                            </select>
+                            <div class="mb-3">
+                                <label for="sltCarrera" class="form-label">Carrera:</label>
+                                <select name="sltCarrera" class="form-select form-select-lg mb-3"
+                                    onChange="agregarID(sltCarrera, txtIdCarrera)" required>
+                                    <option selected>Elija la carrera</option>
+                                    @foreach ($carreras as $carrera)
+                                        <option value="{{ $carrera->idCarrera }}">
+                                            {{ $carrera->nomCarrera }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <input hidden type="text" name="txtIdCarrera" id="txtIdCarrera">
                             <br>
                             <button type="submit" class="btn btn-primary">Agregar</button>
                         </form>
