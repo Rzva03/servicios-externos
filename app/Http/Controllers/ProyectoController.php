@@ -27,7 +27,20 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        return view('Proyecto.nuevo');
+        //alumno, periodo, asesorI, asesorE, instancia
+        $alumno = DB::table('alumno')->get();
+        $periodo = DB::table('periodo')->get();
+        $asesorInterno = DB::table('asesorinterno')->get();
+        $asesorExterno = DB::table('asesorexterno')->get();
+        $instancia = DB::table('instancia')->get();
+        return view('Proyecto.nuevo', [
+            'alumnos' => $alumno,
+            'periodos' => $periodo,
+            'periodos' => $periodo,
+            'asesoresInternos' => $asesorInterno,
+            'asesoresExternos' => $asesorExterno,
+            'instancias' => $instancia
+        ]);
     }
 
     /**
