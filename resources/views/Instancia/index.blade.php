@@ -14,23 +14,23 @@
                             </div>
                         @endif
                         <button onclick="location.href='{{ route('instancia.create') }}'"
-                            class="btn btn-primary">Nuevo</button>
+                            class="btn btn-primary">NUEVO</button>
                         <br><br>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Responsable</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Teléfono</th>
-                                    <th scope="col">Giro</th>
-                                    <th scope="col">Sector</th>
-                                    <th scope="col">Tipo sector</th>
-                                    <th scope="col">Tamaño</th>
-                                    <th scope="col">Alcance</th>
-                                    <th scope="col">Área conocimiento</th>
-                                    <th scope="col">Acciones</th>
+                                    <th scope="col">NOMBRE</th>
+                                    <th scope="col">RESPONSABLE</th>
+                                    <th scope="col">EMAIL</th>
+                                    <th scope="col">TELÉFONO</th>
+                                    <th scope="col">GIRO</th>
+                                    <th scope="col">SECTOR</th>
+                                    <th scope="col">TIPO SECTOR</th>
+                                    <th scope="col">TAMAÑO</th>
+                                    <th scope="col">ALCANCE</th>
+                                    <th scope="col">ÁREA DE CONOCIMIENTO</th>
+                                    <th scope="col">ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,7 +50,7 @@
                                         <td>
                                             <button
                                                 onclick="location.href='{{ route('instancia.edit', $instancias->idInstancia) }}'"
-                                                class="btn btn-outline-primary">Modificar</button>
+                                                class="btn btn-outline-primary">MODIFICAR</button>
                                         </td>
                                         <td>
                                             <form action="{{ route('instancia.destroy', $instancias->idInstancia) }}"
@@ -58,7 +58,7 @@
                                                 @csrf
                                                 @method('delete')
                                                 <button type="submit" class="btn btn-outline-danger"
-                                                    onclick="return confirm( '¿Esta seguro de borrar {{ $instancias->nombre }}?') ">Eliminar</button>
+                                                    onclick="return confirm( '¿Esta seguro de borrar {{ $instancias->nombre }}?') ">ELIMINAR</button>
                                             </form>
                                         </td>
                                     </tr>

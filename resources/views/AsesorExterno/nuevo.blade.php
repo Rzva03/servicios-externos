@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('ASESOR EXTERNO') }}</div>
+                    <div class="card-header">{{ __('AGREGAR ASESOR EXTERNO') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -16,21 +16,21 @@
                         <form method="POST" action="{{ route('asesor-externo.store') }}">
                             {{ csrf_field() }}
                             <div class="mb-3">
-                                <label for="txtNombre" class="form-label">Nombre</label>
+                                <label for="txtNombre" class="form-label">NOMBRE</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre" required
                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <div class="mb-3">
-                                <label for="txtEmail" class="form-label">Email</label>
+                                <label for="txtEmail" class="form-label">EMAIL</label>
                                 <input type="email" class="form-control" name="txtEmail" id="txtEmail" required
                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <div class="mb-3">
-                                <label for="txtTelefono" class="form-label">Telefono</label>
+                                <label for="txtTelefono" class="form-label">TELÉFONO</label>
                                 <input type="tel" class="form-control" name="txtTelefono" id="txtTelefono" required
                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="submit" class="btn btn-primary">AGREGAR</button>
                         </form>
                     </div>
                 </div>

@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('PERIODO') }}</div>
+                    <div class="card-header">{{ __('AGREGAR PERIODO') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -16,11 +16,11 @@
                         <form method="POST" action="{{ route('periodo.store') }}">
                             {{ csrf_field() }}
                             <div class="mb-3">
-                                <label for="txtNombre" class="form-label">Periodo</label>
+                                <label for="txtNombre" class="form-label">PERIODO</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button type="submit" class="btn btn-primary">AGREGAR</button>
                         </form>
                     </div>
                 </div>

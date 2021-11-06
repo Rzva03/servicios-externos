@@ -14,21 +14,21 @@
                             </div>
                         @endif
                         <button onclick="location.href='{{ route('proyecto.create') }}'"
-                            class="btn btn-primary">Nuevo</button>
+                            class="btn btn-primary">NUEVO</button>
                         <br><br>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Nombre del proyecto</th>
-                                    <th scope="col">Periodo</th>
-                                    <th scope="col">Modalidad</th>
-                                    <th scope="col">Alumno</th>
-                                    <th scope="col">Periodo</th>
-                                    <th scope="col">Asesor Interno</th>
-                                    <th scope="col">Asesor Externo</th>
-                                    <th scope="col">Instancia</th>
-                                    <th scope="col">Acciones</th>
+                                    <th scope="col">NOMBRE DEL PROYECTO</th>
+                                    <th scope="col">PERIODO</th>
+                                    <th scope="col">MODALIDAD</th>
+                                    <th scope="col">ALUMNO</th>
+                                    <th scope="col">PERIODO</th>
+                                    <th scope="col">ASESOR INTERNO</th>
+                                    <th scope="col">ASESOR EXTERNO</th>
+                                    <th scope="col">INSTANCIA</th>
+                                    <th scope="col">ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -47,13 +47,13 @@
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('proyecto.edit', $proyecto->idProyecto) }}'"
-                                                    class="btn btn-outline-primary">Modificar</button>
+                                                    class="btn btn-outline-primary">MODIFICAR</button>
                                                 <form action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $proyecto->nomProyecto }}?') ">Eliminar</button>
+                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $proyecto->nomProyecto }}?') ">ELIMINAR</button>
                                                 </form>
                                             </div>
 

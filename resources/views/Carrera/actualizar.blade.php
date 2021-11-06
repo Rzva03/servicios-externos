@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('CARRERA') }}</div>
+                    <div class="card-header">{{ __('MODIFICAR CARRERA') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -16,12 +16,12 @@
                         <form action="{{ route('carrera.update', $carreras->idCarrera) }}" method="POST">
                             @csrf @method('PUT')
                             <div class="mb-3">
-                                <label for="txtNombre" class="form-label">Carrera</label>
+                                <label for="txtNombre" class="form-label">CARRERA</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
                                     value="{{ $carreras->nomCarrera }}"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <button type="submit" class="btn btn-primary">MODIFICAR</button>
                         </form>
                     </div>
                 </div>

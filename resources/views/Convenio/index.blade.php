@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('CONVENIO') }}</div>
+                    <div class="card-header">{{ __('CONVENIOS') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,19 +14,19 @@
                             </div>
                         @endif
                         <button onclick="location.href='{{ route('convenio.create') }}'"
-                            class="btn btn-primary">Nuevo</button>
+                            class="btn btn-primary">NUEVO</button>
                         <br><br>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Folio</th>
-                                    <th scope="col">Fecha de firma</th>
-                                    <th scope="col">Fecha de vigencia</th>
-                                    <th scope="col">Estatus</th>
-                                    <th scope="col">Tipo de convenio</th>
-                                    <th scope="col">Instancia</th>
-                                    <th scope="col">Acciones</th>
+                                    <th scope="col">FOLIO</th>
+                                    <th scope="col">FECHA DE FIRMA</th>
+                                    <th scope="col">FECHA DE VIGENCIA</th>
+                                    <th scope="col">ESTATUS</th>
+                                    <th scope="col">TIPO DE CONVENIO</th>
+                                    <th scope="col">INSTANCIA</th>
+                                    <th scope="col">ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,13 +43,13 @@
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('convenio.edit', $convenio->idConvenio) }}'"
-                                                    class="btn btn-outline-primary">Modificar</button>
+                                                    class="btn btn-outline-primary">MODIFICAR</button>
                                                 <form action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $convenio->folio }}?') ">Eliminar</button>
+                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $convenio->folio }}?') ">ELIMINAR</button>
                                                 </form>
                                             </div>
 
