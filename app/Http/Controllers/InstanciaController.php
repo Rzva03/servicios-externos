@@ -26,11 +26,17 @@ class InstanciaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    { //giro sector tiposec tamanio alcance areac
+        $giro = DB::table('giro')->get();
         $sector = DB::table('sector')->get();
         $tipoSector = DB::table('tiposector')->get();
+        $tamanio = DB::table('tamanio')->get();
+        $alcance = DB::table('alcance')->get();
         $areaConocimiento = DB::table('areaconoc')->get();
         return view('Instancia.nuevo', [
+            'giros' => $giro,
+            'tamanios' => $tamanio,
+            'alcances' => $alcance,
             'sectores' => $sector,
             'tipoSectores' => $tipoSector,
             'areaConocimientos' => $areaConocimiento
@@ -46,8 +52,8 @@ class InstanciaController extends Controller
     public function store(Request $request)
     {
         $instancia = DB::table('instancia')->insert(array(
-            'responsable' => $request->input('txtResponsable'),
             'nombre' => $request->input('txtNombre'),
+            'responsable' => $request->input('txtResponsable'),
             'email' => $request->input('txtEmail'),
             'telefono' => $request->input('txtTelefono'),
             'idGiro' => $request->input('txtIdGiro'),
@@ -95,8 +101,8 @@ class InstanciaController extends Controller
     public function update(Request $request, $id)
     {
         $instancia = DB::table('instancia')->where('idInstancia', '=', $id)->update(array(
-            'responsable' => $request->input('txtResponsable'),
             'nombre' => $request->input('txtNombre'),
+            'responsable' => $request->input('txtResponsable'),
             'email' => $request->input('txtEmail'),
             'telefono' => $request->input('txtTelefono'),
             'idGiro' => $request->input('txtIdGiro'),
