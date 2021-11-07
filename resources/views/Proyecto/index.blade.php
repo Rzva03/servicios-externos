@@ -21,7 +21,6 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">NOMBRE DEL PROYECTO</th>
-                                    <th scope="col">PERIODO</th>
                                     <th scope="col">MODALIDAD</th>
                                     <th scope="col">ALUMNO</th>
                                     <th scope="col">PERIODO</th>
@@ -36,7 +35,6 @@
                                     <tr>
                                         <th scope="row">{{ $proyecto->idProyecto }}</th>
                                         <td> {{ $proyecto->nomProyecto }} </td>
-                                        <td> {{ $proyecto->periodo }} </td>
                                         <td> {{ $proyecto->modalidad }} </td>
                                         <td> {{ $proyecto->idAlumno }} </td>
                                         <td> {{ $proyecto->idPeriodo }} </td>

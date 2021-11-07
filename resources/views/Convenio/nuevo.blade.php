@@ -30,6 +30,11 @@
                                 <input type="text" class="form-control" name="txtFechaV" id="txtFechaV"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="txtStatus" class="form-label">STATUS</label>
+                                <input type="text" class="form-control" name="txtStatus" id="txtStatus"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+                            </div>
                             <br>
                             <select name="sltTipo" class="form-select form-select-lg mb-3"
                                 aria-label=".form-select-lg example" required>

@@ -20,8 +20,8 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">Tamaño</th>
-                                    <th scope="col">Acciones</th>
+                                    <th scope="col">TAMAÑO</th>
+                                    <th scope="col">ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>

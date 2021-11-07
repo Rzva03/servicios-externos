@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <button onclick="location.href='{{ route('giro.create') }}'" class="btn btn-primary">Nuevo</button>
+                        <button onclick="location.href='{{ route('giro.create') }}'" class="btn btn-primary">NUEVO</button>
                         <br><br>
                         <table class="table">
                             <thead>

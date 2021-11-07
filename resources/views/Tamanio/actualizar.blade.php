@@ -16,12 +16,12 @@
                         <form action="{{ route('tamanio.update', $tamanios->idTamanio) }}" method="POST">
                             @csrf @method('PUT')
                             <div class="mb-3">
-                                <label for="txtNombre" class="form-label">Tamaño</label>
+                                <label for="txtNombre" class="form-label">TAMAÑ</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
                                     value="{{ $tamanios->nomTamanio }}"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
                         </form>
                     </div>
                 </div>
