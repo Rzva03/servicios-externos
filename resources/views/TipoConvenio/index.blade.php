@@ -20,7 +20,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">TIPO CONVENIo</th>
+                                    <th scope="col">TIPO CONVENIO</th>
                                     <th scope="col">ACCIONES</th>
                                 </tr>
                             </thead>
