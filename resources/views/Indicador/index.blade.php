@@ -20,7 +20,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">ID</th>
-                                    <th scope="col">SECTOR</th>
+                                    <th scope="col">INDICADOR</th>
                                     <th scope="col">DESCRIPCIÓN</th>
                                     <th scope="col">ACCIONES</th>
                                 </tr>
