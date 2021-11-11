@@ -84,10 +84,6 @@
                                         {{ __('Giro') }}
                                     </a>
                                     <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('alcance.index') }}">
-                                        {{ __('Alcance') }}
-                                    </a>
-                                    <hr class="dropdown-divider">
                                     <a class="dropdown-item" href="{{ route('area-conocimiento.index') }}">
                                         {{ __('Área de conocimiento') }}
                                     </a>
@@ -106,6 +102,10 @@
                                 <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('tipo-convenio.index') }}">
                                         {{ __('Tipo de convenio') }}
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a class="dropdown-item" href="{{ route('indicador.index') }}">
+                                        {{ __('Indicador') }}
                                     </a>
                                     <hr class="dropdown-divider">
                                     <a class="dropdown-item" href="{{ route('convenio.index') }}">
@@ -164,7 +164,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

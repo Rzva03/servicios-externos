@@ -55,13 +55,7 @@ Route::resource('area-conocimiento', AreaConocimientoController::class);
 use App\Http\Controllers\GiroController;
 
 Route::resource('giro', GiroController::class);
-/* -------------------------------------------------------------------------- */
-/*                                rutas alcance                               */
-/* -------------------------------------------------------------------------- */
 
-use App\Http\Controllers\AlcanceController;
-
-Route::resource('alcance', AlcanceController::class);
 /* -------------------------------------------------------------------------- */
 /*                               rutas instancia                              */
 /* -------------------------------------------------------------------------- */
@@ -125,3 +119,10 @@ Route::resource('tipo-convenio', TipoConvenioController::class);
 use App\Http\Controllers\ConvenioController;
 
 Route::resource('convenio', ConvenioController::class);
+/* -------------------------------------------------------------------------- */
+/*                                rutas indicador                               */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\IndicadorController;
+
+Route::resource('indicador', IndicadorController::class);
