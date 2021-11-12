@@ -30,10 +30,9 @@
                                 <input type="text" class="form-control" name="txtTelefono" id="txtTelefono"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <br>
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <label for="sltCarrera" class="form-label">CARRERA</label>
-                                <select name="sltCarrera" class="form-select"
+                                <select name="sltCarrera" class="form-control"
                                     onChange="agregarID(sltCarrera, txtIdCarrera)" required>
                                     <option selected>ELIJA LA CARRERA</option>
                                     @foreach ($carreras as $carrera)

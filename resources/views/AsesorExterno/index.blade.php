@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('ASESORES EXTERNOS') }}</div>
+                    <div class="card-header">{{ __('LISTADO DE ASESORES EXTERNOS') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,7 +14,7 @@
                             </div>
                         @endif
                         <button onclick="location.href='{{ route('asesor-externo.create') }}'"
-                            class="btn btn-primary">Nuevo</button>
+                            class="btn btn-primary">NUEVO</button>
                         <br><br>
                         <table class="table">
                             <thead>
@@ -44,7 +44,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $asesorExterno->nombre }}?') ">ELIMINAR</button>
+                                                        onclick="return confirm( '¿ESTA SEGURO DE ELIMINAR {{ $asesorExterno->nombre }}?') ">ELIMINAR</button>
                                                 </form>
                                             </div>
                                         </td>

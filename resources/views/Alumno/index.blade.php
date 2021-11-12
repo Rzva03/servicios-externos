@@ -4,8 +4,8 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
-                <div class="card">
-                    <div class="card-header">{{ __('ALUMNOS') }}</div>
+                <div class="card ">
+                    <div class="card-header">{{ __('LISTADO DE ALUMNOS') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -49,7 +49,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $alumno->nombre }}?') ">ELIMINAR</button>
+                                                        onclick="return confirm( '¿ESTA SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">ELIMINAR</button>
                                                 </form>
                                             </div>
 

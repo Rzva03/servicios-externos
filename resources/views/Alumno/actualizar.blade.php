@@ -32,10 +32,9 @@
                                     value="{{ $alumnos->telefono }}"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <br>
-                            <div class="mb-3">
+                            <div class="form-group mb-3">
                                 <label for="sltCarrera" class="form-label">CARRERA</label>
-                                <select name="sltCarrera" class="form-select"
+                                <select name="sltCarrera" class="form-control"
                                     onChange="agregarID(sltCarrera, txtIdCarrera)" required>
                                     <option>ELIJA LA CARRERA</option>
                                     @foreach ($carreras as $carrera)
@@ -52,7 +51,7 @@
                                 </select>
                             </div>
                             <input hidden type="text" name="txtIdCarrera" id="txtIdCarrera">
-                            <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+                            <button type="submit" class="btn btn-primary">MODIFICAR</button>
                         </form>
                     </div>
                 </div>
