@@ -34,7 +34,11 @@
                                         <td> {{ $alumno->nombre }} </td>
                                         <td> {{ $alumno->email }} </td>
                                         <td> {{ $alumno->telefono }} </td>
-                                        <td> {{ $alumno->idCarrera }} </td>
+                                        @foreach ($carreras as $carrera)
+                                            @if ($carrera->idCarrera === $alumno->idCarrera)
+                                                <td> {{ $carrera->nomCarrera }} </td>
+                                            @endif
+                                        @endforeach
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"

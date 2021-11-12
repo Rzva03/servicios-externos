@@ -14,9 +14,11 @@ class AlumnoController extends Controller
      */
     public function index()
     {
+        $carrera = DB::table('carrera')->get();
         $alumno = DB::table('alumno')->get();
         return view('Alumno.index', [
-            'alumnos' => $alumno
+            'alumnos' => $alumno,
+            'carreras' => $carrera
         ]);
     }
 
