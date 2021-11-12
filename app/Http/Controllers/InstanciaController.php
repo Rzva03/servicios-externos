@@ -14,9 +14,19 @@ class InstanciaController extends Controller
      */
     public function index()
     {
+        $giro = DB::table('giro')->get();
+        $sector = DB::table('sector')->get();
+        $tipoSector = DB::table('tiposector')->get();
+        $tamanio = DB::table('tamanio')->get();
+        $areaConocimiento = DB::table('areaconoc')->get();
         $instancia = DB::table('instancia')->get();
         return view('Instancia.index', [
-            'instancias' => $instancia
+            'instancias' => $instancia,
+            'giros' => $giro,
+            'sectores' => $sector,
+            'tipoSectores' => $tipoSector,
+            'tamanios' => $tamanio,
+            'areaConocimientos' => $areaConocimiento
         ]);
     }
 
@@ -26,19 +36,17 @@ class InstanciaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { //giro sector tiposec tamanio alcance areac
+    {
         $giro = DB::table('giro')->get();
         $sector = DB::table('sector')->get();
         $tipoSector = DB::table('tiposector')->get();
         $tamanio = DB::table('tamanio')->get();
-        $alcance = DB::table('alcance')->get();
         $areaConocimiento = DB::table('areaconoc')->get();
         return view('Instancia.nuevo', [
             'giros' => $giro,
-            'tamanios' => $tamanio,
-            'alcances' => $alcance,
             'sectores' => $sector,
             'tipoSectores' => $tipoSector,
+            'tamanios' => $tamanio,
             'areaConocimientos' => $areaConocimiento
         ]);
     }
@@ -85,9 +93,19 @@ class InstanciaController extends Controller
      */
     public function edit($id)
     {
+        $giro = DB::table('giro')->get();
+        $sector = DB::table('sector')->get();
+        $tipoSector = DB::table('tiposector')->get();
+        $tamanio = DB::table('tamanio')->get();
+        $areaConocimiento = DB::table('areaconoc')->get();
         $instancia = DB::table('instancia')->where('idInstancia', '=', $id)->first();
         return view('Instancia.actualizar', [
-            'instancias' => $instancia
+            'instancias' => $instancia,
+            'giros' => $giro,
+            'sectores' => $sector,
+            'tipoSectores' => $tipoSector,
+            'tamanios' => $tamanio,
+            'areaConocimientos' => $areaConocimiento
         ]);
     }
 

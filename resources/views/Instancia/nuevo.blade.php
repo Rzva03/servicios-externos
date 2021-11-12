@@ -35,27 +35,30 @@
                                 <input type="tel" class="form-control" name="txtTelefono" id="txtTelefono" required
                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
-                            <div class="mb-3">
-                                <select name="sltGiro" class="form-select form-select-lg mb-3"
-                                    aria-label=".form-select-lg example" required>
+                            <div class="form-group">
+                                <label for="sltGiro" class="form-label">GIRO</label>
+                                <select name="sltGiro" class="form-control" onChange="agregarID(sltGiro, txtIdGiro)"
+                                    required>
                                     <option selected>ELIJA EL GIRO</option>
                                     @foreach ($giros as $giro)
                                         <option value="{{ $giro->idGiro }}">{{ $giro->nomGiro }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mb-3">
-                                <select name="sltSector" class="form-select form-select-lg mb-3"
-                                    aria-label=".form-select-lg example" required>
+                            <div class="form-group">
+                                <label for="sltSector" class="form-label">SECTOR</label>
+                                <select name="sltSector" class="form-control" onChange="agregarID(sltSector, txtIdSector)"
+                                    required>
                                     <option selected>ELIJA EL SECTOR</option>
                                     @foreach ($sectores as $sector)
                                         <option value="{{ $sector->idSector }}">{{ $sector->nomSector }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mb-3">
-                                <select name="sltTipoSector" class="form-select form-select-lg mb-3"
-                                    aria-label=".form-select-lg example" required>
+                            <div class="form-group">
+                                <label for="sltTipoSector" class="form-label">TIPO DE SECTOR</label>
+                                <select name="sltTipoSector" class="form-control"
+                                    onChange="agregarID(sltTipoSector, txtIdTipoSec)" required>
                                     <option selected>ELIJA EL TIPO DE SECTOR</option>
                                     @foreach ($tipoSectores as $tipoSector)
                                         <option value="{{ $tipoSector->idTipoSec }}">{{ $tipoSector->nomTipoSec }}
@@ -63,18 +66,20 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mb-3">
-                                <select name="sltTamanio" class="form-select form-select-lg mb-3"
-                                    aria-label=".form-select-lg example" required>
+                            <div class="form-group">
+                                <label for="sltTamanio" class="form-label">TAMAÑO</label>
+                                <select name="sltTamanio" class="form-control"
+                                    onChange="agregarID(sltTamanio, txtIdTamanio)" required>
                                     <option selected>ELIJA EL TAMAÑO</option>
                                     @foreach ($tamanios as $tamanio)
                                         <option value="{{ $tamanio->idTamanio }}">{{ $tamanio->nomTamanio }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mb-3">
-                                <select name="sltAreaConocimiento" class=" form-select form-select-lg mb-3"
-                                    aria-label=".form-select-lg example" required>
+                            <div class="form-group">
+                                <label for="sltAreaConocimiento" class="form-label">ÁREA DE CONOCIMIENTO</label>
+                                <select name="sltAreaConocimiento" class=" form-control"
+                                    onChange="agregarID(sltAreaConocimiento, txtIdAreaC)" required>
                                     <option selected>ELIJA EL ÁREA DE CONOCIMIENTO</option>
                                     @foreach ($areaConocimientos as $areaConocimiento)
                                         <option value="{{ $areaConocimiento->idAreaC }}">
@@ -82,6 +87,11 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <input type="text" hidden name="txtIdGiro" id="txtIdGiro">
+                            <input type="text" hidden name="txtIdSector" id="txtIdSector">
+                            <input type="text" hidden name="txtIdTipoSec" id="txtIdTipoSec">
+                            <input type="text" hidden name="txtIdTamanio" id="txtIdTamanio">
+                            <input type="text" hidden name="txtIdAreaC" id="txtIdAreaC">
                             <button type="submit" class="btn btn-primary">AGREGAR</button>
                         </form>
                     </div>

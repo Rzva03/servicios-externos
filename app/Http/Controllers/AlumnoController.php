@@ -43,12 +43,12 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        $idCarrera = (int)$request->input('txtIdCarrera');
+        // $idCarrera = (int)$request->input('txtIdCarrera');
         $alumno = DB::table('alumno')->insert(array(
             'nombre' => $request->input('txtNombre'),
             'email' => $request->input('txtEmail'),
             'telefono' => $request->input('txtTelefono'),
-            'idCarrera' => $idCarrera
+            'idCarrera' => $request->input('txtIdCarrera')
         ));
         return redirect()->route('alumno.index');
     }
@@ -88,12 +88,12 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $idCarrera = (int)$request->input('txtIdCarrera');
+        // $idCarrera = (int)$request->input('txtIdCarrera');
         $alumno = DB::table('alumno')->where('idAlumno', '=', $id)->update(array(
             'nombre' => $request->input('txtNombre'),
             'email' => $request->input('txtEmail'),
             'telefono' => $request->input('txtTelefono'),
-            'idCarrera' => $idCarrera
+            'idCarrera' => $request->input('txtIdCarrera')
         ));
         return redirect()->route('alumno.index');
     }
