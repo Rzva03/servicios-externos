@@ -41,11 +41,12 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
+        $idCarrera = (int)$request->input('txtIdCarrera');
         $alumno = DB::table('alumno')->insert(array(
             'nombre' => $request->input('txtNombre'),
             'email' => $request->input('txtEmail'),
             'telefono' => $request->input('txtTelefono'),
-            'idCarrera' => $request->input('txtIdCarrera')
+            'idCarrera' => $idCarrera
         ));
         return redirect()->route('alumno.index');
     }
@@ -68,9 +69,11 @@ class AlumnoController extends Controller
      */
     public function edit($id)
     {
+        $carrera = DB::table('carrera')->get();
         $alumno = DB::table('alumno')->where('idAlumno', '=', $id)->first();
         return view('Alumno.actualizar', [
-            'alumnos' => $alumno
+            'alumnos' => $alumno,
+            'carreras' => $carrera
         ]);
     }
 
@@ -83,8 +86,12 @@ class AlumnoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $idCarrera = (int)$request->input('txtIdCarrera');
         $alumno = DB::table('alumno')->where('idAlumno', '=', $id)->update(array(
-            'nomAlumno' => $request->input('txtNombre')
+            'nombre' => $request->input('txtNombre'),
+            'email' => $request->input('txtEmail'),
+            'telefono' => $request->input('txtTelefono'),
+            'idCarrera' => $idCarrera
         ));
         return redirect()->route('alumno.index');
     }

@@ -68,7 +68,7 @@ class IndicadorController extends Controller
     public function edit($id)
     {
         $indicador = DB::table('indicador')->where('idIndicador', '=', $id)->first();
-        return view('indicador.actualizar', [
+        return view('Indicador.actualizar', [
             'indicadores' => $indicador
         ]);
     }
@@ -82,11 +82,11 @@ class IndicadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $indicador = DB::table('indicador')->where('idSector', '=', $id)->update(array(
+        $indicador = DB::table('indicador')->where('idIndicador', '=', $id)->update(array(
             'nombre' => $request->input('txtNombre'),
             'descripcion' => $request->input('txtDescripcion')
         ));
-        return redirect()->route('sector.index');
+        return redirect()->route('indicador.index');
     }
 
     /**
