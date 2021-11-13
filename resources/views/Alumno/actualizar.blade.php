@@ -50,7 +50,8 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <input hidden type="text" name="txtIdCarrera" id="txtIdCarrera">
+                            <input hidden type="text" name="txtIdCarrera" id="txtIdCarrera"
+                                value="{{ $alumnos->idCarrera }}">
                             <button type="submit" class="btn btn-primary">MODIFICAR</button>
                         </form>
                     </div>
