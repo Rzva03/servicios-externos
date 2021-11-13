@@ -51,7 +51,7 @@ class ConvenioController extends Controller
             'estatus' => $request->input('txtestatus'),
             'idTipoCon' => $request->input('txtIdTipoCon'),
             'idInstancia' => $request->input('txtIdInstancia'),
-            'idUsuario' => $request->input('txtIdUsuario'),
+            'idUsuario' => "1"
         ));
         return redirect()->route('convenio.index');
     }
