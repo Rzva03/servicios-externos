@@ -29,6 +29,7 @@
                                     <th scope="col">TIPO SECTOR</th>
                                     <th scope="col">TAMAÑO</th>
                                     <th scope="col">ÁREA DE CONOCIMIENTO</th>
+                                    <th scope="col">ALCANCE</th>
                                     <th scope="col">ACCIONES</th>
                                 </tr>
                             </thead>
@@ -63,6 +64,11 @@
                                         @foreach ($areaConocimientos as $areaConocimiento)
                                             @if ($areaConocimiento->idAreaC === $instancia->idAreaC)
                                                 <td> {{ $areaConocimiento->nomAreaC }} </td>
+                                            @endif
+                                        @endforeach
+                                        @foreach ($alcances as $alcance)
+                                            @if ($alcance->idAlcance === $instancia->idAlcance)
+                                                <td> {{ $alcance->nombre }} </td>
                                             @endif
                                         @endforeach
                                         <td>

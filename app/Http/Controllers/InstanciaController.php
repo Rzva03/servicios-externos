@@ -19,6 +19,7 @@ class InstanciaController extends Controller
         $tipoSector = DB::table('tiposector')->get();
         $tamanio = DB::table('tamanio')->get();
         $areaConocimiento = DB::table('areaconoc')->get();
+        $alcance = DB::table('alcance')->get();
         $instancia = DB::table('instancia')->get();
         return view('Instancia.index', [
             'instancias' => $instancia,
@@ -26,7 +27,8 @@ class InstanciaController extends Controller
             'sectores' => $sector,
             'tipoSectores' => $tipoSector,
             'tamanios' => $tamanio,
-            'areaConocimientos' => $areaConocimiento
+            'areaConocimientos' => $areaConocimiento,
+            'alcances' => $alcance
         ]);
     }
 
@@ -42,12 +44,14 @@ class InstanciaController extends Controller
         $tipoSector = DB::table('tiposector')->get();
         $tamanio = DB::table('tamanio')->get();
         $areaConocimiento = DB::table('areaconoc')->get();
+        $alcance = DB::table('alcance')->get();
         return view('Instancia.nuevo', [
             'giros' => $giro,
             'sectores' => $sector,
             'tipoSectores' => $tipoSector,
             'tamanios' => $tamanio,
-            'areaConocimientos' => $areaConocimiento
+            'areaConocimientos' => $areaConocimiento,
+            'alcances' => $alcance
         ]);
     }
 
@@ -68,8 +72,8 @@ class InstanciaController extends Controller
             'idSector' => $request->input('txtIdSector'),
             'idTipoSec' => $request->input('txtIdTipoSec'),
             'idTamanio' => $request->input('txtIdTamanio'),
-            'idAlcance' => $request->input('txtIdAlcance'),
-            'idAreaC' => $request->input('txtIdAreaC')
+            'idAreaC' => $request->input('txtIdAreaC'),
+            'idAlcance' => $request->input('txtIdAlcance')
         ));
         return redirect()->route('instancia.index');
     }
@@ -98,6 +102,7 @@ class InstanciaController extends Controller
         $tipoSector = DB::table('tiposector')->get();
         $tamanio = DB::table('tamanio')->get();
         $areaConocimiento = DB::table('areaconoc')->get();
+        $alcance = DB::table('alcance')->get();
         $instancia = DB::table('instancia')->where('idInstancia', '=', $id)->first();
         return view('Instancia.actualizar', [
             'instancias' => $instancia,
@@ -105,7 +110,8 @@ class InstanciaController extends Controller
             'sectores' => $sector,
             'tipoSectores' => $tipoSector,
             'tamanios' => $tamanio,
-            'areaConocimientos' => $areaConocimiento
+            'areaConocimientos' => $areaConocimiento,
+            'alcances' => $alcance
         ]);
     }
 

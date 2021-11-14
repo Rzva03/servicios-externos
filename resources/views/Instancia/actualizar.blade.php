@@ -118,6 +118,22 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="sltAlcance" class="form-label">ALCANCE</label>
+                                <select name="sltAlcance" class=" form-control"
+                                    onChange="agregarID(sltAlcance, txtIdAreaC)" required>
+                                    <option selected>ELIJA EL ALCANCE</option>
+                                    @foreach ($alcances as $alcance)
+                                        @if ($alcance->idAlcance === $instancias->idAlcance)
+                                            <option selected value="{{ $alcance->idAlcance }}">
+                                                {{ $alcance->nombre }}</option>
+                                        @else
+                                            <option value="{{ $alcance->idAlcance }}">
+                                                {{ $alcance->nombre }}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
                             <input type="text" hidden name="txtIdGiro" id="txtIdGiro" value="{{ $instancias->idGiro }}">
                             <input type="text" hidden name="txtIdSector" id="txtIdSector"
                                 value="{{ $instancias->idSector }}">
@@ -127,6 +143,8 @@
                                 value="{{ $instancias->idTamanio }}">
                             <input type="text" hidden name="txtIdAreaC" id="txtIdAreaC"
                                 value="{{ $instancias->idAreaC }}">
+                            <input type="text" hidden name="txtIdAlcance" id="txtIdAlcance"
+                                value="{{ $instancias->idAlcance }}">
                             <button type="submit" class="btn btn-primary">MODIFICAR</button>
                         </form>
                     </div>

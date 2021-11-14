@@ -36,17 +36,6 @@
                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <div class="form-group">
-                                <label for="sltGiro" class="form-label">ALCANCE</label>
-                                <select name="sltGiro" class="form-control" onChange="agregarID(sltGiro, txtIdGiro)"
-                                    required>
-                                    <option selected>ELIJA EL ALANCE</option>
-                                    <option value="NACIONAL">NACIONAL</option>
-                                    <option value="NACIONAL">NACIONAL</option>
-                                    <option value="NACIONAL">NACIONAL</option>
-                                    <option value="NACIONAL">NACIONAL</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label for="sltGiro" class="form-label">GIRO</label>
                                 <select name="sltGiro" class="form-control" onChange="agregarID(sltGiro, txtIdGiro)"
                                     required>
@@ -98,11 +87,22 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="sltAlcance" class="form-label">ALCANCE</label>
+                                <select name="sltAlcance" class="form-control"
+                                    onChange="agregarID(sltAlcance, txtIdAlcance)" required>
+                                    <option selected>ELIJA EL ALCANCE</option>
+                                    @foreach ($alcances as $alcance)
+                                        <option value="{{ $alcance->idAlcance }}">{{ $alcance->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <input type="text" hidden name="txtIdGiro" id="txtIdGiro">
                             <input type="text" hidden name="txtIdSector" id="txtIdSector">
                             <input type="text" hidden name="txtIdTipoSec" id="txtIdTipoSec">
                             <input type="text" hidden name="txtIdTamanio" id="txtIdTamanio">
                             <input type="text" hidden name="txtIdAreaC" id="txtIdAreaC">
+                            <input type="text" hidden name="txtIdAlcance" id="txtIdAlcance">
                             <button type="submit" class="btn btn-primary">AGREGAR</button>
                         </form>
                     </div>
