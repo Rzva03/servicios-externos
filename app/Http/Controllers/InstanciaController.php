@@ -86,7 +86,22 @@ class InstanciaController extends Controller
      */
     public function show($id)
     {
-        //
+        $giro = DB::table('giro')->get();
+        $sector = DB::table('sector')->get();
+        $tipoSector = DB::table('tiposector')->get();
+        $tamanio = DB::table('tamanio')->get();
+        $areaConocimiento = DB::table('areaconoc')->get();
+        $alcance = DB::table('alcance')->get();
+        $instancia = DB::table('instancia')->where('idInstancia', '=', $id)->first();
+        return view('Instancia.detalle', [
+            'instancias' => $instancia,
+            'giros' => $giro,
+            'sectores' => $sector,
+            'tipoSectores' => $tipoSector,
+            'tamanios' => $tamanio,
+            'areaConocimientos' => $areaConocimiento,
+            'alcances' => $alcance
+        ]);
     }
 
     /**

@@ -24,12 +24,6 @@
                                     <th scope="col">RESPONSABLE</th>
                                     <th scope="col">EMAIL</th>
                                     <th scope="col">TELÉFONO</th>
-                                    <th scope="col">GIRO</th>
-                                    <th scope="col">SECTOR</th>
-                                    <th scope="col">TIPO SECTOR</th>
-                                    <th scope="col">TAMAÑO</th>
-                                    <th scope="col">ÁREA DE CONOCIMIENTO</th>
-                                    <th scope="col">ALCANCE</th>
                                     <th scope="col">ACCIONES</th>
                                 </tr>
                             </thead>
@@ -41,38 +35,11 @@
                                         <td> {{ $instancia->responsable }} </td>
                                         <td> {{ $instancia->email }} </td>
                                         <td> {{ $instancia->telefono }} </td>
-                                        @foreach ($giros as $giro)
-                                            @if ($giro->idGiro === $instancia->idGiro)
-                                                <td> {{ $giro->nomGiro }} </td>
-                                            @endif
-                                        @endforeach
-                                        @foreach ($sectores as $sector)
-                                            @if ($sector->idSector === $instancia->idSector)
-                                                <td> {{ $sector->nomSector }} </td>
-                                            @endif
-                                        @endforeach
-                                        @foreach ($tipoSectores as $tipoSector)
-                                            @if ($tipoSector->idTipoSec === $instancia->idTipoSec)
-                                                <td> {{ $tipoSector->nomTipoSec }} </td>
-                                            @endif
-                                        @endforeach
-                                        @foreach ($tamanios as $tamanio)
-                                            @if ($tamanio->idTamanio === $instancia->idTamanio)
-                                                <td> {{ $tamanio->nomTamanio }} </td>
-                                            @endif
-                                        @endforeach
-                                        @foreach ($areaConocimientos as $areaConocimiento)
-                                            @if ($areaConocimiento->idAreaC === $instancia->idAreaC)
-                                                <td> {{ $areaConocimiento->nomAreaC }} </td>
-                                            @endif
-                                        @endforeach
-                                        @foreach ($alcances as $alcance)
-                                            @if ($alcance->idAlcance === $instancia->idAlcance)
-                                                <td> {{ $alcance->nombre }} </td>
-                                            @endif
-                                        @endforeach
                                         <td>
                                             <div style="display: flex; justify-content: start;">
+                                                <button style="margin-right: 1rem"
+                                                    onclick="location.href='{{ route('instancia.show', $instancia->idInstancia) }}'"
+                                                    class="btn btn-outline-secondary">DETALLE</button>
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('instancia.edit', $instancia->idInstancia) }}'"
                                                     class="btn btn-outline-primary">MODIFICAR</button>
