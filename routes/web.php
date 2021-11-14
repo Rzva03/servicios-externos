@@ -126,3 +126,10 @@ Route::resource('convenio', ConvenioController::class);
 use App\Http\Controllers\IndicadorController;
 
 Route::resource('indicador', IndicadorController::class);
+/* -------------------------------------------------------------------------- */
+/*                                 rutas alcance                                 */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\AlcanceController;
+
+Route::resource('alcance', AlcanceController::class);

@@ -36,6 +36,17 @@
                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <div class="form-group">
+                                <label for="sltGiro" class="form-label">ALCANCE</label>
+                                <select name="sltGiro" class="form-control" onChange="agregarID(sltGiro, txtIdGiro)"
+                                    required>
+                                    <option selected>ELIJA EL ALANCE</option>
+                                    <option value="NACIONAL">NACIONAL</option>
+                                    <option value="NACIONAL">NACIONAL</option>
+                                    <option value="NACIONAL">NACIONAL</option>
+                                    <option value="NACIONAL">NACIONAL</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="sltGiro" class="form-label">GIRO</label>
                                 <select name="sltGiro" class="form-control" onChange="agregarID(sltGiro, txtIdGiro)"
                                     required>
