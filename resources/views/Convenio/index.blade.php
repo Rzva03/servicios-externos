@@ -37,8 +37,16 @@
                                         <td> {{ $convenio->fechaFirma }} </td>
                                         <td> {{ $convenio->fechaVigencia }} </td>
                                         <td> {{ $convenio->estatus }} </td>
-                                        <td> {{ $convenio->idTipoCon }} </td>
-                                        <td> {{ $convenio->idInstancia }} </td>
+                                        @foreach ($tipoConvenios as $tipoConvenio)
+                                            @if ($tipoConvenio->idTipoConvenio === $convenio->idTipoCon)
+                                                <td> {{ $tipoConvenio->nomTipoConvenio }} </td>
+                                            @endif
+                                        @endforeach
+                                        @foreach ($instancias as $instancia)
+                                            @if ($instancia->idInstancia === $convenio->idInstancia)
+                                                <td> {{ $instancia->nombre }} </td>
+                                            @endif
+                                        @endforeach
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"

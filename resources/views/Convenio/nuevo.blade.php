@@ -22,12 +22,12 @@
                             </div>
                             <div class="mb-3">
                                 <label for="txtFechaF" class="form-label">FECHA DE FIRMA</label>
-                                <input type="date" class="form-control" name="txtFechaF" id="txtFechaF"
+                                <input type="date" class="form-control" name="dateFechaFirma" id="dateFechaFirma"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <div class="mb-3">
                                 <label for="txtFechaV" class="form-label">FECHA DE VIGENCIA</label>
-                                <input type="date" class="form-control" name="txtFechaV" id="txtFechaV"
+                                <input type="date" class="form-control" name="dateFechaVigencia" id="dateFechaVigencia"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <div class="form-group">
@@ -62,9 +62,9 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="sltInstancia" class="form-label">INDICADOR</label>
-                                <select name="sltInstancia" id="sltInstancia" class="form-control"
-                                    onChange="agregarID(sltInstancia, txtIdInstancia)" required>
+                                <label for="sltIndicador" class="form-label">INDICADOR</label>
+                                <select name="sltIndicador" id="sltIndicador" class="form-control"
+                                    onChange="agregarID(sltIndicador, txtIdIndicador)" required>
                                     <option selected>ELIJA EL INDICADOR</option>
                                     @foreach ($indicadores as $indicador)
                                         <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
@@ -73,11 +73,12 @@
                                 </select>
                             </div>
                             @if ($convenios === 1)
-                                <input type="text" name="txtIdConvenio" id="txtIdConvenio" value="1">
+                                <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio" value="1">
                             @else
-                                <input type="text" name="txtIdConvenio" id="txtIdConvenio"
-                                    value="{{ $convenios->idConvenio }}">
+                                <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
+                                    value="{{ $convenios }}">
                             @endif
+                            <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus">
                             <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon">
                             <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
