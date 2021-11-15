@@ -30,10 +30,15 @@
                                 <input type="date" class="form-control" name="txtFechaV" id="txtFechaV"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="txtStatus" class="form-label">ESTATUS</label>
-                                <input type="text" class="form-control" name="txtStatus" id="txtStatus"
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+                            <div class="form-group">
+                                <label for="sltEstatus" class="form-label">ESTATUS</label>
+                                <select name="sltEstatus" id="sltEstatus" class="form-control"
+                                    onChange="agregarID(sltEstatus, txtEstatus)" required>
+                                    <option selected>ELIJA EL ESTATUS</option>
+                                    <option value="VIGENTE">VIGENTE</option>
+                                    <option value="FINALIZADO">FINALIZADO</option>
+                                    <option value="CANCELADO">CANCELADO</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="sltTipo" class="form-label">TIPO DE CONVENIO</label>
@@ -56,8 +61,28 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <input hidden type="text" name="txtIdCarrera" id="txtIdTipoCon">
-                            <input hidden type="text" name="txtIdCarrera" id="txtIdInstancia">
+                            <div class="form-group">
+                                <label for="sltInstancia" class="form-label">INDICADOR</label>
+                                <select name="sltInstancia" id="sltInstancia" class="form-control"
+                                    onChange="agregarID(sltInstancia, txtIdInstancia)" required>
+                                    <option selected>ELIJA EL INDICADOR</option>
+                                    @foreach ($indicadores as $indicador)
+                                        <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @if ($convenios === 1)
+                                <input type="text" name="txtIdConvenio" id="txtIdConvenio" value="1">
+                            @else
+                                <input type="text" name="txtIdConvenio" id="txtIdConvenio"
+                                    value="{{ $convenios->idConvenio }}">
+                            @endif
+                            <input hidden type="text" name="txtEstatus" id="txtEstatus">
+                            <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon">
+                            <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
+                            <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
+                                value=" {{ Auth::user()->id }}">
                             <button type="submit" class="btn btn-primary">AGREGAR</button>
                         </form>
                     </div>

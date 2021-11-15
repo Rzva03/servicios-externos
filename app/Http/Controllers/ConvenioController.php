@@ -27,12 +27,21 @@ class ConvenioController extends Controller
      */
     public function create()
     {
-
+        $ultimoConvenio = null;
+        $convenio = DB::table('convenio')->orderBy('idConvenio', 'desc')->first();
+        if ($convenio === null) {
+            $ultimoConvenio = 1;
+        } else {
+            $ultimoConvenio = $convenio;
+        }
+        $indicador = DB::table('indicador')->get();
         $tipoConvenio = DB::table('tipoconvenio')->get();
         $instancia = DB::table('instancia')->get();
         return view('Convenio.nuevo', [
             'tiposConvenios' => $tipoConvenio,
-            'instancias' => $instancia
+            'instancias' => $instancia,
+            'indicadores' => $indicador,
+            'convenios' => $ultimoConvenio
         ]);
     }
 
@@ -44,14 +53,18 @@ class ConvenioController extends Controller
      */
     public function store(Request $request)
     {
+        $detalleIndicador = DB::table('detalleindicador')->insert(array(
+            'idConvenio' => $request->input('txtIdConvenio'),
+            'idIndicador' => $request->input('txtIdIndicador')
+        ));
         $convenio = DB::table('convenio')->insert(array(
             'folio' => $request->input('txtFolio'),
             'fechaFirma' => $request->input('txtFechaFirma'),
             'fechaVigencia' => $request->input('txtFechaVigencia'),
-            'estatus' => $request->input('txtestatus'),
+            'estatus' => $request->input('txtEstatus'),
             'idTipoCon' => $request->input('txtIdTipoCon'),
             'idInstancia' => $request->input('txtIdInstancia'),
-            'idUsuario' => "1"
+            'idUsuario' => $request->input('txtIdUsuario')
         ));
         return redirect()->route('convenio.index');
     }
