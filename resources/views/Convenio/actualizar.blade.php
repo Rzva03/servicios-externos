@@ -110,17 +110,19 @@
                             @foreach ($indicadores as $indicador)
                                 @foreach ($detallesIndicadores as $detalleIndicador)
                                     @if ($indicador->idIndicador === $detalleIndicador->idIndicador)
-                                        <input type="text" name="txtIdIndicador" id="txtIdIndicador"
+                                        <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador"
                                             value="{{ $indicador->idIndicador }}">
                                     @break
                                 @endif
                             @endforeach
                             @endforeach
-                            <input type="text" name="txtIdConvenio" id="txtIdConvenio"
+                            <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                 value="{{ $convenios->idConvenio }}">
-                            <input type="text" name="txtEstatus" id="txtEstatus" value="{{ $convenios->estatus }}">
-                            <input type="text" name="txtIdTipoCon" id="txtIdTipoCon" value="{{ $convenios->idTipoCon }}">
-                            <input type="text" name="txtIdInstancia" id="txtIdInstancia"
+                            <input hidden type="text" name="txtEstatus" id="txtEstatus"
+                                value="{{ $convenios->estatus }}">
+                            <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon"
+                                value="{{ $convenios->idTipoCon }}">
+                            <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia"
                                 value="{{ $instancia->idInstancia }}">
                             <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
                                 value=" {{ Auth::user()->id }}">

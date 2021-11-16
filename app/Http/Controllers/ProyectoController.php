@@ -53,12 +53,11 @@ class ProyectoController extends Controller
     {
         $proyecto = DB::table('proyecto')->insert(array(
             'nomProyecto' => $request->input('txtNombre'),
-            'periodo' => $request->input('txtPeriodo'),
             'modalidad' => $request->input('txtModalidad'),
             'idAlumno' => $request->input('txtIdAlumno'),
             'idPeriodo' => $request->input('txtIdPeriodo'),
-            'idAsesorI' => $request->input('txtIdAsesorI'),
-            'idAsesorE' => $request->input('txtIdAsesorE'),
+            'idAsesorI' => $request->input('txtIdAsesorInterno'),
+            'idAsesorE' => $request->input('txtIdAsesorExterno'),
             'idInstancia' => $request->input('txtIdInstancia')
         ));
         return redirect()->route('proyecto.index');
@@ -82,8 +81,18 @@ class ProyectoController extends Controller
      */
     public function edit($id)
     {
+        $alumno = DB::table('alumno')->get();
+        $periodo = DB::table('periodo')->get();
+        $asesorInterno = DB::table('asesorinterno')->get();
+        $asesorExterno = DB::table('asesorexterno')->get();
+        $instancia = DB::table('instancia')->get();
         $proyecto = DB::table('proyecto')->where('idProyecto', '=', $id)->first();
         return view('Proyecto.actualizar', [
+            'alumnos' => $alumno,
+            'periodos' => $periodo,
+            'asesoresInternos' => $asesorInterno,
+            'asesoresExternos' => $asesorExterno,
+            'instancias' => $instancia,
             'proyectos' => $proyecto
         ]);
     }
