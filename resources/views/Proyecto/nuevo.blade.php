@@ -29,48 +29,59 @@
                                     <option value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
                                 </select>
                             </div>
-                            <select name="sltPeriodo" class="form-select form-select-lg mb-3"
-                                onChange="agregarID(sltPeriodo, txtIdPeriodo)" required>
-                                <option selected>ElIJA UN PERIODO</option>
-                                @foreach ($periodos as $periodo)
-                                    <option value="{{ $periodo->idPeriodo }}">{{ $periodo->periodo }}</option>
-                                @endforeach
-                            </select>
-                            <br>
-                            <select name="sltAlumno" class="form-select form-select-lg mb-3"
-                                onChange="agregarID(sltAlumno, txtIdAlumno)" required>
-                                <option selected>ELIJA ALUMNO</option>
-                                @foreach ($alumnos as $alumno)
-                                    <option value="{{ $alumno->idAlumno }}">{{ $alumno->nombre }}</option>
-                                @endforeach
-                            </select>
-                            <br>
-                            <select name="sltAsesorI" class="form-select form-select-lg mb-3"
-                                onChange="agregarID(sltAsesorI, txtIdAsesorInterno)" required>
-                                <option selected>ELIJA ASESOR INTERNO</option>
-                                @foreach ($asesoresInternos as $asesorInterno)
-                                    <option value="{{ $asesorInterno->idAsesorI }}">{{ $asesorInterno->nombre }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <br>
-                            <select name="sltAsesorE" class="form-select form-select-lg mb-3"
-                                onChange="agregarID(sltAsesorE, txtIdAsesorExterno)" required>
-                                <option selected>ELIJA ASESOR EXTERNO</option>
-                                @foreach ($asesoresExternos as $asesorExterno)
-                                    <option value="{{ $asesorExterno->idAsesorE }}">{{ $asesorExterno->nombre }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <br>
-                            <select name="sltInstancia" class="form-select form-select-lg mb-3"
-                                onChange="agregarID(sltInstancia, txtIdInstancia)" required>
-                                <option selected>ELIJA INSTANCIA</option>
-                                @foreach ($instancias as $instancia)
-                                    <option value="{{ $instancia->idInstancia }}">{{ $instancia->nombre }}</option>
-                                @endforeach
-                            </select>
-                            <br>
+                            <div class="form-group">
+                                <label for="sltPeriodo" class="form-label">PERIODO</label>
+                                <select name="sltPeriodo" class="form-control"
+                                    onChange="agregarID(sltPeriodo, txtIdPeriodo)" required>
+                                    <option selected>ELIJA EL PERIODO</option>
+                                    @foreach ($periodos as $periodo)
+                                        <option value="{{ $periodo->idPeriodo }}">{{ $periodo->periodo }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sltAlumno" class="form-label">ALUMNO</label>
+                                <select name="sltAlumno" class="form-control" onChange="agregarID(sltAlumno, txtIdAlumno)"
+                                    required>
+                                    <option selected>ELIJA ALUMNO</option>
+                                    @foreach ($alumnos as $alumno)
+                                        <option value="{{ $alumno->idAlumno }}">{{ $alumno->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sltAsesorI" class="form-label">ASESOR INTERNO</label>
+                                <select name="sltAsesorI" class="form-control"
+                                    onChange="agregarID(sltAsesorI, txtIdAsesorInterno)" required>
+                                    <option selected>ELIJA ASESOR INTERNO</option>
+                                    @foreach ($asesoresInternos as $asesorInterno)
+                                        <option value="{{ $asesorInterno->idAsesorI }}">{{ $asesorInterno->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sltAsesorE" class="form-label">ASESOR EXTERNO</label>
+                                <select name="sltAsesorE" class="form-control"
+                                    onChange="agregarID(sltAsesorE, txtIdAsesorExterno)" required>
+                                    <option selected>ELIJA ASESOR EXTERNO</option>
+                                    @foreach ($asesoresExternos as $asesorExterno)
+                                        <option value="{{ $asesorExterno->idAsesorE }}">{{ $asesorExterno->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sltInstancia" class="form-label">INSTANCIA</label>
+                                <select name="sltInstancia" class="form-control"
+                                    onChange="agregarID(sltInstancia, txtIdInstancia)" required>
+                                    <option selected>ELIJA INSTANCIA</option>
+                                    @foreach ($instancias as $instancia)
+                                        <option value="{{ $instancia->idInstancia }}">{{ $instancia->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <input hidden type="text" name="txtModalidad" id="txtModalidad">
                             <input hidden type="text" name="txtIdPeriodo" id="txtIdPeriodo">
                             <input hidden type="text" name="txtIdAlumno" id="txtIdAlumno">

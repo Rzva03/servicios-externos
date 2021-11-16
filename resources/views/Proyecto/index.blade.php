@@ -35,12 +35,36 @@
                                     <tr>
                                         <th scope="row">{{ $proyecto->idProyecto }}</th>
                                         <td> {{ $proyecto->nomProyecto }} </td>
-                                        <td> {{ $proyecto->modalidad }} </td>
-                                        <td> {{ $proyecto->idAlumno }} </td>
-                                        <td> {{ $proyecto->idPeriodo }} </td>
-                                        <td> {{ $proyecto->idAsesorI }} </td>
-                                        <td> {{ $proyecto->idAsesorE }} </td>
-                                        <td> {{ $proyecto->idInstancia }} </td>
+                                        @if ($proyecto->modalidad === 'SERVICIO SOCIAL')
+                                            <td> SERVICIO SOCIAL </td>
+                                        @else
+                                            <td> RESIDENCIA PROFESIONAL </td>
+                                        @endif
+                                        @foreach ($alumnos as $alumno)
+                                            @if ($alumno->idAlumno === $proyecto->idAlumno)
+                                                <td> {{ $alumno->nombre }} </td>
+                                            @endif
+                                        @endforeach
+                                        @foreach ($periodos as $periodo)
+                                            @if ($periodo->idPeriodo === $proyecto->idPeriodo)
+                                                <td> {{ $periodo->periodo }} </td>
+                                            @endif
+                                        @endforeach
+                                        @foreach ($asesoresInternos as $asesorInterno)
+                                            @if ($asesorInterno->idAsesorI === $proyecto->idAsesorI)
+                                                <td> {{ $asesorInterno->nombre }} </td>
+                                            @endif
+                                        @endforeach
+                                        @foreach ($asesoresExternos as $asesorExterno)
+                                            @if ($asesorExterno->idAsesorE === $proyecto->idAsesorE)
+                                                <td> {{ $asesorExterno->nombre }} </td>
+                                            @endif
+                                        @endforeach
+                                        @foreach ($instancias as $instancia)
+                                            @if ($instancia->idInstancia === $proyecto->idInstancia)
+                                                <td> {{ $instancia->nombre }} </td>
+                                            @endif
+                                        @endforeach
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
