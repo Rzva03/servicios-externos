@@ -39,9 +39,9 @@
                                 onChange="agregarID(sltPeriodo, txtIdPeriodo)" required>
                                 <option selected>ElIJA UN PERIODO</option>
                                 @foreach ($periodos as $periodo)
-                                @if ()
+                                {{-- @if ()
                                     
-                                @endif
+                                @endif --}}
                                     <option value="{{ $periodo->idPeriodo }}">{{ $periodo->periodo }}</option>
                                 @endforeach
                             </select>
