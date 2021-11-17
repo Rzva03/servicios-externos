@@ -72,12 +72,12 @@
                                     @endforeach
                                 </select>
                             </div>
-                            @if ($convenios === 1)
+                            {{-- @if ($convenios === 1)
                                 <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio" value="1">
                             @else
                                 <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                     value="{{ $convenios }}">
-                            @endif
+                            @endif --}}
                             <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus">
                             <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon">

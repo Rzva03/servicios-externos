@@ -93,29 +93,18 @@
                                     onChange="agregarID(sltIndicador, txtIdIndicador)" required>
                                     <option>ELIJA EL INDICADOR</option>
                                     @foreach ($indicadores as $indicador)
-                                        @foreach ($detallesIndicadores as $detalleIndicador)
-                                            @if ($indicador->idIndicador === $detalleIndicador->idIndicador)
-                                                <option selected value="{{ $indicador->idIndicador }}">
-                                                    {{ $indicador->descripcion }}
-                                                </option>
-                                            @else
-                                                <option value="{{ $indicador->idIndicador }}">
-                                                    {{ $indicador->descripcion }}
-                                                </option>
-                                            @endif
-                                        @endforeach
+                                        @if ($indicador->idIndicador === $convenios->idIndicador)
+                                            <option selected value="{{ $indicador->idIndicador }}">
+                                                {{ $indicador->descripcion }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $indicador->idIndicador }}">
+                                                {{ $indicador->descripcion }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
-                            @foreach ($indicadores as $indicador)
-                                @foreach ($detallesIndicadores as $detalleIndicador)
-                                    @if ($indicador->idIndicador === $detalleIndicador->idIndicador)
-                                        <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador"
-                                            value="{{ $indicador->idIndicador }}">
-                                    @break
-                                @endif
-                            @endforeach
-                            @endforeach
                             <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                 value="{{ $convenios->idConvenio }}">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus"
@@ -123,7 +112,9 @@
                             <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon"
                                 value="{{ $convenios->idTipoCon }}">
                             <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia"
-                                value="{{ $instancia->idInstancia }}">
+                                value="{{ $convenios->idInstancia }}">
+                            <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador"
+                                value="{{ $convenios->idIndicador }}">
                             <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
                                 value=" {{ Auth::user()->id }}">
                             <button type="submit" class="btn btn-primary">MODIFICAR</button>
