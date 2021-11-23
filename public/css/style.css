@@ -1,3 +1,6 @@
 .card-body {
     overflow-x: auto;
 }
+.link-primary {
+    color: black;
+}

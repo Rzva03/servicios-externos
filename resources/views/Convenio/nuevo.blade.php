@@ -40,6 +40,11 @@
                                     <option value="CANCELADO">CANCELADO</option>
                                 </select>
                             </div>
+                            <div class="mb-3">
+                                <label for="txtFolio" class="form-label">URL DEL CONVENIO DIGITAL</label>
+                                <input type="text" class="form-control" name="txtUrlConvenio" id="txtUrlConvenio"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+                            </div>
                             <div class="form-group">
                                 <label for="sltTipo" class="form-label">TIPO DE CONVENIO</label>
                                 <select name="sltTipo" id="sltTipo" class="form-control"

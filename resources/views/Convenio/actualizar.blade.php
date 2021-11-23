@@ -30,6 +30,11 @@
                                 <input type="date" class="form-control" name="dateFechaVigencia" id="txtFechaV"
                                     value="{{ $convenios->fechaVigencia }}" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="txtFolio" class="form-label">URL DEL CONVENIO</label>
+                                <input type="text" class="form-control" name="txtUrlConvenio" id="txtUrlConvenio"
+                                    value="{{ $convenios->urlConvenio }}" required>
+                            </div>
                             <div class="form-group">
                                 <label for="sltEstatus" class="form-label">ESTATUS</label>
                                 <select name="sltEstatus" id="sltEstatus" class="form-control"

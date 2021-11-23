@@ -21,11 +21,11 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">FOLIO</th>
+                                    <th scope="col">INSTANCIA</th>
                                     <th scope="col">FECHA DE FIRMA</th>
                                     <th scope="col">FECHA DE VIGENCIA</th>
                                     <th scope="col">ESTATUS</th>
                                     <th scope="col">TIPO DE CONVENIO</th>
-                                    <th scope="col">INSTANCIA</th>
                                     <th scope="col">ACCIONES</th>
                                 </tr>
                             </thead>
@@ -34,17 +34,18 @@
                                     <tr>
                                         <th scope="row">{{ $convenio->idConvenio }}</th>
                                         <td> {{ $convenio->folio }} </td>
+                                        @foreach ($instancias as $instancia)
+                                            @if ($instancia->idInstancia === $convenio->idInstancia)
+                                                <td><a href="{{ $convenio->urlConvenio }}" class="link-primary"
+                                                        target="_blank">{{ $instancia->nombre }}</a></td>
+                                            @endif
+                                        @endforeach
                                         <td> {{ $convenio->fechaFirma }} </td>
                                         <td> {{ $convenio->fechaVigencia }} </td>
                                         <td> {{ $convenio->estatus }} </td>
                                         @foreach ($tipoConvenios as $tipoConvenio)
                                             @if ($tipoConvenio->idTipoConvenio === $convenio->idTipoCon)
                                                 <td> {{ $tipoConvenio->nomTipoConvenio }} </td>
-                                            @endif
-                                        @endforeach
-                                        @foreach ($instancias as $instancia)
-                                            @if ($instancia->idInstancia === $convenio->idInstancia)
-                                                <td> {{ $instancia->nombre }} </td>
                                             @endif
                                         @endforeach
                                         <td>
