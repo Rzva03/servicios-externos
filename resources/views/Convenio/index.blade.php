@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('CONVENIOS') }}</div>
+                    <div class="card-header">{{ __('LISTADO DE CONVENIOS') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,8 +14,8 @@
                             </div>
                         @endif
                         <div class="div-flex">
-                            <button onclick="location.href='{{ route('convenio.create') }}'"
-                                class="btn btn-primary ">NUEVO</button>
+                            <button onclick="location.href='{{ route('convenio.create') }}'" class="btn btn-primary "><i
+                                    class="bi bi-plus-square-dotted"></i> NUEVO</button>
                             <div class="input-group col-5">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                                 <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
@@ -25,7 +25,6 @@
                         <table class="table" id="tabla">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">FOLIO</th>
                                     <th scope="col">INSTANCIA</th>
                                     <th scope="col">FECHA DE FIRMA</th>
@@ -38,7 +37,6 @@
                             <tbody>
                                 @foreach ($convenios as $convenio)
                                     <tr>
-                                        <th scope="row">{{ $convenio->idConvenio }}</th>
                                         <td> {{ $convenio->folio }} </td>
                                         @foreach ($instancias as $instancia)
                                             @if ($instancia->idInstancia === $convenio->idInstancia)
@@ -58,13 +56,15 @@
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('convenio.edit', $convenio->idConvenio) }}'"
-                                                    class="btn btn-outline-primary">MODIFICAR</button>
+                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i>
+                                                    MODIFICAR</button>
                                                 <form action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $convenio->folio }}?') ">ELIMINAR</button>
+                                                        onclick="return confirm( '¿ESTÁ SEGURO DE BORRAR {{ $convenio->folio }}?') "><i
+                                                            class="bi bi-eraser"></i>ELIMINAR</button>
                                                 </form>
                                             </div>
 

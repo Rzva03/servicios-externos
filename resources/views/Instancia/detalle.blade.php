@@ -13,7 +13,7 @@
                             </div>
                         @endif
                         <div class="mb-3">
-                            <label for="txtResponsable" class="form-label">NOMBRE:</label>
+                            <label for="txtResponsable" class="form-label">NOMBRE</label>
                             <input type="text" class="form-control" name="txtNombre" id="txtNombre"
                                 value="{{ $instancias->nombre }}" disabled>
                         </div>

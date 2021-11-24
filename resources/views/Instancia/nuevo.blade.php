@@ -16,7 +16,7 @@
                         <form method="POST" action="{{ route('instancia.store') }}">
                             {{ csrf_field() }}
                             <div class="mb-3">
-                                <label for="txtResponsable" class="form-label">NOMBRE:</label>
+                                <label for="txtResponsable" class="form-label">NOMBRE</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre" required
                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>

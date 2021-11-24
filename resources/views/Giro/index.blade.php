@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('GIROS') }}</div>
+                    <div class="card-header">{{ __('LISTADO DE GIROS') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -13,12 +13,18 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <button onclick="location.href='{{ route('giro.create') }}'" class="btn btn-primary">NUEVO</button>
-                        <br><br>
-                        <table class="table">
+                        <div class="div-flex">
+                            <button onclick="location.href='{{ route('giro.create') }}'"
+                                class="btn btn-primary ">NUEVO</button>
+                            <div class="input-group col-5">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                                <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
+                                    style="text-transform: uppercase;" onkeyup='busquedaTabla()'>
+                            </div>
+                        </div>
+                        <table class="table" id="tabla">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">GIRO</th>
                                     <th scope="col">ACCIONES</th>
                                 </tr>
@@ -26,7 +32,6 @@
                             <tbody>
                                 @foreach ($giros as $giro)
                                     <tr>
-                                        <th scope="row">{{ $giro->idGiro }}</th>
                                         <td> {{ $giro->nomGiro }} </td>
                                         <td>
                                             <div style="display: flex; justify-content: start;">
@@ -37,7 +42,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $giro->nomGiro }}?') ">ELIMINAR</button>
+                                                        onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $giro->nomGiro }}?') ">ELIMINAR</button>
                                                 </form>
                                             </div>
                                         </td>

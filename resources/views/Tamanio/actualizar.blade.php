@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('TAMAÑO') }}</div>
+                    <div class="card-header">{{ __('MODIFICAR TAMAÑO') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -16,7 +16,7 @@
                         <form action="{{ route('tamanio.update', $tamanios->idTamanio) }}" method="POST">
                             @csrf @method('PUT')
                             <div class="mb-3">
-                                <label for="txtNombre" class="form-label">TAMAÑ</label>
+                                <label for="txtNombre" class="form-label">TAMAÑO</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
                                     value="{{ $tamanios->nomTamanio }}"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>

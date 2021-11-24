@@ -13,13 +13,18 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <button onclick="location.href='{{ route('alumno.create') }}'"
-                            class="btn btn-primary">NUEVO</button>
-                        <br><br>
-                        <table class="table">
+                        <div class="div-flex">
+                            <button onclick="location.href='{{ route('alumno.create') }}'"
+                                class="btn btn-primary ">NUEVO</button>
+                            <div class="input-group col-5">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                                <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
+                                    style="text-transform: uppercase;" onkeyup='busquedaTabla()'>
+                            </div>
+                        </div>
+                        <table class="table" id="tabla">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">NOMBRE</th>
                                     <th scope="col">EMAIL</th>
                                     <th scope="col">TELÉFONO</th>
@@ -30,7 +35,6 @@
                             <tbody>
                                 @foreach ($alumnos as $alumno)
                                     <tr>
-                                        <th scope="row">{{ $alumno->idAlumno }}</th>
                                         <td> {{ $alumno->nombre }} </td>
                                         <td> {{ $alumno->email }} </td>
                                         <td> {{ $alumno->telefono }} </td>
@@ -49,7 +53,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿ESTA SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">ELIMINAR</button>
+                                                        onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">ELIMINAR</button>
                                                 </form>
                                             </div>
 

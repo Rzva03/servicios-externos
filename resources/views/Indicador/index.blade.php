@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('INDICADOR') }}</div>
+                    <div class="card-header">{{ __('LISTADO DE INDICADORES') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -13,13 +13,18 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <button onclick="location.href='{{ route('indicador.create') }}'"
-                            class="btn btn-primary">NUEVO</button>
-                        <br><br>
-                        <table class="table">
+                        <div class="div-flex">
+                            <button onclick="location.href='{{ route('indicador.create') }}'"
+                                class="btn btn-primary ">NUEVO</button>
+                            <div class="input-group col-5">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                                <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
+                                    style="text-transform: uppercase;" onkeyup='busquedaTabla()'>
+                            </div>
+                        </div>
+                        <table class="table" id="tabla">
                             <thead>
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">INDICADOR</th>
                                     <th scope="col">DESCRIPCIÓN</th>
                                     <th scope="col">ACCIONES</th>
@@ -28,7 +33,6 @@
                             <tbody>
                                 @foreach ($indicadores as $indicador)
                                     <tr>
-                                        <th scope="row">{{ $indicador->idIndicador }}</th>
                                         <td> {{ $indicador->nombre }} </td>
                                         <td> {{ $indicador->descripcion }} </td>
                                         <td>
@@ -41,7 +45,7 @@
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿Esta seguro de borrar {{ $indicador->nombre }}?') ">ELIMINAR</button>
+                                                        onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $indicador->nombre }}?') ">ELIMINAR</button>
                                                 </form>
                                             </div>
 
