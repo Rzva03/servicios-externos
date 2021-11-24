@@ -21,7 +21,7 @@
                                     value="{{ $sectores->nomSector }}"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+                            <button type="submit" class="btn btn-primary">MODIFICAR</button>
                         </form>
                     </div>
                 </div>

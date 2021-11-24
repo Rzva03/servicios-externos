@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('ACTUALIZAR TIPO DE CONVENIO') }}</div>
+                    <div class="card-header">{{ __('MODIFICAR TIPO DE CONVENIO') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -21,7 +21,7 @@
                                     value="{{ $tiposConvenios->nomTipoConvenio }}"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">ACTUALIZAR</button>
+                            <button type="submit" class="btn btn-primary">MODIFICAR</button>
                         </form>
                     </div>
                 </div>
