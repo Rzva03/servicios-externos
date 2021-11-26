@@ -2,7 +2,8 @@
     overflow-x: auto;
 }
 .link-primary {
-    color: black;
+    color: black !important;
+    text-decoration: none;
 }
 .div-flex {
     width: 100%;

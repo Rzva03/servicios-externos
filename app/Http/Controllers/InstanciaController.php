@@ -28,7 +28,7 @@ class InstanciaController extends Controller
             'tipoSectores' => $tipoSector,
             'tamanios' => $tamanio,
             'areaConocimientos' => $areaConocimiento,
-            'alcances' => $alcance
+            'alcances' => $alcance,
         ]);
     }
 
@@ -51,7 +51,7 @@ class InstanciaController extends Controller
             'tipoSectores' => $tipoSector,
             'tamanios' => $tamanio,
             'areaConocimientos' => $areaConocimiento,
-            'alcances' => $alcance
+            'alcances' => $alcance,
         ]);
     }
 
@@ -63,7 +63,7 @@ class InstanciaController extends Controller
      */
     public function store(Request $request)
     {
-        $instancia = DB::table('instancia')->insert(array(
+        $instancia = DB::table('instancia')->insert([
             'nombre' => $request->input('txtNombre'),
             'responsable' => $request->input('txtResponsable'),
             'email' => $request->input('txtEmail'),
@@ -73,8 +73,8 @@ class InstanciaController extends Controller
             'idTipoSec' => $request->input('txtIdTipoSec'),
             'idTamanio' => $request->input('txtIdTamanio'),
             'idAreaC' => $request->input('txtIdAreaC'),
-            'idAlcance' => $request->input('txtIdAlcance')
-        ));
+            'idAlcance' => $request->input('txtIdAlcance'),
+        ]);
         return redirect()->route('instancia.index');
     }
 
@@ -86,13 +86,19 @@ class InstanciaController extends Controller
      */
     public function show($id)
     {
+        $tipoConvenio = DB::table('tipoconvenio')->get();
         $giro = DB::table('giro')->get();
         $sector = DB::table('sector')->get();
         $tipoSector = DB::table('tiposector')->get();
         $tamanio = DB::table('tamanio')->get();
         $areaConocimiento = DB::table('areaconoc')->get();
         $alcance = DB::table('alcance')->get();
-        $instancia = DB::table('instancia')->where('idInstancia', '=', $id)->first();
+        $instancia = DB::table('instancia')
+            ->where('idInstancia', '=', $id)
+            ->first();
+        $convenio = DB::table('convenio')
+            ->where('idInstancia', '=', $id)
+            ->get();
         return view('Instancia.detalle', [
             'instancias' => $instancia,
             'giros' => $giro,
@@ -100,8 +106,11 @@ class InstanciaController extends Controller
             'tipoSectores' => $tipoSector,
             'tamanios' => $tamanio,
             'areaConocimientos' => $areaConocimiento,
-            'alcances' => $alcance
+            'alcances' => $alcance,
+            'tipoConvenios' => $tipoConvenio,
+            'convenios' => $convenio,
         ]);
+        return $convenio;
     }
 
     /**
@@ -118,7 +127,9 @@ class InstanciaController extends Controller
         $tamanio = DB::table('tamanio')->get();
         $areaConocimiento = DB::table('areaconoc')->get();
         $alcance = DB::table('alcance')->get();
-        $instancia = DB::table('instancia')->where('idInstancia', '=', $id)->first();
+        $instancia = DB::table('instancia')
+            ->where('idInstancia', '=', $id)
+            ->first();
         return view('Instancia.actualizar', [
             'instancias' => $instancia,
             'giros' => $giro,
@@ -126,7 +137,7 @@ class InstanciaController extends Controller
             'tipoSectores' => $tipoSector,
             'tamanios' => $tamanio,
             'areaConocimientos' => $areaConocimiento,
-            'alcances' => $alcance
+            'alcances' => $alcance,
         ]);
     }
 
@@ -139,18 +150,20 @@ class InstanciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $instancia = DB::table('instancia')->where('idInstancia', '=', $id)->update(array(
-            'nombre' => $request->input('txtNombre'),
-            'responsable' => $request->input('txtResponsable'),
-            'email' => $request->input('txtEmail'),
-            'telefono' => $request->input('txtTelefono'),
-            'idGiro' => $request->input('txtIdGiro'),
-            'idSector' => $request->input('txtIdSector'),
-            'idTipoSec' => $request->input('txtIdTipoSec'),
-            'idTamanio' => $request->input('txtIdTamanio'),
-            'idAlcance' => $request->input('txtIdAlcance'),
-            'idAreaC' => $request->input('txtIdAreaC')
-        ));
+        $instancia = DB::table('instancia')
+            ->where('idInstancia', '=', $id)
+            ->update([
+                'nombre' => $request->input('txtNombre'),
+                'responsable' => $request->input('txtResponsable'),
+                'email' => $request->input('txtEmail'),
+                'telefono' => $request->input('txtTelefono'),
+                'idGiro' => $request->input('txtIdGiro'),
+                'idSector' => $request->input('txtIdSector'),
+                'idTipoSec' => $request->input('txtIdTipoSec'),
+                'idTamanio' => $request->input('txtIdTamanio'),
+                'idAlcance' => $request->input('txtIdAlcance'),
+                'idAreaC' => $request->input('txtIdAreaC'),
+            ]);
         return redirect()->route('instancia.index');
     }
 
@@ -162,7 +175,9 @@ class InstanciaController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('instancia')->where('idInstancia', '=', $id)->delete();
+        DB::table('instancia')
+            ->where('idInstancia', '=', $id)
+            ->delete();
         return redirect()->route('instancia.index');
     }
 }

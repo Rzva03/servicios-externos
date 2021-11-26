@@ -146,6 +146,38 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
+                        <h2 class="text-center text-dark">CONVENIOS DE COLABORACIÓN</h2>
+                        <br>
+                        <table class="table" id="tabla">
+                            <thead>
+                                <tr>
+                                    <th scope="col">FOLIO</th>
+                                    {{-- <th scope="col">INSTANCIA</th> --}}
+                                    <th scope="col">FECHA DE FIRMA</th>
+                                    <th scope="col">FECHA DE VIGENCIA</th>
+                                    <th scope="col">ESTATUS</th>
+                                    <th scope="col">TIPO DE CONVENIO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($convenios as $convenio)
+                                    <tr>
+                                        <td> {{ $convenio->folio }} </td>
+                                        {{-- <td><a href="{{ $convenio->urlConvenio }}" class="link-primary"
+                                                target="_blank">{{ $instancias->nombre }}</a></td> --}}
+                                        <td> {{ $convenio->fechaFirma }} </td>
+                                        <td> {{ $convenio->fechaVigencia }} </td>
+                                        <td> {{ $convenio->estatus }} </td>
+                                        @foreach ($tipoConvenios as $tipoConvenio)
+                                            @if ($tipoConvenio->idTipoConvenio === $convenio->idTipoCon)
+                                                <td> {{ $tipoConvenio->nomTipoConvenio }} </td>
+                                            @endif
+                                        @endforeach
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                         <br>
                         <div class="mb-3">
                             <button onclick="location.href='{{ route('instancia.index') }}'"
