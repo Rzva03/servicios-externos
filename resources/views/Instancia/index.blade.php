@@ -43,7 +43,8 @@
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('instancia.show', $instancia->idInstancia) }}'"
-                                                    class="btn btn-outline-secondary"> DETALLE</button>
+                                                    class="btn btn-outline-secondary"><i class="bi bi-info-circle"></i>
+                                                    DETALLE</button>
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('instancia.edit', $instancia->idInstancia) }}'"
                                                     class="btn btn-outline-primary"><i class="bi bi-pencil"></i>

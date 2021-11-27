@@ -161,26 +161,43 @@
                                     </a>
                                 </div>
                             </li>
-                            {{-- logout --}}
-                            <li class="nav-item dropdown text-uppercase">
+                            {{-- reportes --}}
+                            <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ __('REPORTES') }}
                                 </a>
+                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href=">
+                                            {{ __('Indicadores') }}
+                                        </a>
+                                        {{-- <hr class="dropdown-divider">
+                                    {{ route('indicador.show', 0) }}"
+                                    <a class="dropdown-item" href="{{ route('alumno.index') }}">
+                                        {{ __('Alumno') }}
+                                    </a> --}}
+                                    </div>
+                                </li>
+                                {{-- logout --}}
+                                <li class=" nav-item dropdown text-uppercase">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }}
+                                        </a>
 
-                                <div class="dropdown-menu dropdown-menu-right text-capitalize"
-                                    aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
-                                        {{ __('Salir') }}
-                                    </a>
+                                        <div class="dropdown-menu dropdown-menu-right text-capitalize"
+                                            aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                {{ __('Salir') }}
+                                            </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                        class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
                             </li>
 
                         @endguest

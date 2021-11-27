@@ -171,7 +171,9 @@
                                         <td> {{ $convenio->estatus }} </td>
                                         @foreach ($tipoConvenios as $tipoConvenio)
                                             @if ($tipoConvenio->idTipoConvenio === $convenio->idTipoCon)
-                                                <td> {{ $tipoConvenio->nomTipoConvenio }} </td>
+                                                <td> <a href="{{ $convenio->urlConvenio }}" class="link-primary"
+                                                        target="_blank">{{ $tipoConvenio->nomTipoConvenio }}</a>
+                                                </td>
                                             @endif
                                         @endforeach
                                     </tr>
@@ -180,8 +182,8 @@
                         </table>
                         <br>
                         <div class="mb-3">
-                            <button onclick="location.href='{{ route('instancia.index') }}'"
-                                class="btn btn-primary">REGRESAR</button>
+                            <button onclick="location.href='{{ route('instancia.index') }}'" class="btn btn-primary"><i
+                                    class="bi bi-arrow-left"></i> REGRESAR</button>
                         </div>
 
                     </div>

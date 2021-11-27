@@ -16,7 +16,7 @@ class IndicadorController extends Controller
     {
         $indicador = DB::table('indicador')->get();
         return view('Indicador.index', [
-            'indicadores' => $indicador
+            'indicadores' => $indicador,
         ]);
     }
 
@@ -38,10 +38,10 @@ class IndicadorController extends Controller
      */
     public function store(Request $request)
     {
-        $indicador = DB::table('indicador')->insert(array(
+        $indicador = DB::table('indicador')->insert([
             'nombre' => $request->input('txtNombre'),
-            'descripcion' => $request->input('txtDescripcion')
-        ));
+            'descripcion' => $request->input('txtDescripcion'),
+        ]);
         return redirect()->route('indicador.index');
     }
 
@@ -53,10 +53,6 @@ class IndicadorController extends Controller
      */
     public function show($id)
     {
-        // $sector = DB::table('sector')->where('idSector', '=', $id)->first();
-        // return view('Sector.detalle', [
-        //     'sectores' => $sector
-        // ]);
     }
 
     /**
@@ -67,9 +63,11 @@ class IndicadorController extends Controller
      */
     public function edit($id)
     {
-        $indicador = DB::table('indicador')->where('idIndicador', '=', $id)->first();
+        $indicador = DB::table('indicador')
+            ->where('idIndicador', '=', $id)
+            ->first();
         return view('Indicador.actualizar', [
-            'indicadores' => $indicador
+            'indicadores' => $indicador,
         ]);
     }
 
@@ -82,10 +80,12 @@ class IndicadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $indicador = DB::table('indicador')->where('idIndicador', '=', $id)->update(array(
-            'nombre' => $request->input('txtNombre'),
-            'descripcion' => $request->input('txtDescripcion')
-        ));
+        $indicador = DB::table('indicador')
+            ->where('idIndicador', '=', $id)
+            ->update([
+                'nombre' => $request->input('txtNombre'),
+                'descripcion' => $request->input('txtDescripcion'),
+            ]);
         return redirect()->route('indicador.index');
     }
 
@@ -97,8 +97,9 @@ class IndicadorController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('indicador')->where('idIndicador', '=', $id)->delete();
+        DB::table('indicador')
+            ->where('idIndicador', '=', $id)
+            ->delete();
         return redirect()->route('indicador.index');
     }
 }
