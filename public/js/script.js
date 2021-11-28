@@ -32,3 +32,38 @@ function busquedaTabla() {
         }
     }
 }
+/* -------------------------------------------------------------------------- */
+/*           conversion de fecha para el reporte de los indicadores           */
+/* -------------------------------------------------------------------------- */
+//variables que se ocuparan para el siguiente metodo del año
+let fechaInicial;
+let fechaFinal;
+function convertirFechaPorTrimestre(idSelectorTrimestre) {
+    let valorSeleccionado = idSelectorTrimestre.value; //se obtiene lo que se selecciona del seclt
+    switch (valorSeleccionado) {
+        case "1":
+            fechaInicial = "-01-01";
+            fechaFinal = "-03-01";
+            console.log(fechaInicial, fechaFinal);
+            break;
+        case "2":
+            fechaInicial = "-04-01";
+            fechaFinal = "-06-01";
+            break;
+        case "3":
+            fechaInicial = "-07-01";
+            fechaFinal = "-09-01";
+            break;
+        case "4":
+            fechaInicial = "-10-01";
+            fechaFinal = "-12-01";
+            break;
+    }
+}
+function convertirFechaPorAnio(idSelectorAnio, idInputFI, idInputFC) {
+    let valorSeleccionado = idSelectorAnio.value; //se obtiene lo que se selecciona del seclt
+    let anioCompletoI = valorSeleccionado + fechaInicial;
+    let anioCompletoF = valorSeleccionado + fechaFinal;
+    idInputFI.value = anioCompletoI; //lo vacia al txt
+    idInputFC.value = anioCompletoF;
+}
