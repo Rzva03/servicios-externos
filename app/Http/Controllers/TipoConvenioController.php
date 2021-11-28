@@ -16,7 +16,7 @@ class TipoConvenioController extends Controller
     {
         $tipoConvenio = DB::table('tipoconvenio')->get();
         return view('TipoConvenio.index', [
-            'tiposConvenios' => $tipoConvenio
+            'tiposConvenios' => $tipoConvenio,
         ]);
     }
 
@@ -38,9 +38,9 @@ class TipoConvenioController extends Controller
      */
     public function store(Request $request)
     {
-        $tipoConvenio = DB::table('tipoconvenio')->insert(array(
-            'nomtipoConvenio' => $request->input('txtNombre')
-        ));
+        $tipoConvenio = DB::table('tipoconvenio')->insert([
+            'nomtipoConvenio' => $request->input('txtNombre'),
+        ]);
         return redirect()->route('tipo-convenio.index');
     }
 
@@ -62,9 +62,11 @@ class TipoConvenioController extends Controller
      */
     public function edit($id)
     {
-        $tipoConvenio = DB::table('tipoconvenio')->where('idTipoConvenio', '=', $id)->first();
+        $tipoConvenio = DB::table('tipoconvenio')
+            ->where('idTipoConvenio', '=', $id)
+            ->first();
         return view('TipoConvenio.actualizar', [
-            'tiposConvenios' => $tipoConvenio
+            'tiposConvenios' => $tipoConvenio,
         ]);
     }
 
@@ -77,9 +79,11 @@ class TipoConvenioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tipoConvenio = DB::table('tipoconvenio')->where('idTipoConvenio', '=', $id)->update(array(
-            'nomTipoConvenio' => $request->input('txtNombre')
-        ));
+        $tipoConvenio = DB::table('tipoconvenio')
+            ->where('idTipoConvenio', '=', $id)
+            ->update([
+                'nomTipoConvenio' => $request->input('txtNombre'),
+            ]);
         return redirect()->route('tipo-convenio.index');
     }
 
@@ -91,8 +95,9 @@ class TipoConvenioController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('tipoconvenio')->where('idTipoConvenio', '=', $id)->delete();
+        DB::table('tipoconvenio')
+            ->where('idTipoConvenio', '=', $id)
+            ->delete();
         return redirect()->route('tipo-convenio.index');
     }
 }

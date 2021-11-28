@@ -29,7 +29,7 @@
                                 <div class="form-group col-4">
                                     <label for="sltAnio" class="form-label">AÑO</label>
                                     <select name="sltAnio" id="sltAnio" class="form-control" onChange="convertirFechaPorAnio(sltAnio, txtFechaInicial,
-                                                         txtFechaFinal)" required>
+                                                                             txtFechaFinal)" required>
                                         <option selected>ELIJA EL AÑO</option>
                                         @php
                                             $anio = date('Y');
@@ -51,14 +51,20 @@
                                     </select>
                                 </div>
                             </div>
-                            <input type="text" name="txtFechaInicial" id="txtFechaInicial">
+                            <input hidden type="text" name="txtFechaInicial" id="txtFechaInicial">
                             <br>
-                            <input type="text" name="txtFechaFinal" id="txtFechaFinal">
+                            <input hidden type="text" name="txtFechaFinal" id="txtFechaFinal">
                             <br>
                             <div class="div-center">
                                 <button type="submit" class="btn btn-primary">CALCULAR</button>
                             </div>
                         </form>
+                        @if ($indicadoresCount === 0)
+                            <p>No hay datos</p>
+                        @else
+                            <p>{{ $indicadoresCount }}</p>
+                        @endif
+
                     </div>
                 </div>
             </div>

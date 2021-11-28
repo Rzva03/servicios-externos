@@ -13,9 +13,45 @@ class ConsultaIndicadorController extends Controller
      */
     public function index(Request $request)
     {
+        /* -------------------------------------------------------------------------- */
+        /*                obtener el id de los convenios que sean marco               */
+        /* -------------------------------------------------------------------------- */
+        $tipoConvenios = DB::table('tipoconvenio')
+            ->select('idTipoConvenio')
+            ->where(
+                'nomtipoConvenio',
+                '=',
+                'CONVENIO MARCO DE COLABORACIÓN ACADÉMICA, CIENTÍFICA Y TECNOLÓGICA'
+            )
+            ->get();
+        /* -------------------------------------------------------------------------- */
+        /*                         variable para obtener el id                        */
+        /* -------------------------------------------------------------------------- */
+        $idTipoConvenio = null;
+        foreach ($tipoConvenios as $tipoConvenio) {
+            $tipoConvenio = $tipoConvenio->idTipoConvenio;
+        }
+        /* -------------------------------------------------------------------------- */
+        /*                         obtener fechas e indicador                         */
+        /* -------------------------------------------------------------------------- */
+        $fechaInicio = $request->input('txtFechaInicial');
+        $fechaFinal = $request->input('txtFechaFinal');
+        $indicadorRequest = $request->input('sltIndicador');
+        /* -------------------------------------------------------------------------- */
+        /*                obtener el numero del indicador para mostrar                */
+        /* -------------------------------------------------------------------------- */
+        $convenioIndicador = DB::table('convenio')
+            ->where('idTipoCon', '=', $tipoConvenio)
+            ->where('idIndicador', '=', $indicadorRequest)
+            ->whereBetween('fechaFirma', [$fechaInicio, $fechaFinal])
+            ->get();
+        $indicadorCount = count($convenioIndicador);
         $indicador = DB::table('indicador')->get();
         return view('ConsultaIndicador.index', [
             'indicadores' => $indicador,
+            'indicadoresCount' => $indicadorCount,
+            // 'indicadores' => $indicador,
+            // 'indicadores' => $indicador,
         ]);
     }
 
