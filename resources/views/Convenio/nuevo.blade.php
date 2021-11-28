@@ -41,8 +41,8 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="txtFolio" class="form-label">URL DEL CONVENIO DIGITAL</label>
-                                <input type="text" class="form-control" name="txtUrlConvenio" id="txtUrlConvenio"
+                                <label for="txtUrlConvenio" class="form-label">URL DEL CONVENIO DIGITAL</label>
+                                <input type="url" class="form-control" name="txtUrlConvenio" id="txtUrlConvenio"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <div class="form-group">

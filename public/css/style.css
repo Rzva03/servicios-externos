@@ -8,6 +8,7 @@
 .div-flex {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
     margin-bottom: 20px;

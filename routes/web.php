@@ -19,7 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name(
+    'home'
+);
 /* -------------------------------------------------------------------------- */
 /*                             rutas sector                             */
 /* -------------------------------------------------------------------------- */
@@ -133,3 +135,13 @@ Route::resource('indicador', IndicadorController::class);
 use App\Http\Controllers\AlcanceController;
 
 Route::resource('alcance', AlcanceController::class);
+/* -------------------------------------------------------------------------- */
+/*                           ruta consulta indicador                          */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\ConsultaIndicadorController;
+Route::prefix('consulta-indicador')->group(function () {
+    Route::get('/', [ConsultaIndicadorController::class, 'index'])->name(
+        'consulta-indicador'
+    );
+});
