@@ -13,3 +13,7 @@
     justify-content: space-evenly;
     margin-bottom: 20px;
 }
+.div-center {
+    display: flex;
+    justify-content: center;
+}

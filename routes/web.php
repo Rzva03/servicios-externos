@@ -138,10 +138,6 @@ Route::resource('alcance', AlcanceController::class);
 /* -------------------------------------------------------------------------- */
 /*                           ruta consulta indicador                          */
 /* -------------------------------------------------------------------------- */
-
 use App\Http\Controllers\ConsultaIndicadorController;
-Route::prefix('consulta-indicador')->group(function () {
-    Route::get('/', [ConsultaIndicadorController::class, 'index'])->name(
-        'consulta-indicador'
-    );
-});
+
+Route::resource('consulta-indicador', ConsultaIndicadorController::class);

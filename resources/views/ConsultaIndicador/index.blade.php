@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10 col-xs-12">
+            <div class="col-md-12 col-xs-12">
                 <div class="card">
                     <div class="card-header">{{ __('REPORTE INDICADOR') }}</div>
                     <div class="card-body">
@@ -37,7 +37,7 @@
                                     @endphp
                                 </select>
                             </div>
-                            <div class="form-group col-8">
+                            <div class="form-group col-13 text-left">
                                 <label for="sltIndicador" class="form-label">INDICADOR</label>
                                 <select name="sltIndicador" id="sltIndicador" class="form-control" required>
                                     <option selected>ELIJA EL INDICADOR</option>
@@ -47,6 +47,9 @@
                                     @endforeach
                                 </select>
                             </div>
+                        </div>
+                        <div class="div-center">
+                            <button type="submit" class="btn btn-primary">CALCULAR</button>
                         </div>
                     </div>
                 </div>

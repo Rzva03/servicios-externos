@@ -37,8 +37,16 @@
                                     <tr>
                                         <td> {{ $instancia->nombre }} </td>
                                         <td> {{ $instancia->responsable }} </td>
-                                        <td> {{ $instancia->email }} </td>
-                                        <td> {{ $instancia->telefono }} </td>
+                                        @if ($instancia->email === null)
+                                            <td>SIN EMAIL</td>
+                                        @else
+                                            <td> {{ $instancia->email }} </td>
+                                        @endif
+                                        @if ($instancia->telefono === null)
+                                            <td>SIN TELÉFONO</td>
+                                        @else
+                                            <td> {{ $instancia->telefono }} </td>
+                                        @endif
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
