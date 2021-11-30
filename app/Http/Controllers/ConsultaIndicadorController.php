@@ -37,6 +37,8 @@ class ConsultaIndicadorController extends Controller
         $fechaInicio = $request->input('txtFechaInicial');
         $fechaFinal = $request->input('txtFechaFinal');
         $indicadorRequest = $request->input('sltIndicador');
+        $trimestreRequest = $request->input('sltTrimestre');
+        $anioRequest = $request->input('sltAnio');
         /* -------------------------------------------------------------------------- */
         /*                obtener el numero del indicador para mostrar                */
         /* -------------------------------------------------------------------------- */
@@ -46,12 +48,15 @@ class ConsultaIndicadorController extends Controller
             ->whereBetween('fechaFirma', [$fechaInicio, $fechaFinal])
             ->get();
         $indicadorCount = count($convenioIndicador);
-        $indicador = DB::table('indicador')->get();
+        $indicador = DB::table('indicador')
+            ->where('descripcion', 'like', '%FIRMAR%')
+            ->get();
         return view('ConsultaIndicador.index', [
             'indicadores' => $indicador,
             'indicadoresCount' => $indicadorCount,
-            // 'indicadores' => $indicador,
-            // 'indicadores' => $indicador,
+            'indicadorRequest' => $indicadorRequest,
+            'trimestreRequest' => $trimestreRequest,
+            'anioRequest' => $anioRequest,
         ]);
     }
 
