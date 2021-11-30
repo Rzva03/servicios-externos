@@ -118,13 +118,20 @@
                                     </select>
                                 </div>
                             </div>
-                            <input value="{{ $fechaInicio }}" type="text" name="txtFechaInicial" id="txtFechaInicial">
-                            <input value="{{ $fechaFinal }}" type="text" name="txtFechaFinal" id="txtFechaFinal">
+                            <input hidden value="{{ $fechaInicio }}" type="text" name="txtFechaInicial"
+                                id="txtFechaInicial">
+                            <input hidden value="{{ $fechaFinal }}" type="text" name="txtFechaFinal" id="txtFechaFinal">
                             <div class="div-center">
-                                <button type="submit" class="btn btn-primary">CALCULAR</button>
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-calculator"></i>
+                                    CALCULAR</button>
                             </div>
                         </form>
                         <br>
+                        {{-- @if ($indicadoresCount == null)
+                            <table hidden class="table table-hover col-8 table-center">
+                            @else
+                                <table class="table table-hover col-8 table-center">
+                        @endif --}}
                         <table class="table table-hover col-8 table-center">
                             <thead>
                                 <tr>
@@ -135,12 +142,14 @@
                             <tbody>
                                 @if ($indicadoresCount == 0)
                                     <tr>
-                                        <td colspan="2">NO HAY RESULTADOS</td>
-                                    </tr>
-                                @else
+                                        <td colspan="2">NO HAY CONVENIOS</td>
+                                        {{-- <th scope="row">{{ $indicadoresCount }}</th>
+                                    <td>SE REALIZARON {{ $indicadoresCount }} CONVENIOS CON EL ITVO. </td>
+                                </tr> --}}
+                                    @else
                                     <tr>
                                         <th scope="row">{{ $indicadoresCount }}</th>
-                                        <td>AHAHAHA</td>
+                                        <td>SE REALIZARON {{ $indicadoresCount }} CONVENIOS CON EL ITVO. </td>
                                     </tr>
                                 @endif
                             </tbody>
