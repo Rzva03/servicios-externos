@@ -38,13 +38,16 @@ function busquedaTabla() {
 //variables que se ocuparan para el siguiente metodo del año
 let fechaInicial;
 let fechaFinal;
+let valorTrimestre;
+let valorAnio;
+let inputInicial = document.getElementById("txtFechaInicial");
+let inputFinal = document.getElementById("txtFechaFinal");
 function convertirFechaPorTrimestre(idSelectorTrimestre) {
-    let valorSeleccionado = idSelectorTrimestre.value; //se obtiene lo que se selecciona del seclt
-    switch (valorSeleccionado) {
+    valorTrimestre = idSelectorTrimestre.value; //se obtiene lo que se selecciona del seclt
+    switch (valorTrimestre) {
         case "1":
             fechaInicial = "-01-01";
             fechaFinal = "-03-01";
-            console.log(fechaInicial, fechaFinal);
             break;
         case "2":
             fechaInicial = "-04-01";
@@ -59,11 +62,28 @@ function convertirFechaPorTrimestre(idSelectorTrimestre) {
             fechaFinal = "-12-01";
             break;
     }
+    if (valorAnio === undefined) {
+        let fechaInicialAux = localStorage.getItem("anio") + fechaInicial;
+        let fechaFinalAux = localStorage.getItem("anio") + fechaFinal;
+        inputInicial.value = fechaInicialAux; //lo vacia al txt
+        inputFinal.value = fechaFinalAux;
+        console.log(fechaInicialAux, fechaFinalAux);
+    }
+    localStorage.setItem("fechaInicial", fechaInicial);
+    localStorage.setItem("fechaFinal", fechaFinal);
 }
 function convertirFechaPorAnio(idSelectorAnio, idInputFI, idInputFC) {
-    let valorSeleccionado = idSelectorAnio.value; //se obtiene lo que se selecciona del seclt
-    let anioCompletoI = valorSeleccionado + fechaInicial;
-    let anioCompletoF = valorSeleccionado + fechaFinal;
+    let anioCompletoI;
+    let anioCompletoF;
+    valorAnio = idSelectorAnio.value;
+    localStorage.setItem("anio", valorAnio); //se obtiene lo que se selecciona del seclt
+    if (fechaFinal === undefined && fechaInicial === undefined) {
+        anioCompletoI = valorAnio + localStorage.getItem("fechaInicial");
+        anioCompletoF = valorAnio + localStorage.getItem("fechaFinal");
+    } else {
+        anioCompletoI = valorAnio + fechaInicial;
+        anioCompletoF = valorAnio + fechaFinal;
+    }
     idInputFI.value = anioCompletoI; //lo vacia al txt
     idInputFC.value = anioCompletoF;
 }

@@ -57,6 +57,8 @@ class ConsultaIndicadorController extends Controller
             'indicadorRequest' => $indicadorRequest,
             'trimestreRequest' => $trimestreRequest,
             'anioRequest' => $anioRequest,
+            'fechaInicio' => $fechaInicio,
+            'fechaFinal' => $fechaFinal,
         ]);
     }
 

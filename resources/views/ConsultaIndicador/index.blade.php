@@ -17,44 +17,80 @@
                             <div class="div-flex">
                                 <div class="form-group col-4">
                                     <label for="sltTrimestre" class="form-label">TRIMESTRE</label>
-                                    <select name="sltTrimestre" id="sltTrimestre" class="form-control"
-                                        onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
-                                        @switch($trimestreRequest)
-                                            @case(" 1")
+                                    @switch($trimestreRequest)
+                                        @case(" 1")
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                                onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
+                                                <option>ELIJA EL TRIMESTRE</option>
                                                 <option selected value="1">1</option>
-                                            @break
-                                            @case(" 2")
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                        @break
+                                        @case(" 2")
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                                onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
+                                                <option>ELIJA EL TRIMESTRE</option>
+                                                <option value="1">1</option>
                                                 <option selected value="2">2</option>
-                                            @break
-                                            @case(" 3")
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                            </select>
+                                        @break
+                                        @case(" 3")
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                                onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
+                                                <option>ELIJA EL TRIMESTRE</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
                                                 <option selected value="3">3</option>
-                                            @break
-                                            @case(" 4")
+                                                <option value="4">4</option>
+                                            </select>
+                                        @break
+                                        @case(" 4")
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                                onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
+                                                <option>ELIJA EL TRIMESTRE</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
                                                 <option selected value="4">4</option>
-                                            @break
-                                            @default
+                                            </select>
+                                        @break
+                                        @default
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                                onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option selected>ELIJA EL TRIMESTRE</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                        @endswitch
-                                    </select>
+                                            </select>
+                                    @endswitch
+
                                 </div>
                                 <div class="form-group col-4">
                                     <label for="sltAnio" class="form-label">AÑO</label>
                                     <select name="sltAnio" id="sltAnio" class="form-control"
                                         onChange="convertirFechaPorAnio(sltAnio, txtFechaInicial,txtFechaFinal)" required>
-                                        <option selected>ELIJA EL AÑO</option>
                                         @php
                                             $anio = date('Y');
                                             $anios = null;
+                                            echo '<option selected>ELIJA EL AÑO</option>';
                                             for ($i = 2017; $i <= $anio; $i++) {
-                                                echo '<option value=' . $i . '>' . $i . '</option>';
+                                                if ($anioRequest == $i) {
+                                                    echo '<option selected value=' . $i . '>' . $i . '</option>';
+                                                    # code...
+                                                } else {
+                                                    echo '<option  value=' . $i . '>' . $i . '</option>';
+                                                }
                                             }
+
                                         @endphp
                                     </select>
                                 </div>
+                                {{-- <p>{{ $indicadorRequest }}</p> --}}
                                 <div class="form-group col-13 text-left">
                                     <label for="sltIndicador" class="form-label">INDICADOR</label>
                                     <select name="sltIndicador" id="sltIndicador" class="form-control" required>
@@ -68,8 +104,7 @@
                                         @else
                                             <option>ELIJA EL INDICADOR</option>
                                             @foreach ($indicadores as $indicador)
-                                                @if ($indicador->idIndicador === $indicadorRequest)
-                                                    <option>ELIJA EL INDICADOR</option>
+                                                @if ($indicador->idIndicador == $indicadorRequest)
                                                     <option selected value="{{ $indicador->idIndicador }}">
                                                         {{ $indicador->descripcion }}
                                                     </option>
@@ -83,11 +118,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <input hidden type="text" name="txtFechaInicial" id="txtFechaInicial">
-                            <input hidden type="text" name="txtFechaFinal" id="txtFechaFinal">
+                            <input value="{{ $fechaInicio }}" type="text" name="txtFechaInicial" id="txtFechaInicial">
+                            <input value="{{ $fechaFinal }}" type="text" name="txtFechaFinal" id="txtFechaFinal">
                             <div class="div-center">
                                 <button type="submit" class="btn btn-primary">CALCULAR</button>
-
                             </div>
                         </form>
                         <br>
@@ -99,7 +133,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($indicadoresCount === 0)
+                                @if ($indicadoresCount == 0)
                                     <tr>
                                         <td colspan="2">NO HAY RESULTADOS</td>
                                     </tr>
