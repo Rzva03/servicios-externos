@@ -39,6 +39,7 @@ class ConvenioController extends Controller
         //     $convenioId = $convenio->idConvenio;
         //     $ultimoConvenio = $convenioId + 1;
         // }
+        $carrera = DB::table('carrera')->get();
         $indicador = DB::table('indicador')->get();
         $tipoConvenio = DB::table('tipoconvenio')->get();
         $instancia = DB::table('instancia')->get();
@@ -46,6 +47,7 @@ class ConvenioController extends Controller
             'tiposConvenios' => $tipoConvenio,
             'instancias' => $instancia,
             'indicadores' => $indicador,
+            'carreras' => $carrera,
             // 'convenios' => $ultimoConvenio
         ]);
     }

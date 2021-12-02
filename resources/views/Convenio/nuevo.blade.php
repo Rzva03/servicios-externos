@@ -77,6 +77,22 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <br>
+                            <div class="div">
+                                <label for="" class="form-label">CARRERA</label>
+                                <div class="div-flex">
+                                    @foreach ($carreras as $carrera)
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox"
+                                                value="{{ $carrera->idCarrera }}"
+                                                id="flexCheckChecked_{{ $carrera->idCarrera }}">
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                {{ $carrera->nomCarrera }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                             {{-- @if ($convenios === 1)
                                 <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio" value="1">
                             @else

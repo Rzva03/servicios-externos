@@ -84,25 +84,21 @@ function convertirFechaPorAnio(idSelectorAnio, idInputFI, idInputFC) {
         anioCompletoI = valorAnio + fechaInicial;
         anioCompletoF = valorAnio + fechaFinal;
     }
-    idInputFI.value = anioCompletoI; //lo vacia al txt
+    idInputFI.value = anioCompletoI;
     idInputFC.value = anioCompletoF;
 }
 /* -------------------------------------------------------------------------- */
 /*                    Validar tabla en reporte indicadores                    */
 /* -------------------------------------------------------------------------- */
 window.onload = function () {
-    // init();
     validarTablaIndicador();
 };
 
 function validarTablaIndicador() {
     let indicador = document.getElementById("indicadorRequest").value;
-    // console.log(indicador);
     let tablaIndicador = document.getElementById("tablaIndicador");
-    if (indicador == "") {
-        console.log("undefined");
+    if (indicador === undefined) {
     } else {
-        // tablaIndicador.style.visibility = "visible";
         tablaIndicador.removeAttribute("hidden");
     }
 }
