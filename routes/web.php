@@ -141,3 +141,17 @@ Route::resource('alcance', AlcanceController::class);
 use App\Http\Controllers\ConsultaIndicadorController;
 
 Route::resource('consulta-indicador', ConsultaIndicadorController::class);
+
+/* -------------------------------------------------------------------------- */
+/*                          ruta consulta obtener pdf                         */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\ConsultasController;
+
+Route::get('/consulta', [ConsultasController::class, 'index'])->name(
+    'consulta.index'
+);
+
+Route::get('/consultas/pdf', [ConsultasController::class, 'getPDF'])->name(
+    'consulta.getPDF'
+);

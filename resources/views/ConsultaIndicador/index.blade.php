@@ -90,7 +90,7 @@
                                         @endphp
                                     </select>
                                 </div>
-                                {{-- <p>{{ $indicadorRequest }}</p> --}}
+
                                 <div class="form-group col-13 text-left">
                                     <label for="sltIndicador" class="form-label">INDICADOR</label>
                                     <select name="sltIndicador" id="sltIndicador" class="form-control" required>
@@ -127,29 +127,20 @@
                             </div>
                         </form>
                         <br>
-                        {{-- @if ($indicadoresCount == null)
-                            <table hidden class="table table-hover col-8 table-center">
-                            @else
-                                <table class="table table-hover col-8 table-center">
-                        @endif --}}
-                        <table class="table table-hover col-8 table-center">
+                        <input hidden type="text" id="indicadorRequest" value="{{ $indicadorRequest }}">
+                        <table hidden class="table table-hover col-5 table-center" id="tablaIndicador">
                             <thead>
                                 <tr>
                                     <th scope="col">CANTIDAD</th>
-                                    <th scope="col">DESCRIPCIÓN</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if ($indicadoresCount == 0)
                                     <tr>
-                                        <td colspan="2">NO HAY CONVENIOS</td>
-                                        {{-- <th scope="row">{{ $indicadoresCount }}</th>
-                                    <td>SE REALIZARON {{ $indicadoresCount }} CONVENIOS CON EL ITVO. </td>
-                                </tr> --}}
+                                        <td colspan="1">NO HAY CONVENIOS</td>
                                     @else
                                     <tr>
                                         <th scope="row">{{ $indicadoresCount }}</th>
-                                        <td>SE REALIZARON {{ $indicadoresCount }} CONVENIOS CON EL ITVO. </td>
                                     </tr>
                                 @endif
                             </tbody>

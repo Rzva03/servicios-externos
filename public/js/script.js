@@ -87,3 +87,22 @@ function convertirFechaPorAnio(idSelectorAnio, idInputFI, idInputFC) {
     idInputFI.value = anioCompletoI; //lo vacia al txt
     idInputFC.value = anioCompletoF;
 }
+/* -------------------------------------------------------------------------- */
+/*                    Validar tabla en reporte indicadores                    */
+/* -------------------------------------------------------------------------- */
+window.onload = function () {
+    // init();
+    validarTablaIndicador();
+};
+
+function validarTablaIndicador() {
+    let indicador = document.getElementById("indicadorRequest").value;
+    // console.log(indicador);
+    let tablaIndicador = document.getElementById("tablaIndicador");
+    if (indicador == "") {
+        console.log("undefined");
+    } else {
+        // tablaIndicador.style.visibility = "visible";
+        tablaIndicador.removeAttribute("hidden");
+    }
+}
