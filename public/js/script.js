@@ -132,6 +132,5 @@ function obtenerTodasCarreras(arregloCarrera) {
     } else {
         arregloAux = [];
     }
-
     txtCarrera.value = arregloAux;
 }

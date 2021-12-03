@@ -33,7 +33,8 @@
                             <div class="mb-3">
                                 <label for="txtFolio" class="form-label">URL DEL CONVENIO</label>
                                 <input type="text" class="form-control" name="txtUrlConvenio" id="txtUrlConvenio"
-                                    value="{{ $convenios->urlConvenio }}" required>
+                                    value="{{ $convenios->urlConvenio }}"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <div class="form-group">
                                 <label for="sltEstatus" class="form-label">ESTATUS</label>
