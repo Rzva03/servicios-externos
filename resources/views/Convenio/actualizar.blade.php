@@ -110,6 +110,33 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">CARRERA</label>
+                                <div class="div-flex">
+                                    @foreach ($carreras as $carrera)
+                                        <div class="form-check col-3">
+                                            <input class="form-check-input" type="checkbox"
+                                                onclick='crearArregloCarrera(flexCheckChecked_{{ $carrera->idCarrera }})'
+                                                value="{{ $carrera->idCarrera }}"
+                                                id="flexCheckChecked_{{ $carrera->idCarrera }}">
+                                            <label class="form-check-label"
+                                                for="flexCheckChecked_{{ $carrera->idCarrera }}">
+                                                {{ $carrera->nomCarrera }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+                                    <div class="form-check col-3">
+                                        <input class="form-check-input" type="checkbox"
+                                            onclick='obtenerTodasCarreras({{ $carreras }})'
+                                            id="flexCheckChecked_todasCarreras">
+                                        <label class="form-check-label" for="flexCheckChecked_todasCarreras">
+                                            TODAS LAS CARRERAS
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input hidden type="text" name="txtCarreras" id="txtCarreras"
+                                value="{{ $convenios->carreras }}">
                             <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                 value="{{ $convenios->idConvenio }}">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus"
