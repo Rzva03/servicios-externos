@@ -1,5 +1,8 @@
 /* -------------------------------------------------------------------------- */
 /*                               Custom Scripts                               */
+
+// const { indexOf } = require("lodash");
+
 /* -------------------------------------------------------------------------- */
 function agregarID(idSelector, idInput) {
     let valorSeleccionado = idSelector.value;
@@ -106,12 +109,13 @@ function validarTablaIndicador() {
 /*                 Obtener carreras que pertenecen al convenio                */
 /* -------------------------------------------------------------------------- */
 let array = [];
-function crearArregloCarrera(idCarrera) {
+function crearArregloCarrera(idCheck) {
     let txtCarrera = document.getElementById("txtCarreras");
-    array.push(idCarrera);
-    let result = array.filter((item, index) => {
-        return array.indexOf(item) === index;
-    });
-    txtCarrera.value = result;
-    console.log(result);
+    if (idCheck.checked) {
+        array.push(idCheck.value);
+    } else {
+        let pos = array.indexOf(idCheck.value);
+        array.splice(pos, 1);
+    }
+    txtCarrera.value = array;
 }

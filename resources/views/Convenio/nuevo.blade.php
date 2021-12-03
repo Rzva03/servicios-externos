@@ -84,30 +84,30 @@
                                     @foreach ($carreras as $carrera)
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox"
-                                                onclick='crearArregloCarrera({{ $carrera->idCarrera }})'
+                                                onclick='crearArregloCarrera(flexCheckChecked_{{ $carrera->idCarrera }})'
                                                 value="{{ $carrera->idCarrera }}"
                                                 id="flexCheckChecked_{{ $carrera->idCarrera }}">
-                                            <label class="form-check-label" for="flexCheckChecked">
+                                            <label class="form-check-label"
+                                                for="flexCheckChecked_{{ $carrera->idCarrera }}">
                                                 {{ $carrera->nomCarrera }}
                                             </label>
                                         </div>
                                     @endforeach
                                 </div>
-                            </div>
-                            {{-- @if ($convenios === 1)
+                                {{-- @if ($convenios === 1)
                                 <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio" value="1">
                             @else
                                 <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                     value="{{ $convenios }}">
                             @endif --}}
-                            <input type="text" name="txtCarreras" id="txtCarreras">
-                            <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
-                            <input hidden type="text" name="txtEstatus" id="txtEstatus">
-                            <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon">
-                            <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
-                            <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
-                                value=" {{ Auth::user()->id }}">
-                            <button type="submit" class="btn btn-primary">AGREGAR</button>
+                                <input type="text" name="txtCarreras" id="txtCarreras">
+                                <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
+                                <input hidden type="text" name="txtEstatus" id="txtEstatus">
+                                <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon">
+                                <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
+                                <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
+                                    value=" {{ Auth::user()->id }}">
+                                <button type="submit" class="btn btn-primary">AGREGAR</button>
                         </form>
                     </div>
                 </div>
