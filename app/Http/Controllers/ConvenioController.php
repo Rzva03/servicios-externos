@@ -14,6 +14,7 @@ class ConvenioController extends Controller
      */
     public function index()
     {
+        $carrera = DB::table('carrera')->get();
         $instancia = DB::table('instancia')->get();
         $tipoConvenio = DB::table('tipoconvenio')->get();
         $convenio = DB::table('convenio')->get();
@@ -21,6 +22,7 @@ class ConvenioController extends Controller
             'convenios' => $convenio,
             'tipoConvenios' => $tipoConvenio,
             'instancias' => $instancia,
+            'carreras' => $carrera,
         ]);
     }
 
