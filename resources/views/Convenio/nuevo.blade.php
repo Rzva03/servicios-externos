@@ -77,12 +77,11 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <br>
-                            <div class="div">
+                            <div class="form-group">
                                 <label for="" class="form-label">CARRERA</label>
                                 <div class="div-flex">
                                     @foreach ($carreras as $carrera)
-                                        <div class="form-check">
+                                        <div class="form-check col-3">
                                             <input class="form-check-input" type="checkbox"
                                                 onclick='crearArregloCarrera(flexCheckChecked_{{ $carrera->idCarrera }})'
                                                 value="{{ $carrera->idCarrera }}"
@@ -93,21 +92,24 @@
                                             </label>
                                         </div>
                                     @endforeach
+                                    <div class="form-check col-3">
+                                        <input class="form-check-input" type="checkbox"
+                                            onclick='obtenerTodasCarreras({{ $carreras }})'
+                                            id="flexCheckChecked_todasCarreras">
+                                        <label class="form-check-label" for="flexCheckChecked_todasCarreras">
+                                            TODAS LAS CARRERAS
+                                        </label>
+                                    </div>
                                 </div>
-                                {{-- @if ($convenios === 1)
-                                <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio" value="1">
-                            @else
-                                <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
-                                    value="{{ $convenios }}">
-                            @endif --}}
-                                <input type="text" name="txtCarreras" id="txtCarreras">
-                                <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
-                                <input hidden type="text" name="txtEstatus" id="txtEstatus">
-                                <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon">
-                                <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
-                                <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
-                                    value=" {{ Auth::user()->id }}">
-                                <button type="submit" class="btn btn-primary">AGREGAR</button>
+                            </div>
+                            <input hidden type="text" name="txtCarreras" id="txtCarreras">
+                            <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
+                            <input hidden type="text" name="txtEstatus" id="txtEstatus">
+                            <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon">
+                            <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
+                            <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
+                                value=" {{ Auth::user()->id }}">
+                            <button type="submit" class="btn btn-primary">AGREGAR</button>
                         </form>
                     </div>
                 </div>

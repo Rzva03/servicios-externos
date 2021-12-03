@@ -109,8 +109,8 @@ function validarTablaIndicador() {
 /*                 Obtener carreras que pertenecen al convenio                */
 /* -------------------------------------------------------------------------- */
 let array = [];
+let txtCarrera = document.getElementById("txtCarreras");
 function crearArregloCarrera(idCheck) {
-    let txtCarrera = document.getElementById("txtCarreras");
     if (idCheck.checked) {
         array.push(idCheck.value);
     } else {
@@ -118,4 +118,20 @@ function crearArregloCarrera(idCheck) {
         array.splice(pos, 1);
     }
     txtCarrera.value = array;
+}
+/* -------------------------------------------------------------------------- */
+/*                         Obtener todas las carreras                         */
+/* -------------------------------------------------------------------------- */
+let arregloAux = [];
+let cbTodasCarreras = document.getElementById("flexCheckChecked_todasCarreras");
+function obtenerTodasCarreras(arregloCarrera) {
+    if (cbTodasCarreras.checked) {
+        arregloCarrera.forEach((elemento) => {
+            arregloAux.push(elemento.idCarrera);
+        });
+    } else {
+        arregloAux = [];
+    }
+
+    txtCarrera.value = arregloAux;
 }
