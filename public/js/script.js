@@ -97,8 +97,21 @@ window.onload = function () {
 function validarTablaIndicador() {
     let indicador = document.getElementById("indicadorRequest").value;
     let tablaIndicador = document.getElementById("tablaIndicador");
-    if (indicador === undefined) {
+    if (indicador == "") {
     } else {
         tablaIndicador.removeAttribute("hidden");
     }
+}
+/* -------------------------------------------------------------------------- */
+/*                 Obtener carreras que pertenecen al convenio                */
+/* -------------------------------------------------------------------------- */
+let array = [];
+function crearArregloCarrera(idCarrera) {
+    let txtCarrera = document.getElementById("txtCarreras");
+    array.push(idCarrera);
+    let result = array.filter((item, index) => {
+        return array.indexOf(item) === index;
+    });
+    txtCarrera.value = result;
+    console.log(result);
 }

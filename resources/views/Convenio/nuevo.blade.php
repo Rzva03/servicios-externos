@@ -84,6 +84,7 @@
                                     @foreach ($carreras as $carrera)
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox"
+                                                onclick='crearArregloCarrera({{ $carrera->idCarrera }})'
                                                 value="{{ $carrera->idCarrera }}"
                                                 id="flexCheckChecked_{{ $carrera->idCarrera }}">
                                             <label class="form-check-label" for="flexCheckChecked">
@@ -99,6 +100,7 @@
                                 <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                     value="{{ $convenios }}">
                             @endif --}}
+                            <input type="text" name="txtCarreras" id="txtCarreras">
                             <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus">
                             <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon">
