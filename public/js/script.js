@@ -91,21 +91,6 @@ function convertirFechaPorAnio(idSelectorAnio, idInputFI, idInputFC) {
     idInputFC.value = anioCompletoF;
 }
 /* -------------------------------------------------------------------------- */
-/*                    Validar tabla en reporte indicadores                    */
-/* -------------------------------------------------------------------------- */
-window.onload = function () {
-    validarTablaIndicador();
-};
-
-function validarTablaIndicador() {
-    let indicador = document.getElementById("indicadorRequest").value;
-    let tablaIndicador = document.getElementById("tablaIndicador");
-    if (indicador == "") {
-    } else {
-        tablaIndicador.removeAttribute("hidden");
-    }
-}
-/* -------------------------------------------------------------------------- */
 /*                 Obtener carreras que pertenecen al convenio                */
 /* -------------------------------------------------------------------------- */
 let array = [];

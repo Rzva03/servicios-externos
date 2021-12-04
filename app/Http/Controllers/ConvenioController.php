@@ -119,7 +119,7 @@ class ConvenioController extends Controller
                 'fechaVigencia' => $request->input('dateFechaVigencia'),
                 'estatus' => $request->input('txtEstatus'),
                 'urlConvenio' => $request->input('txtUrlConvenio'),
-                'carreras' => $request->input('txtCarreras'),
+                'carreras' => $request->input('txtIdCarreras'),
                 'idTipoCon' => $request->input('txtIdTipoCon'),
                 'idInstancia' => $request->input('txtIdInstancia'),
                 'idUsuario' => $request->input('txtIdUsuario'),

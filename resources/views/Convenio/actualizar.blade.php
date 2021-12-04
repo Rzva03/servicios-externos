@@ -113,7 +113,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="form-label">CARRERA</label>
-                                <div class="div-flex">
+                                <div class="div-flex" id="div-flex">
                                     @foreach ($carreras as $carrera)
                                         <div class="form-check col-3">
                                             <input class="form-check-input" type="checkbox"
@@ -136,8 +136,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <input hidden type="text" name="txtCarreras" id="txtCarreras"
+                            <input type="text" name="txtIdCarreras" id="txtIdCarreras"
                                 value="{{ $convenios->carreras }}">
+                            <input type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $carreras }}">
                             <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                 value="{{ $convenios->idConvenio }}">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus"
@@ -157,4 +158,26 @@
             </div>
         </div>
     </div>
+    <script>
+        /* -------------------------------------------------------------------------- */
+        /*            Activar la casilla de las carreras de acuerdo a la BD           */
+        /* -------------------------------------------------------------------------- */
+        window.onload = function() {
+            activarCheckCarreras();
+        };
+
+        function activarCheckCarreras() {
+            let idCarreras = document.getElementById("txtIdCarreras").value;
+            let objCarreras = document.getElementById("txtCarreraObj").value;
+            // let divContenedor = document.getElementById("div-flex");
+            if (objCarreras.length == idCarreras.length) {
+                console.log("TODAS LAS CARRERAS");
+                let cbTodasCarreras = document.getElementById(
+                    "flexCheckChecked_todasCarreras"
+                );
+                // cbTodasCarreras.setAttribute = "checked";
+                cbTodasCarreras.setAttribute("checked", "");
+            }
+        }
+    </script>
 @endsection

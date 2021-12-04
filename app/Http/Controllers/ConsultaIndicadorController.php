@@ -127,12 +127,4 @@ class ConsultaIndicadorController extends Controller
     {
         //
     }
-
-    // public function getPDF()
-    // {
-    //     $indicador = DB::table('indicador')
-    //         ->where('descripcion', 'like', '%FIRMAR%')
-    //         ->get();
-    //     return $indicador;
-    // }
 }
