@@ -137,10 +137,9 @@
                                 </div>
                             </div>
 
-                            <input type="text" name="txtIdCarreras" id="txtIdCarreras"
+                            <input hidden type="text" name="txtIdCarreras" id="txtIdCarreras"
                                 value="{{ $convenios->carreras }}">
-                            <input type="text" name="txtCarreraObj" id="txtCarreraObj"
-                                value="{{ $carreras->idCarrera }}">
+                            <input hidden type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $idCarreras }}">
                             <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                 value="{{ $convenios->idConvenio }}">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus"
@@ -169,9 +168,10 @@
         };
 
         function activarCheckCarreras() {
-            let idCarreras = document.getElementById("txtIdCarreras").value;
-            let objCarreras = document.getElementById("txtCarreraObj").value;
-            console.log(objCarreras.length);
+            let idCarreras = document.getElementById("txtIdCarreras").value.split(",");
+            console.log(idCarreras);
+            let objCarreras = document.getElementById("txtCarreraObj").value.split(",");
+            console.log(objCarreras);
             if (objCarreras.length == idCarreras.length) {
                 console.log("TODAS LAS CARRERAS");
                 let cbTodasCarreras = document.getElementById(
@@ -179,24 +179,23 @@
                 );
                 cbTodasCarreras.setAttribute("checked", "");
             } else {
-                console.log(" NOTODAS LAS CARRERAS");
-            }
-            // } else {
-            //     let id = "";
-            //     // console.log(objCarreras[0]["idCarrera"]);
-            //     for (let x = 0; x < objCarreras.length; x++) {
-            //         for (let y = 0; y < idCarreras.length; y++) {
-            //             if (objCarreras[x]["idCarrera"] == idCarreras[y]) {
-            //                 id = "flexCheckChecked_" + idCarreras[y];
-            //                 let carrera = document.getElementById(
-            //                     id
-            //                 );
-            //                 carrera.setAttribute("checked", "");
-            //             }
-            //         }
+                let id = "";
+                // console.log(objCarreras[0]["idCarrera"]);
+                for (let x = 0; x < objCarreras.length; x++) {
+                    for (let y = 0; y < idCarreras.length; y++) {
+                        if (objCarreras[x]["idCarrera"] == idCarreras[y]) {
+                            id = "flexCheckChecked_" + idCarreras[y];
+                            let carrera = document.getElementById(
+                                id
+                            );
+                            carrera.setAttribute("checked", "");
+                        }
+                    }
 
-            //     }
-            // }
+                }
+
+
+            }
         }
     </script>
 @endsection

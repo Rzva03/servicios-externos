@@ -86,19 +86,24 @@ class ConvenioController extends Controller
      */
     public function edit($id)
     {
-        $carrera = DB::table('carrera')->get();
+        $idCarreraBD = DB::table('carrera')
+            ->select('idCarrera')
+            ->get();
         $indicador = DB::table('indicador')->get();
+        $carrera = DB::table('carrera')->get();
         $tipoConvenio = DB::table('tipoconvenio')->get();
         $instancia = DB::table('instancia')->get();
         $convenio = DB::table('convenio')
             ->where('idConvenio', '=', $id)
             ->first();
+        echo $convenio->carreras; //crear un arreglo desde aca
         return view('Convenio.actualizar', [
             'convenios' => $convenio,
             'tipoConvenios' => $tipoConvenio,
             'instancias' => $instancia,
             'indicadores' => $indicador,
             'carreras' => $carrera,
+            'idCarreras' => $idCarreraBD,
         ]);
     }
 
