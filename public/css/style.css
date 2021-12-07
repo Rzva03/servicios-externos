@@ -5,13 +5,16 @@
     color: black !important;
     text-decoration: none;
 }
-.div-flex {
+.div-flex,
+.form-flex {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
     margin-bottom: 20px;
+}
+.form-flex {
 }
 .div-center {
     display: flex;

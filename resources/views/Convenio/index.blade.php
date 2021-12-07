@@ -14,21 +14,22 @@
                             </div>
                         @endif
                         <div class="div-flex">
-                            <div class="col-3">
-                                <select name="sltCarrera" class="form-select"
-                                    onChange="agregarID(sltCarrera, txtIdCarrera)" required>
-                                    <option selected>ELIJA LA CARRERA</option>
-                                    @foreach ($carreras as $carrera)
-                                        <option value="{{ $carrera->idCarrera }}">
-                                            {{ $carrera->nomCarrera }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-secondary"><i class="bi bi-funnel"></i>
-                                FILTRAR</button>
+                            <form class="col-8 form-flex" action="{{ route('convenio.index') }}" method="GET">
+                                <div class="col-4">
+                                    <select name="sltCarrera" id="sltCarrera" class="form-select" required>
+                                        <option selected>ELIJA LA CARRERA</option>
+                                        @foreach ($carreras as $carrera)
+                                            <option value="{{ $carrera->idCarrera }}">
+                                                {{ $carrera->nomCarrera }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-secondary"><i class="bi bi-funnel"></i>
+                                    FILTRAR</button>
+                            </form>
                             {{-- <div class="div-flex"> --}}
-                            <div class="input-group col-5">
+                            <div class="input-group col-4">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                                 <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
                                     style="text-transform: uppercase;" onkeyup='busquedaTabla()'>

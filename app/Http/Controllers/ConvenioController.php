@@ -12,17 +12,39 @@ class ConvenioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        /* -------------------------------------------------------------------------- */
+        /*                         Datos previos para la vista                        */
+        /* -------------------------------------------------------------------------- */
         $carrera = DB::table('carrera')->get();
         $instancia = DB::table('instancia')->get();
         $tipoConvenio = DB::table('tipoconvenio')->get();
         $convenio = DB::table('convenio')->get();
+        /* -------------------------------------------------------------------------- */
+        /*                            obtener id y validar del select                 */
+        /* -------------------------------------------------------------------------- */
+        $carreraRequest = $request->input('sltCarrera');
+        // $idCarreras = $convenio->carreras;
+        // $arregloIdCarreras = explode(',', $idCarreras);
+        // $idCarrera = -1;
+        // for ($i = 0; $i < strlen($arregloIdCarreras); $i++) {
+        //     if ($arregloIdCarreras[$i] == $carreraRequest) {
+        //         $idCarrera = $arregloIdCarreras[$i];
+        //         break;
+        //     }
+        // }
+        $convenio = DB::table('convenio')
+            ->where('carreras', 'like', '%' . $carreraRequest . '%')
+            ->get();
+        /* -------------------------------------------------------------------------- */
+        /*                            Retorno de los datos                            */
+        /* -------------------------------------------------------------------------- */
         return view('Convenio.index', [
-            'convenios' => $convenio,
             'tipoConvenios' => $tipoConvenio,
             'instancias' => $instancia,
             'carreras' => $carrera,
+            'convenios' => $convenio,
         ]);
     }
 
