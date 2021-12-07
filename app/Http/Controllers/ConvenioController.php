@@ -96,7 +96,9 @@ class ConvenioController extends Controller
         $convenio = DB::table('convenio')
             ->where('idConvenio', '=', $id)
             ->first();
-        echo $convenio->carreras; //crear un arreglo desde aca
+        $idCarreras = $convenio->carreras;
+        $arregloIdCarreras = explode(',', $idCarreras);
+
         return view('Convenio.actualizar', [
             'convenios' => $convenio,
             'tipoConvenios' => $tipoConvenio,
@@ -104,6 +106,7 @@ class ConvenioController extends Controller
             'indicadores' => $indicador,
             'carreras' => $carrera,
             'idCarreras' => $idCarreraBD,
+            'arregloIdCarreras' => $arregloIdCarreras,
         ]);
     }
 

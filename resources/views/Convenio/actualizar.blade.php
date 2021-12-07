@@ -136,10 +136,29 @@
                                     </div>
                                 </div>
                             </div>
+                            @if (count($arregloIdCarreras) != count($carreras))
+                                @foreach ($arregloIdCarreras as $arregloIdCarrera)
+                                    @foreach ($carreras as $carrera)
+                                        @if ($carrera->idCarrera == $arregloIdCarrera)
+                                            <script>
+                                                activarCheck({{ $carrera->idCarrera }});
 
-                            <input hidden type="text" name="txtIdCarreras" id="txtIdCarreras"
-                                value="{{ $convenios->carreras }}">
-                            <input hidden type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $idCarreras }}">
+                                                function activarCheck(idCarrera) {
+                                                    let id = "flexCheckChecked_" + idCarrera;
+                                                    let carrera = document.getElementById(
+                                                        id
+                                                    );
+                                                    carrera.setAttribute("checked", "");
+
+                                                }
+                                            </script>
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                            @endif
+
+                            <input type="text" name="txtCarreras" id="txtCarreras" value="{{ $convenios->carreras }}">
+                            <input type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $idCarreras }}">
                             <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                 value="{{ $convenios->idConvenio }}">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus"
@@ -165,37 +184,30 @@
         /* -------------------------------------------------------------------------- */
         window.onload = function() {
             activarCheckCarreras();
+            cargarArregloCarrera();
         };
 
         function activarCheckCarreras() {
-            let idCarreras = document.getElementById("txtIdCarreras").value.split(",");
-            console.log(idCarreras);
+            let idCarreras = document.getElementById("txtCarreras").value.split(",");
             let objCarreras = document.getElementById("txtCarreraObj").value.split(",");
-            console.log(objCarreras);
             if (objCarreras.length == idCarreras.length) {
                 console.log("TODAS LAS CARRERAS");
                 let cbTodasCarreras = document.getElementById(
                     "flexCheckChecked_todasCarreras"
                 );
                 cbTodasCarreras.setAttribute("checked", "");
-            } else {
-                let id = "";
-                // console.log(objCarreras[0]["idCarrera"]);
-                for (let x = 0; x < objCarreras.length; x++) {
-                    for (let y = 0; y < idCarreras.length; y++) {
-                        if (objCarreras[x]["idCarrera"] == idCarreras[y]) {
-                            id = "flexCheckChecked_" + idCarreras[y];
-                            let carrera = document.getElementById(
-                                id
-                            );
-                            carrera.setAttribute("checked", "");
-                        }
-                    }
-
-                }
-
-
             }
+        }
+
+        function cargarArregloCarrera() {
+            let array2 = [];
+            let txtCarrera = document.getElementById("txtCarreras");
+            let arregloCarrera = txtCarrera.value.split(",");
+            arregloCarrera.forEach((elemento) => {
+                array.push(elemento);
+                console.log(elemento);
+            });
+            txtCarrera.value = array;
         }
     </script>
 @endsection
