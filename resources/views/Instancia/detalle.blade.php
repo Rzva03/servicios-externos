@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sltGiro" class="form-label">GIRO</label>
-                                            <select name="sltGiro" class="form-control" disabled>
+                                            <select name="sltGiro" class="form-select" disabled>
                                                 <option>ELIJA EL GIRO</option>
                                                 @foreach ($giros as $giro)
                                                     @if ($giro->idGiro === $instancias->idGiro)
@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sltSector" class="form-label">SECTOR</label>
-                                            <select name="sltSector" class="form-control" disabled>
+                                            <select name="sltSector" class="form-select" disabled>
                                                 <option>ELIJA EL SECTOR</option>
                                                 @foreach ($sectores as $sector)
                                                     @if ($sector->idSector === $instancias->idSector)
@@ -79,7 +79,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sltTipoSector" class="form-label">TIPO DE SECTOR</label>
-                                            <select name="sltTipoSector" class="form-control" disabled>
+                                            <select name="sltTipoSector" class="form-select" disabled>
                                                 <option selected>ELIJA EL TIPO DE SECTOR</option>
                                                 @foreach ($tipoSectores as $tipoSector)
                                                     @if ($tipoSector->idTipoSec === $instancias->idTipoSec)
@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sltTamanio" class="form-label">TAMAÑO</label>
-                                            <select name="sltTamanio" class="form-control" disabled>
+                                            <select name="sltTamanio" class="form-select" disabled>
                                                 <option>ELIJA EL TAMAÑO</option>
                                                 @foreach ($tamanios as $tamanio)
                                                     @if ($tamanio->idTamanio === $instancias->idTamanio)
@@ -114,7 +114,7 @@
                                         <div class="form-group">
                                             <label for="sltAreaConocimiento" class="form-label">ÁREA DE
                                                 CONOCIMIENTO</label>
-                                            <select name="sltAreaConocimiento" class=" form-control" disabled>
+                                            <select name="sltAreaConocimiento" class=" form-select" disabled>
                                                 <option selected>ELIJA EL ÁREA DE CONOCIMIENTO</option>
                                                 @foreach ($areaConocimientos as $areaConocimiento)
                                                     @if ($areaConocimiento->idAreaC === $instancias->idAreaC)
@@ -129,7 +129,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sltAlcance" class="form-label">ALCANCE</label>
-                                            <select name="sltAlcance" class=" form-control" disabled>
+                                            <select name="sltAlcance" class=" form-select" disabled>
                                                 <option selected>ELIJA EL ALCANCE</option>
                                                 @foreach ($alcances as $alcance)
                                                     @if ($alcance->idAlcance === $instancias->idAlcance)

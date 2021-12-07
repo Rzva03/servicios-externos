@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltEstatus" class="form-label">ESTATUS</label>
-                                <select name="sltEstatus" id="sltEstatus" class="form-control"
+                                <select name="sltEstatus" id="sltEstatus" class="form-select"
                                     onChange="agregarID(sltEstatus, txtEstatus)" required>
                                     <option selected>ELIJA EL ESTATUS</option>
                                     <option value="VIGENTE">VIGENTE</option>
@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltTipo" class="form-label">TIPO DE CONVENIO</label>
-                                <select name="sltTipo" id="sltTipo" class="form-control"
+                                <select name="sltTipo" id="sltTipo" class="form-select"
                                     onChange="agregarID(sltTipo, txtIdTipoCon)" required>
                                     <option selected>ELIJA EL TIPO DE CONVENIO</option>
                                     @foreach ($tiposConvenios as $tipocon)
@@ -58,7 +58,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
-                                <select name="sltInstancia" id="sltInstancia" class="form-control"
+                                <select name="sltInstancia" id="sltInstancia" class="form-select"
                                     onChange="agregarID(sltInstancia, txtIdInstancia)" required>
                                     <option selected>ELIJA LA INSTANCIA</option>
                                     @foreach ($instancias as $instancia)
@@ -68,7 +68,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltIndicador" class="form-label">INDICADOR</label>
-                                <select name="sltIndicador" id="sltIndicador" class="form-control"
+                                <select name="sltIndicador" id="sltIndicador" class="form-select"
                                     onChange="agregarID(sltIndicador, txtIdIndicador)" required>
                                     <option selected>ELIJA EL INDICADOR</option>
                                     @foreach ($indicadores as $indicador)

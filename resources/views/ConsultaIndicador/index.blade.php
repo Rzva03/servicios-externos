@@ -19,7 +19,7 @@
                                     <label for="sltTrimestre" class="form-label">TRIMESTRE</label>
                                     @switch($trimestreRequest)
                                         @case(" 1")
-                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option>ELIJA EL TRIMESTRE</option>
                                                 <option selected value="1">1</option>
@@ -29,7 +29,7 @@
                                             </select>
                                         @break
                                         @case(" 2")
-                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option>ELIJA EL TRIMESTRE</option>
                                                 <option value="1">1</option>
@@ -39,7 +39,7 @@
                                             </select>
                                         @break
                                         @case(" 3")
-                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option>ELIJA EL TRIMESTRE</option>
                                                 <option value="1">1</option>
@@ -49,7 +49,7 @@
                                             </select>
                                         @break
                                         @case(" 4")
-                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option>ELIJA EL TRIMESTRE</option>
                                                 <option value="1">1</option>
@@ -59,7 +59,7 @@
                                             </select>
                                         @break
                                         @default
-                                            <select name="sltTrimestre" id="sltTrimestre" class="form-control"
+                                            <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option selected>ELIJA EL TRIMESTRE</option>
                                                 <option value="1">1</option>
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="form-group col-4">
                                     <label for="sltAnio" class="form-label">AÑO</label>
-                                    <select name="sltAnio" id="sltAnio" class="form-control"
+                                    <select name="sltAnio" id="sltAnio" class="form-select"
                                         onChange="convertirFechaPorAnio(sltAnio, txtFechaInicial,txtFechaFinal)" required>
                                         @php
                                             $anio = date('Y');
@@ -93,7 +93,7 @@
 
                                 <div class="form-group col-13 text-left">
                                     <label for="sltIndicador" class="form-label">INDICADOR</label>
-                                    <select name="sltIndicador" id="sltIndicador" class="form-control" required>
+                                    <select name="sltIndicador" id="sltIndicador" class="form-select" required>
                                         @if ($indicadorRequest === null)
                                             <option selected>ELIJA EL INDICADOR</option>
                                             @foreach ($indicadores as $indicador)

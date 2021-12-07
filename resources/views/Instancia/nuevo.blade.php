@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltGiro" class="form-label">GIRO</label>
-                                <select name="sltGiro" class="form-control" onChange="agregarID(sltGiro, txtIdGiro)"
+                                <select name="sltGiro" class="form-select" onChange="agregarID(sltGiro, txtIdGiro)"
                                     required>
                                     <option selected>ELIJA EL GIRO</option>
                                     @foreach ($giros as $giro)
@@ -47,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltSector" class="form-label">SECTOR</label>
-                                <select name="sltSector" class="form-control" onChange="agregarID(sltSector, txtIdSector)"
+                                <select name="sltSector" class="form-select" onChange="agregarID(sltSector, txtIdSector)"
                                     required>
                                     <option selected>ELIJA EL SECTOR</option>
                                     @foreach ($sectores as $sector)
@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltTipoSector" class="form-label">TIPO DE SECTOR</label>
-                                <select name="sltTipoSector" class="form-control"
+                                <select name="sltTipoSector" class="form-select"
                                     onChange="agregarID(sltTipoSector, txtIdTipoSec)" required>
                                     <option selected>ELIJA EL TIPO DE SECTOR</option>
                                     @foreach ($tipoSectores as $tipoSector)
@@ -68,7 +68,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltTamanio" class="form-label">TAMAÑO</label>
-                                <select name="sltTamanio" class="form-control"
+                                <select name="sltTamanio" class="form-select"
                                     onChange="agregarID(sltTamanio, txtIdTamanio)" required>
                                     <option selected>ELIJA EL TAMAÑO</option>
                                     @foreach ($tamanios as $tamanio)
@@ -78,7 +78,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltAreaConocimiento" class="form-label">ÁREA DE CONOCIMIENTO</label>
-                                <select name="sltAreaConocimiento" class=" form-control"
+                                <select name="sltAreaConocimiento" class=" form-select"
                                     onChange="agregarID(sltAreaConocimiento, txtIdAreaC)" required>
                                     <option selected>ELIJA EL ÁREA DE CONOCIMIENTO</option>
                                     @foreach ($areaConocimientos as $areaConocimiento)
@@ -89,7 +89,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltAlcance" class="form-label">ALCANCE</label>
-                                <select name="sltAlcance" class="form-control"
+                                <select name="sltAlcance" class="form-select"
                                     onChange="agregarID(sltAlcance, txtIdAlcance)" required>
                                     <option selected>ELIJA EL ALCANCE</option>
                                     @foreach ($alcances as $alcance)

@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="sltCarrera" class="form-label">CARRERA</label>
-                                <select name="sltCarrera" class="form-control"
+                                <select name="sltCarrera" class="form-select"
                                     onChange="agregarID(sltCarrera, txtIdCarrera)" required>
                                     <option>ELIJA LA CARRERA</option>
                                     @foreach ($carreras as $carrera)

@@ -23,7 +23,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltModalidad" class="form-label">MODALIDAD</label>
-                                <select name="sltModalidad" id="sltModalidad" class="form-control"
+                                <select name="sltModalidad" id="sltModalidad" class="form-select"
                                     onChange="agregarID(sltModalidad, txtModalidad)" required>
                                     <option>ELIJA LA MODALIDAD</option>
                                     @if ($proyectos->modalidad === 'SERVICIO SOCIAL')
@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltPeriodo" class="form-label">PERIODO</label>
-                                <select name="sltPeriodo" class="form-control"
+                                <select name="sltPeriodo" class="form-select"
                                     onChange="agregarID(sltPeriodo, txtIdPeriodo)" required>
                                     <option selected>ElIJA UN PERIODO</option>
                                     @foreach ($periodos as $periodo)
@@ -52,7 +52,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltAlumno" class="form-label">ALUMNO</label>
-                                <select name="sltAlumno" class="form-control" onChange="agregarID(sltAlumno, txtIdAlumno)"
+                                <select name="sltAlumno" class="form-select" onChange="agregarID(sltAlumno, txtIdAlumno)"
                                     required>
                                     <option>ELIJA ALUMNO</option>
                                     @foreach ($alumnos as $alumno)
@@ -67,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltAsesorI" class="form-label">ASESOR INTERNO</label>
-                                <select name="sltAsesorI" class="form-control"
+                                <select name="sltAsesorI" class="form-select"
                                     onChange="agregarID(sltAsesorI, txtIdAsesorInterno)" required>
                                     <option>ELIJA ASESOR INTERNO</option>
                                     @foreach ($asesoresInternos as $asesorInterno)
@@ -85,7 +85,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltAsesorE" class="form-label">ASESOR EXTERNO</label>
-                                <select name="sltAsesorE" class="form-control"
+                                <select name="sltAsesorE" class="form-select"
                                     onChange="agregarID(sltAsesorE, txtIdAsesorExterno)" required>
                                     <option>ELIJA ASESOR EXTERNO</option>
                                     @foreach ($asesoresExternos as $asesorExterno)
@@ -103,7 +103,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
-                                <select name="sltInstancia" class="form-control"
+                                <select name="sltInstancia" class="form-select"
                                     onChange="agregarID(sltInstancia, txtIdInstancia)" required>
                                     <option>ELIJA INSTANCIA</option>
                                     @foreach ($instancias as $instancia)
