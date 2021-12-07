@@ -157,8 +157,9 @@
                                 @endforeach
                             @endif
 
-                            <input type="text" name="txtCarreras" id="txtCarreras" value="{{ $convenios->carreras }}">
-                            <input type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $idCarreras }}">
+                            <input hidden type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $idCarreras }}">
+                            <input hidden type="text" name="txtCarreras" id="txtCarreras"
+                                value="{{ $convenios->carreras }}">
                             <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                 value="{{ $convenios->idConvenio }}">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus"
