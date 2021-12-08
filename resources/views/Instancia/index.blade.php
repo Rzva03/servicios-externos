@@ -52,18 +52,17 @@
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('instancia.show', $instancia->idInstancia) }}'"
                                                     class="btn btn-outline-secondary"><i class="bi bi-info-circle"></i>
-                                                    DETALLE</button>
+                                                </button>
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('instancia.edit', $instancia->idInstancia) }}'"
-                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i>
-                                                    MODIFICAR</button>
+                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
                                                 <form action="{{ route('instancia.destroy', $instancia->idInstancia) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
                                                         onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $instancia->nombre }}?') ">
-                                                        <i class="bi bi-eraser"></i> ELIMINAR</button>
+                                                        <i class="bi bi-eraser"></i></button>
                                                 </form>
                                             </div>
                                         </td>

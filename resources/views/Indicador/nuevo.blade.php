@@ -25,7 +25,8 @@
                                 <input type="text" class="form-control" name="txtDescripcion" id="txtDescripcion"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">AGREGAR</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                AGREGAR</button>
                         </form>
                     </div>
                 </div>

@@ -109,7 +109,8 @@
                             <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
                             <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
                                 value=" {{ Auth::user()->id }}">
-                            <button type="submit" class="btn btn-primary">AGREGAR</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                AGREGAR</button>
                         </form>
                     </div>
                 </div>

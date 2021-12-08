@@ -88,7 +88,8 @@
                             <input hidden type="text" name="txtIdAsesorInterno" id="txtIdAsesorInterno">
                             <input hidden type="text" name="txtIdAsesorExterno" id="txtIdAsesorExterno">
                             <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
-                            <button type="submit" class="btn btn-primary">AGREGAR</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                AGREGAR</button>
                         </form>
                     </div>
                 </div>

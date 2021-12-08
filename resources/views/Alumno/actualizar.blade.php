@@ -52,7 +52,7 @@
                             </div>
                             <input hidden type="text" name="txtIdCarrera" id="txtIdCarrera"
                                 value="{{ $alumnos->idCarrera }}">
-                            <button type="submit" class="btn btn-primary">MODIFICAR</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i> MODIFICAR</button>
                         </form>
                     </div>
                 </div>

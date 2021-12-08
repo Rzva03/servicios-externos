@@ -145,7 +145,7 @@
                                 value="{{ $instancias->idAreaC }}">
                             <input type="text" hidden name="txtIdAlcance" id="txtIdAlcance"
                                 value="{{ $instancias->idAlcance }}">
-                            <button type="submit" class="btn btn-primary">MODIFICAR</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i> MODIFICAR</button>
                         </form>
                     </div>
                 </div>

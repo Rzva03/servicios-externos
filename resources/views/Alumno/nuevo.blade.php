@@ -44,7 +44,8 @@
                             </div>
                             <input hidden type="text" name="txtIdCarrera" id="txtIdCarrera">
                             <br>
-                            <button type="submit" class="btn btn-primary">AGREGAR</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                AGREGAR</button>
                         </form>
                     </div>
                 </div>

@@ -42,8 +42,7 @@
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem;"
                                                     onclick="location.href='{{ route('asesor-externo.edit', $asesorExterno->idAsesorE) }}'"
-                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i>
-                                                    MODIFICAR</button>
+                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
                                                 <form
                                                     action="{{ route('asesor-externo.destroy', $asesorExterno->idAsesorE) }}"
                                                     method="POST">
@@ -51,7 +50,7 @@
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
                                                         onclick="return confirm( '¿ESTA SEGURO DE ELIMINAR {{ $asesorExterno->nombre }}?') ">
-                                                        <i class="bi bi-eraser"></i> ELIMINAR</button>
+                                                        <i class="bi bi-eraser"></i></button>
                                                 </form>
                                             </div>
                                         </td>

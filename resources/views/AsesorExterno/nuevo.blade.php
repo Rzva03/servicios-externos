@@ -30,7 +30,8 @@
                                 <input type="tel" class="form-control" name="txtTelefono" id="txtTelefono" required
                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
-                            <button type="submit" class="btn btn-primary">AGREGAR</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                AGREGAR</button>
                         </form>
                     </div>
                 </div>

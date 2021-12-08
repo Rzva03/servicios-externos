@@ -33,7 +33,7 @@
                                     value="{{ $asesoresExternos->telefono }}"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">MODIFICAR</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i> MODIFICAR</button>
                         </form>
                     </div>
                 </div>

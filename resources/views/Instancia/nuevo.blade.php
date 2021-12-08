@@ -103,7 +103,8 @@
                             <input type="text" hidden name="txtIdTamanio" id="txtIdTamanio">
                             <input type="text" hidden name="txtIdAreaC" id="txtIdAreaC">
                             <input type="text" hidden name="txtIdAlcance" id="txtIdAlcance">
-                            <button type="submit" class="btn btn-primary">AGREGAR</button>
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                AGREGAR</button>
                         </form>
                     </div>
                 </div>

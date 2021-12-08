@@ -36,15 +36,14 @@
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('carrera.edit', $carrera->idCarrera) }}'"
-                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i>
-                                                    MODIFICAR</button>
+                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
                                                 <form action="{{ route('carrera.destroy', $carrera->idCarrera) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
                                                         onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $carrera->nomCarrera }}?') ">
-                                                        <i class="bi bi-eraser"></i> ELIMINAR</button>
+                                                        <i class="bi bi-eraser"></i></button>
                                                 </form>
                                             </div>
 

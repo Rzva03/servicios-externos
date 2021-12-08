@@ -15,9 +15,12 @@
                         @endif
                         <div class="div-flex">
                             <form class="col-8 form-flex" action="{{ route('convenio.index') }}" method="GET">
-                                <div class="col-4">
+                                <div class="col-5">
                                     <select name="sltCarrera" id="sltCarrera" class="form-select" required>
                                         <option selected>ELIJA LA CARRERA</option>
+                                        <option value="0">
+                                            TODAS LAS CARRERAS
+                                        </option>
                                         @foreach ($carreras as $carrera)
                                             <option value="{{ $carrera->idCarrera }}">
                                                 {{ $carrera->nomCarrera }}
@@ -29,7 +32,7 @@
                                     FILTRAR</button>
                             </form>
                             {{-- <div class="div-flex"> --}}
-                            <div class="input-group col-4">
+                            <div class="input-group col-4 div-flex">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                                 <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
                                     style="text-transform: uppercase;" onkeyup='busquedaTabla()'>

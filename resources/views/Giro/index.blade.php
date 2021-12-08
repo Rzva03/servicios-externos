@@ -38,13 +38,13 @@
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('giro.edit', $giro->idGiro) }}'"
                                                     class="btn btn-outline-primary">
-                                                    <i class="bi bi-pencil"></i> MODIFICAR</button>
+                                                    <i class="bi bi-pencil"></i></button>
                                                 <form action="{{ route('giro.destroy', $giro->idGiro) }}" method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-outline-danger"
                                                         onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $giro->nomGiro }}?') ">
-                                                        <i class="bi bi-eraser"></i> ELIMINAR</button>
+                                                        <i class="bi bi-eraser"></i></button>
                                                 </form>
                                             </div>
                                         </td>
