@@ -28,3 +28,6 @@
 .text-uppercase {
     text-transform: uppercase;
 }
+.btn-margin {
+    margin-left: 20px;
+}

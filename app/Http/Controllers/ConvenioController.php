@@ -25,18 +25,13 @@ class ConvenioController extends Controller
         /*                            obtener id y validar del select                 */
         /* -------------------------------------------------------------------------- */
         $carreraRequest = $request->input('sltCarrera');
-        // $idCarreras = $convenio->carreras;
-        // $arregloIdCarreras = explode(',', $idCarreras);
-        // $idCarrera = -1;
-        // for ($i = 0; $i < strlen($arregloIdCarreras); $i++) {
-        //     if ($arregloIdCarreras[$i] == $carreraRequest) {
-        //         $idCarrera = $arregloIdCarreras[$i];
-        //         break;
-        //     }
-        // }
-        $convenio = DB::table('convenio')
-            ->where('carreras', 'like', '%' . $carreraRequest . '%')
-            ->get();
+        if ($carreraRequest == 0) {
+            $convenio = DB::table('convenio')->get();
+        } else {
+            $convenio = DB::table('convenio')
+                ->where('carreras', 'like', '%' . $carreraRequest . '%')
+                ->get();
+        }
         /* -------------------------------------------------------------------------- */
         /*                            Retorno de los datos                            */
         /* -------------------------------------------------------------------------- */

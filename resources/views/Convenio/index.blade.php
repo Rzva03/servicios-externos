@@ -37,8 +37,9 @@
                                 <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
                                     style="text-transform: uppercase;" onkeyup='busquedaTabla()'>
                             </div>
-                            <button onclick="location.href='{{ route('convenio.create') }}'" class="btn btn-primary "><i
-                                    class="bi bi-plus-square-dotted"></i> NUEVO</button>
+                            <button onclick="location.href='{{ route('convenio.create') }}'"
+                                class="btn btn-primary btn-margin"><i class="bi bi-plus-square-dotted"></i>
+                                NUEVO</button>
                             {{-- </div> --}}
                         </div>
                         <table class="table" id="tabla">
