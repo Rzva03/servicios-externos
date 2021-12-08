@@ -15,6 +15,7 @@
     margin-bottom: 20px;
 }
 .form-flex {
+    justify-content: start;
 }
 .div-center {
     display: flex;
