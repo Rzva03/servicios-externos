@@ -68,12 +68,12 @@
                             @endif
                         @else
                             {{-- instancia --}}
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown ">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('INSTANCIAS') }}
                                 </a>
-                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('sector.index') }}">
                                         {{ __('Sector') }}
                                     </a>
@@ -84,6 +84,10 @@
                                     <hr class="dropdown-divider">
                                     <a class="dropdown-item" href="{{ route('tamanio.index') }}">
                                         {{ __('Tamaño') }}
+                                    </a>
+                                    <hr class="dropdown-divider">
+                                    <a class="dropdown-item" href="{{ route('alcance.index') }}">
+                                        {{ __('Alcance') }}
                                     </a>
                                     <hr class="dropdown-divider">
                                     <a class="dropdown-item" href="{{ route('giro.index') }}">
@@ -105,7 +109,7 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('CONVENIOS') }}
                                 </a>
-                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('tipo-convenio.index') }}">
                                         {{ __('Tipo de convenio') }}
                                     </a>
@@ -125,7 +129,7 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('PROYECTOS') }}
                                 </a>
-                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('asesor-externo.index') }}">
                                         {{ __('Asesor Externo') }}
                                     </a>
@@ -149,7 +153,7 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('ALUMNOS') }}
                                 </a>
-                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('carrera.index') }}">
                                         {{ __('Carrera') }}
                                     </a>
@@ -165,7 +169,7 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ __('REPORTES') }}
                                 </a>
-                                <div class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('consulta-indicador.index') }}">
                                         {{ __('Indicadores') }}
                                     </a>
@@ -182,12 +186,11 @@
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right text-capitalize"
+                                <div class="dropdown-menu dropdown-menu-right text-uppercase"
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

@@ -14,8 +14,17 @@
                             </div>
                         @endif
                         <div class="div-flex">
-                            <button onclick="location.href='{{ route('instancia.create') }}'" class="btn btn-primary ">
+                            <button id="botonNuevo" onclick="location.href='{{ route('instancia.create') }}'"
+                                class="btn btn-primary ">
                                 <i class="bi bi-plus-square-dotted"></i> NUEVO</button>
+                            {{-- @if (Auth::user()->rol == 1)
+                                <script>
+                                    var nodo = document.getElementById("botonNuevo");
+                                    if (nodo.parentNode) {
+                                        nodo.parentNode.removeChild(nodo);
+                                    }
+                                </script>
+                            @endif --}}
                             <div class="input-group col-5">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                                 <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
