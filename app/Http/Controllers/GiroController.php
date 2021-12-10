@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class GiroController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class GiroController extends Controller
     {
         $giro = DB::table('giro')->get();
         return view('Giro.index', [
-            'giros' => $giro
+            'giros' => $giro,
         ]);
     }
 
@@ -38,9 +42,9 @@ class GiroController extends Controller
      */
     public function store(Request $request)
     {
-        $giro = DB::table('giro')->insert(array(
-            'nomGiro' => $request->input('txtNombre')
-        ));
+        $giro = DB::table('giro')->insert([
+            'nomGiro' => $request->input('txtNombre'),
+        ]);
         return redirect()->route('giro.index');
     }
 
@@ -62,9 +66,11 @@ class GiroController extends Controller
      */
     public function edit($id)
     {
-        $giro = DB::table('giro')->where('idGiro', '=', $id)->first();
+        $giro = DB::table('giro')
+            ->where('idGiro', '=', $id)
+            ->first();
         return view('Giro.actualizar', [
-            'giros' => $giro
+            'giros' => $giro,
         ]);
     }
 
@@ -77,9 +83,11 @@ class GiroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $giro = DB::table('giro')->where('idGiro', '=', $id)->update(array(
-            'nomGiro' => $request->input('txtNombre')
-        ));
+        $giro = DB::table('giro')
+            ->where('idGiro', '=', $id)
+            ->update([
+                'nomGiro' => $request->input('txtNombre'),
+            ]);
         return redirect()->route('giro.index');
     }
 
@@ -91,8 +99,9 @@ class GiroController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('giro')->where('idGiro', '=', $id)->delete();
+        DB::table('giro')
+            ->where('idGiro', '=', $id)
+            ->delete();
         return redirect()->route('giro.index');
     }
 }

@@ -118,9 +118,10 @@
                                     </select>
                                 </div>
                             </div>
-                            <input hidden value="{{ $fechaInicio }}" type="text" name="txtFechaInicial"
+                            <input hidden value="{{ $fechaInicio }}" type="text" name="txtFechaInicial" required
                                 id="txtFechaInicial">
-                            <input hidden value="{{ $fechaFinal }}" type="text" name="txtFechaFinal" id="txtFechaFinal">
+                            <input hidden value="{{ $fechaFinal }}" type="text" name="txtFechaFinal" id="txtFechaFinal"
+                                required>
                             <div class="div-center">
                                 <button type="submit" class="btn btn-primary"><i class="bi bi-calculator"></i>
                                     CALCULAR</button>
@@ -160,7 +161,7 @@
             function validarTablaIndicador() {
                 let indicador = document.getElementById("indicadorRequest").value;
                 let tablaIndicador = document.getElementById("tablaIndicador");
-                if (indicador == "") {} else {
+                if (indicador != "") {
                     tablaIndicador.removeAttribute("hidden");
                 }
             }

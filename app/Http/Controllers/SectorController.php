@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class SectorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,9 +19,9 @@ class SectorController extends Controller
     public function index()
     {
         $sector = DB::table('sector')->get();
-             return view('Sector.index', [
-                 'sectores' => $sector
-             ]);
+        return view('Sector.index', [
+            'sectores' => $sector,
+        ]);
     }
 
     /**
@@ -38,9 +42,9 @@ class SectorController extends Controller
      */
     public function store(Request $request)
     {
-        $sector = DB::table('sector')->insert(array(
-            'nomSector'=>$request->input('txtNombre')
-        ));
+        $sector = DB::table('sector')->insert([
+            'nomSector' => $request->input('txtNombre'),
+        ]);
         return redirect()->route('sector.index');
     }
 
@@ -52,9 +56,11 @@ class SectorController extends Controller
      */
     public function show($id)
     {
-        $sector = DB::table('sector')->where('idSector', '=', $id)->first();
-        return view('Sector.detalle',[
-            'sectores'=>$sector
+        $sector = DB::table('sector')
+            ->where('idSector', '=', $id)
+            ->first();
+        return view('Sector.detalle', [
+            'sectores' => $sector,
         ]);
     }
 
@@ -66,9 +72,11 @@ class SectorController extends Controller
      */
     public function edit($id)
     {
-        $sector = DB::table('sector')->where('idSector', '=', $id)->first();
-        return view('Sector.actualizar',[
-            'sectores'=>$sector
+        $sector = DB::table('sector')
+            ->where('idSector', '=', $id)
+            ->first();
+        return view('Sector.actualizar', [
+            'sectores' => $sector,
         ]);
     }
 
@@ -81,9 +89,11 @@ class SectorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sector=DB::table('sector')->where('idSector', '=', $id)->update(array(
-            'nomSector'=>$request->input('txtNombre')
-        ));
+        $sector = DB::table('sector')
+            ->where('idSector', '=', $id)
+            ->update([
+                'nomSector' => $request->input('txtNombre'),
+            ]);
         return redirect()->route('sector.index');
     }
 
@@ -95,9 +105,9 @@ class SectorController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('sector')->where('idSector', '=', $id)->delete();
+        DB::table('sector')
+            ->where('idSector', '=', $id)
+            ->delete();
         return redirect()->route('sector.index');
     }
-
 }

@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class AlcanceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     public function index()
     {
         $alcance = DB::table('alcance')->get();
         return view('Alcance.index', [
-            'alcances' => $alcance
+            'alcances' => $alcance,
         ]);
     }
 
@@ -34,9 +38,9 @@ class AlcanceController extends Controller
      */
     public function store(Request $request)
     {
-        $alcance = DB::table('alcance')->insert(array(
-            'nombre' => $request->input('txtNombre')
-        ));
+        $alcance = DB::table('alcance')->insert([
+            'nombre' => $request->input('txtNombre'),
+        ]);
         return redirect()->route('alcance.index');
     }
 
@@ -58,9 +62,11 @@ class AlcanceController extends Controller
      */
     public function edit($id)
     {
-        $alcance = DB::table('alcance')->where('idAlcance', '=', $id)->first();
+        $alcance = DB::table('alcance')
+            ->where('idAlcance', '=', $id)
+            ->first();
         return view('Alcance.actualizar', [
-            'alcances' => $alcance
+            'alcances' => $alcance,
         ]);
     }
 
@@ -73,9 +79,11 @@ class AlcanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $alcance = DB::table('alcance')->where('idAlcance', '=', $id)->update(array(
-            'nombre' => $request->input('txtNombre')
-        ));
+        $alcance = DB::table('alcance')
+            ->where('idAlcance', '=', $id)
+            ->update([
+                'nombre' => $request->input('txtNombre'),
+            ]);
         return redirect()->route('alcance.index');
     }
 
@@ -87,8 +95,9 @@ class AlcanceController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('alcance')->where('idAlcance', '=', $id)->delete();
+        DB::table('alcance')
+            ->where('idAlcance', '=', $id)
+            ->delete();
         return redirect()->route('alcance.index');
     }
 }

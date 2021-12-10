@@ -31,7 +31,6 @@
                                 <button type="submit" class="btn btn-secondary"><i class="bi bi-funnel"></i>
                                     FILTRAR</button>
                             </form>
-                            {{-- <div class="div-flex"> --}}
                             <div class="input-group col-4 div-flex">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                                 <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
@@ -40,7 +39,6 @@
                             <button onclick="location.href='{{ route('convenio.create') }}'"
                                 class="btn btn-primary btn-margin"><i class="bi bi-plus-square-dotted"></i>
                                 NUEVO</button>
-                            {{-- </div> --}}
                         </div>
                         <table class="table" id="tabla">
                             <thead>
@@ -78,14 +76,32 @@
                                                     onclick="location.href='{{ route('convenio.edit', $convenio->idConvenio) }}'"
                                                     class="btn btn-outline-primary"><i class="bi bi-pencil"></i>
                                                 </button>
-                                                <form action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿ESTÁ SEGURO DE BORRAR {{ $convenio->folio }}?') "><i
-                                                            class="bi bi-eraser"></i></button>
-                                                </form>
+                                                @if (Auth::user()->rol == 0)
+                                                    <form hidden
+                                                        action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
+                                                        method="POST" id="form">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm( '¿ESTÁ SEGURO DE BORRAR {{ $convenio->folio }}?') "><i
+                                                                class="bi bi-eraser"></i></button>
+                                                    </form>
+                                                    <script>
+                                                        nodo = document.getElementById("form");
+                                                        if (nodo.parentNode) {
+                                                            nodo.parentNode.removeChild(nodo);
+                                                        }
+                                                    </script>
+                                                @else
+                                                    <form action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm( '¿ESTÁ SEGURO DE BORRAR {{ $convenio->folio }}?') "><i
+                                                                class="bi bi-eraser"></i></button>
+                                                    </form>
+                                                @endif
                                             </div>
 
                                         </td>

@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class TamanioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class TamanioController extends Controller
     {
         $tamanio = DB::table('tamanio')->get();
         return view('Tamanio.index', [
-            'tamanios' => $tamanio
+            'tamanios' => $tamanio,
         ]);
     }
 
@@ -38,9 +42,9 @@ class TamanioController extends Controller
      */
     public function store(Request $request)
     {
-        $tamanio = DB::table('tamanio')->insert(array(
-            'nomTamanio' => $request->input('txtNombre')
-        ));
+        $tamanio = DB::table('tamanio')->insert([
+            'nomTamanio' => $request->input('txtNombre'),
+        ]);
         return redirect()->route('tamanio.index');
     }
 
@@ -63,9 +67,11 @@ class TamanioController extends Controller
      */
     public function edit($id)
     {
-        $tamanio = DB::table('tamanio')->where('idTamanio', '=', $id)->first();
+        $tamanio = DB::table('tamanio')
+            ->where('idTamanio', '=', $id)
+            ->first();
         return view('Tamanio.actualizar', [
-            'tamanios' => $tamanio
+            'tamanios' => $tamanio,
         ]);
     }
 
@@ -78,9 +84,11 @@ class TamanioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tamanio = DB::table('tamanio')->where('idTamanio', '=', $id)->update(array(
-            'nomTamanio' => $request->input('txtNombre')
-        ));
+        $tamanio = DB::table('tamanio')
+            ->where('idTamanio', '=', $id)
+            ->update([
+                'nomTamanio' => $request->input('txtNombre'),
+            ]);
         return redirect()->route('tamanio.index');
     }
 
@@ -92,7 +100,9 @@ class TamanioController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('tamanio')->where('idTamanio', '=', $id)->delete();
+        DB::table('tamanio')
+            ->where('idTamanio', '=', $id)
+            ->delete();
         return redirect()->route('tamanio.index');
     }
 }

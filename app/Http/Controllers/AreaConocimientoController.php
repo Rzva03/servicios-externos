@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class AreaConocimientoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class AreaConocimientoController extends Controller
     {
         $areaConocimiento = DB::table('areaconoc')->get();
         return view('AreaConocimiento.index', [
-            'areaConocimientos' => $areaConocimiento
+            'areaConocimientos' => $areaConocimiento,
         ]);
     }
 
@@ -38,9 +42,9 @@ class AreaConocimientoController extends Controller
      */
     public function store(Request $request)
     {
-        $areaConocimiento = DB::table('areaconoc')->insert(array(
-            'nomAreaC' => $request->input('txtNombre')
-        ));
+        $areaConocimiento = DB::table('areaconoc')->insert([
+            'nomAreaC' => $request->input('txtNombre'),
+        ]);
         return redirect()->route('area-conocimiento.index');
     }
 
@@ -63,9 +67,11 @@ class AreaConocimientoController extends Controller
      */
     public function edit($id)
     {
-        $areaConocimiento = DB::table('areaconoc')->where('idAreaC', '=', $id)->first();
+        $areaConocimiento = DB::table('areaconoc')
+            ->where('idAreaC', '=', $id)
+            ->first();
         return view('AreaConocimiento.actualizar', [
-            'areaConocimientos' => $areaConocimiento
+            'areaConocimientos' => $areaConocimiento,
         ]);
     }
 
@@ -78,9 +84,11 @@ class AreaConocimientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $areaConocimiento = DB::table('areaconoc')->where('idAreaC', '=', $id)->update(array(
-            'nomAreaC' => $request->input('txtNombre')
-        ));
+        $areaConocimiento = DB::table('areaconoc')
+            ->where('idAreaC', '=', $id)
+            ->update([
+                'nomAreaC' => $request->input('txtNombre'),
+            ]);
         return redirect()->route('area-conocimiento.index');
     }
 
@@ -92,7 +100,9 @@ class AreaConocimientoController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('areaconoc')->where('idAreaC', '=', $id)->delete();
+        DB::table('areaconoc')
+            ->where('idAreaC', '=', $id)
+            ->delete();
         return redirect()->route('area-conocimiento.index');
     }
 }

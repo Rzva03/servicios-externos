@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class TipoSectorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class TipoSectorController extends Controller
     {
         $tipoSector = DB::table('tiposector')->get();
         return view('TipoSector.index', [
-            'tipoSectores' => $tipoSector
+            'tipoSectores' => $tipoSector,
         ]);
     }
 
@@ -38,9 +42,9 @@ class TipoSectorController extends Controller
      */
     public function store(Request $request)
     {
-        $tipoSector = DB::table('tiposector')->insert(array(
-            'nomTipoSec' => $request->input('txtNombre')
-        ));
+        $tipoSector = DB::table('tiposector')->insert([
+            'nomTipoSec' => $request->input('txtNombre'),
+        ]);
         return redirect()->route('tipo-sector.index');
     }
 
@@ -62,9 +66,11 @@ class TipoSectorController extends Controller
      */
     public function edit($id)
     {
-        $tipoSector = DB::table('tiposector')->where('idTipoSec', '=', $id)->first();
+        $tipoSector = DB::table('tiposector')
+            ->where('idTipoSec', '=', $id)
+            ->first();
         return view('TipoSector.actualizar', [
-            'tipoSectores' => $tipoSector
+            'tipoSectores' => $tipoSector,
         ]);
     }
 
@@ -77,9 +83,11 @@ class TipoSectorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $tipoSector = DB::table('tiposector')->where('idTipoSec', '=', $id)->update(array(
-            'nomTipoSec' => $request->input('txtNombre')
-        ));
+        $tipoSector = DB::table('tiposector')
+            ->where('idTipoSec', '=', $id)
+            ->update([
+                'nomTipoSec' => $request->input('txtNombre'),
+            ]);
         return redirect()->route('tipo-sector.index');
     }
 
@@ -91,7 +99,9 @@ class TipoSectorController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('tiposector')->where('idTipoSec', '=', $id)->delete();
+        DB::table('tiposector')
+            ->where('idTipoSec', '=', $id)
+            ->delete();
         return redirect()->route('tipo-sector.index');
     }
 }
