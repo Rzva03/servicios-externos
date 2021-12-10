@@ -65,6 +65,9 @@ Route::resource('giro', GiroController::class);
 use App\Http\Controllers\InstanciaController;
 
 Route::resource('instancia', InstanciaController::class);
+// Route::get('instancia/show', [InstanciaController::class, 'show'])->middleware(
+//     'admin'
+// );
 /* -------------------------------------------------------------------------- */
 /*                            rutas asesor externo                            */
 /* -------------------------------------------------------------------------- */
@@ -155,3 +158,17 @@ Route::resource('consulta-indicador', ConsultaIndicadorController::class);
 // Route::get('/consultas/pdf', [ConsultasController::class, 'getPDF'])->name(
 //     'consulta.getPDF'
 // );
+
+/* -------------------------------------------------------------------------- */
+/*                                 Rutas admin                                */
+/* -------------------------------------------------------------------------- */
+// Route::group(['middleware' => 'admin'], function () {
+//     // Route::get('instancia', [InstanciaController::class, 'index']);
+//     // Route::get('/admin/series/{id}', 'Admin\SeriesController@edit');
+//     // Route::resource('instancia', InstanciaController::class)->only([
+//     //     'index',
+//     //     'show',
+//     //     'destroy',
+//     // ]);
+//     Route::get('instancia', [InstanciaController::class, 'index']);
+// });

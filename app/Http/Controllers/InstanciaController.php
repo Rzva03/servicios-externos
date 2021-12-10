@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class InstanciaController extends Controller
 {
+    public function __construct()
+    {
+        // $this->middleware('admin');
+        $this->middleware('admin')->except('index', 'create', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
