@@ -17,14 +17,6 @@
                             <button id="botonNuevo" onclick="location.href='{{ route('instancia.create') }}'"
                                 class="btn btn-primary ">
                                 <i class="bi bi-plus-square-dotted"></i> NUEVO</button>
-                            {{-- @if (Auth::user()->rol == 1)
-                                <script>
-                                    var nodo = document.getElementById("botonNuevo");
-                                    if (nodo.parentNode) {
-                                        nodo.parentNode.removeChild(nodo);
-                                    }
-                                </script>
-                            @endif --}}
                             <div class="input-group col-5">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
                                 <input id="busqueda" type="text" class="form-control" placeholder="BÚSQUEDA"
@@ -65,14 +57,33 @@
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('instancia.edit', $instancia->idInstancia) }}'"
                                                     class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                                <form action="{{ route('instancia.destroy', $instancia->idInstancia) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $instancia->nombre }}?') ">
-                                                        <i class="bi bi-eraser"></i></button>
-                                                </form>
+                                                @if (Auth::user()->rol == 0)
+                                                    <form hidden
+                                                        action="{{ route('instancia.destroy', $instancia->idInstancia) }}"
+                                                        method="POST" id="form">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $instancia->nombre }}?') ">
+                                                            <i class="bi bi-eraser"></i></button>
+                                                    </form>
+                                                    <script>
+                                                        nodo = document.getElementById("form");
+                                                        if (nodo.parentNode) {
+                                                            nodo.parentNode.removeChild(nodo);
+                                                        }
+                                                    </script>
+                                                @else
+                                                    <form
+                                                        action="{{ route('instancia.destroy', $instancia->idInstancia) }}"
+                                                        method="POST" id="form">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $instancia->nombre }}?') ">
+                                                            <i class="bi bi-eraser"></i></button>
+                                                    </form>
+                                                @endif
                                             </div>
                                         </td>
                                     </tr>

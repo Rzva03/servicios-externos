@@ -119,12 +119,13 @@ function obtenerTodasCarreras(arregloCarrera) {
     }
     txtCarrera.value = arregloAux;
 }
-
-function borrarElementoAdmin(rol, idElemento) {
-    if (rol == 0) {
-        // let nodo = document.getElementById(idElemento);
-        if (idElemento.parentNode) {
-            idElemento.parentNode.removeChild(idElemento);
-        }
-    }
-}
+window.onload = function () {};
+// function borrarElementoAdmin(rol, idElemento) {
+//     if (rol == 0) {
+//         let nodo = document.getElementById(idElemento);
+//         if (idElemento.parentNode) {
+//             idElemento.parentNode.removeChild(idElemento);
+//         }
+//     }
+// }
+let nodo;

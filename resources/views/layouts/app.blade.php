@@ -68,118 +68,195 @@
                             @endif
                         @else
                             {{-- instancia --}}
-                            <li class="nav-item dropdown ">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('INSTANCIAS') }}
-                                </a>
-                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('sector.index') }}">
-                                        {{ __('Sector') }}
+                            @if (Auth::user()->rol == 0)
+                                <li class="nav-item dropdown ">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('INSTANCIAS') }}
                                     </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('tipo-sector.index') }}">
-                                        {{ __('Tipo Sector') }}
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('instancia.index') }}">
+                                            {{ __('Instancia') }}
+                                        </a>
+                                    </div>
+                                </li>
+                                {{-- convenio --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('CONVENIOS') }}
                                     </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('tamanio.index') }}">
-                                        {{ __('Tamaño') }}
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('convenio.index') }}">
+                                            {{ __('Convenio') }}
+                                        </a>
+                                    </div>
+                                </li>
+                                {{-- proyecto --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('PROYECTOS') }}
                                     </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('alcance.index') }}">
-                                        {{ __('Alcance') }}
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('proyecto.index') }}">
+                                            {{ __('Proyecto') }}
+                                        </a>
+                                    </div>
+                                </li>
+                                {{-- alumno --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('ALUMNOS') }}
                                     </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('giro.index') }}">
-                                        {{ __('Giro') }}
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('alumno.index') }}">
+                                            {{ __('Alumno') }}
+                                        </a>
+                                    </div>
+                                </li>
+                                {{-- reportes --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('REPORTES') }}
                                     </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('area-conocimiento.index') }}">
-                                        {{ __('Área de conocimiento') }}
-                                    </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('instancia.index') }}">
-                                        {{ __('Instancia') }}
-                                    </a>
-                                </div>
-                            </li>
-                            {{-- convenio --}}
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('CONVENIOS') }}
-                                </a>
-                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('tipo-convenio.index') }}">
-                                        {{ __('Tipo de convenio') }}
-                                    </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('indicador.index') }}">
-                                        {{ __('Indicador') }}
-                                    </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('convenio.index') }}">
-                                        {{ __('Convenio') }}
-                                    </a>
-                                </div>
-                            </li>
-                            {{-- proyecto --}}
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('PROYECTOS') }}
-                                </a>
-                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('asesor-externo.index') }}">
-                                        {{ __('Asesor Externo') }}
-                                    </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('asesor-interno.index') }}">
-                                        {{ __('Asesor Interno') }}
-                                    </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('periodo.index') }}">
-                                        {{ __('Periodo') }}
-                                    </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('proyecto.index') }}">
-                                        {{ __('Proyecto') }}
-                                    </a>
-                                </div>
-                            </li>
-                            {{-- alumno --}}
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('ALUMNOS') }}
-                                </a>
-                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('carrera.index') }}">
-                                        {{ __('Carrera') }}
-                                    </a>
-                                    <hr class="dropdown-divider">
-                                    <a class="dropdown-item" href="{{ route('alumno.index') }}">
-                                        {{ __('Alumno') }}
-                                    </a>
-                                </div>
-                            </li>
-                            {{-- reportes --}}
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ __('REPORTES') }}
-                                </a>
-                                <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('consulta-indicador.index') }}">
-                                        {{ __('Indicadores') }}
-                                    </a>
-                                    {{-- <hr class="dropdown-divider">
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('consulta-indicador.index') }}">
+                                            {{ __('Indicadores') }}
+                                        </a>
+                                        {{-- <hr class="dropdown-divider">
 
                                     <a class="dropdown-item" href="{{ route('alumno.index') }}">
                                         {{ __('Alumno') }}
                                     </a> --}}
-                                </div>
-                            </li>
+                                    </div>
+                                </li>
+                            @else
+                                <li class="nav-item dropdown ">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('INSTANCIAS') }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('sector.index') }}">
+                                            {{ __('Sector') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('tipo-sector.index') }}">
+                                            {{ __('Tipo Sector') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('tamanio.index') }}">
+                                            {{ __('Tamaño') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('alcance.index') }}">
+                                            {{ __('Alcance') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('giro.index') }}">
+                                            {{ __('Giro') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('area-conocimiento.index') }}">
+                                            {{ __('Área de conocimiento') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('instancia.index') }}">
+                                            {{ __('Instancia') }}
+                                        </a>
+                                    </div>
+                                </li>
+                                {{-- convenio --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('CONVENIOS') }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('tipo-convenio.index') }}">
+                                            {{ __('Tipo de convenio') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('indicador.index') }}">
+                                            {{ __('Indicador') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('convenio.index') }}">
+                                            {{ __('Convenio') }}
+                                        </a>
+                                    </div>
+                                </li>
+                                {{-- proyecto --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('PROYECTOS') }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('asesor-externo.index') }}">
+                                            {{ __('Asesor Externo') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('asesor-interno.index') }}">
+                                            {{ __('Asesor Interno') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('periodo.index') }}">
+                                            {{ __('Periodo') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('proyecto.index') }}">
+                                            {{ __('Proyecto') }}
+                                        </a>
+                                    </div>
+                                </li>
+                                {{-- alumno --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('ALUMNOS') }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('carrera.index') }}">
+                                            {{ __('Carrera') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('alumno.index') }}">
+                                            {{ __('Alumno') }}
+                                        </a>
+                                    </div>
+                                </li>
+                                {{-- reportes --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('REPORTES') }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('consulta-indicador.index') }}">
+                                            {{ __('Indicadores') }}
+                                        </a>
+                                        {{-- <hr class="dropdown-divider">
+
+                                    <a class="dropdown-item" href="{{ route('alumno.index') }}">
+                                        {{ __('Alumno') }}
+                                    </a> --}}
+                                    </div>
+                                </li>
+                            @endif
                             {{-- logout --}}
                             <li class=" nav-item dropdown text-uppercase">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -190,7 +267,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 
