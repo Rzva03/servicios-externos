@@ -45,6 +45,7 @@ class ConsultaIndicadorController extends Controller
         $convenioIndicador = DB::table('convenio')
             ->where('idTipoCon', '=', $tipoConvenio)
             ->where('idIndicador', '=', $indicadorRequest)
+            ->where('estatus', '=', 'VIGENTE')
             ->whereBetween('fechaFirma', [$fechaInicio, $fechaFinal])
             ->get();
         $indicadorCount = count($convenioIndicador);

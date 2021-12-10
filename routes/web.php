@@ -150,3 +150,11 @@ Route::resource('consulta-indicador', ConsultaIndicadorController::class);
 // Route::get('/consultas/pdf', [ConsultasController::class, 'getPDF'])->name(
 //     'consulta.getPDF'
 // );
+/* -------------------------------------------------------------------------- */
+/*                           ruta consulta proyecto                           */
+/* -------------------------------------------------------------------------- */
+use App\Http\Controllers\ConsultaProyectoController;
+Route::get('/consulta-proyecto', [
+    ConsultaProyectoController::class,
+    'index',
+])->name('consulta-proyecto.index');

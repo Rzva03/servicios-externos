@@ -132,6 +132,11 @@
                                         <a class="dropdown-item" href="{{ route('consulta-indicador.index') }}">
                                             {{ __('Indicadores') }}
                                         </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('consulta-proyecto.index') }}">
+                                            {{ __('Proyectos') }}
+                                        </a>
+
                                         {{-- <hr class="dropdown-divider">
 
                                     <a class="dropdown-item" href="{{ route('alumno.index') }}">
@@ -251,6 +256,10 @@
                                         <a class="dropdown-item" href="{{ route('consulta-indicador.index') }}">
                                             {{ __('Indicadores') }}
                                         </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('consulta-proyecto.index') }}">
+                                            {{ __('Proyectos') }}
+                                        </a>
                                         {{-- <hr class="dropdown-divider">
 
                                     <a class="dropdown-item" href="{{ route('alumno.index') }}">
@@ -269,7 +278,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

@@ -34,7 +34,6 @@ class ProyectoController extends Controller
             'proyectos' => $proyecto,
             'alumnos' => $alumno,
             'periodos' => $periodo,
-            'periodos' => $periodo,
             'asesoresInternos' => $asesorInterno,
             'asesoresExternos' => $asesorExterno,
             'instancias' => $instancia,
