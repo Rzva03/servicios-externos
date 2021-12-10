@@ -9,7 +9,13 @@ class ConvenioController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except('index', 'create', 'edit');
+        $this->middleware('admin')->except(
+            'index',
+            'create',
+            'edit',
+            'store',
+            'update'
+        );
     }
     /**
      * Display a listing of the resource.

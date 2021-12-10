@@ -94,19 +94,6 @@
                                         </a>
                                     </div>
                                 </li>
-                                {{-- proyecto --}}
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ __('PROYECTOS') }}
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu text-uppercase"
-                                        aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('proyecto.index') }}">
-                                            {{ __('Proyecto') }}
-                                        </a>
-                                    </div>
-                                </li>
                                 {{-- alumno --}}
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -120,6 +107,20 @@
                                         </a>
                                     </div>
                                 </li>
+                                {{-- proyecto --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('PROYECTOS') }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('proyecto.index') }}">
+                                            {{ __('Proyecto') }}
+                                        </a>
+                                    </div>
+                                </li>
+
                                 {{-- reportes --}}
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -196,6 +197,23 @@
                                         </a>
                                     </div>
                                 </li>
+                                {{-- alumno --}}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ __('ALUMNOS') }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                        aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('carrera.index') }}">
+                                            {{ __('Carrera') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('alumno.index') }}">
+                                            {{ __('Alumno') }}
+                                        </a>
+                                    </div>
+                                </li>
                                 {{-- proyecto --}}
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -221,23 +239,7 @@
                                         </a>
                                     </div>
                                 </li>
-                                {{-- alumno --}}
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ __('ALUMNOS') }}
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu text-uppercase"
-                                        aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('carrera.index') }}">
-                                            {{ __('Carrera') }}
-                                        </a>
-                                        <hr class="dropdown-divider">
-                                        <a class="dropdown-item" href="{{ route('alumno.index') }}">
-                                            {{ __('Alumno') }}
-                                        </a>
-                                    </div>
-                                </li>
+
                                 {{-- reportes --}}
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -267,7 +269,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

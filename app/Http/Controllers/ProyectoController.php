@@ -9,7 +9,13 @@ class ProyectoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except('index', 'create', 'show', 'edit');
+        $this->middleware('admin')->except(
+            'index',
+            'create',
+            'store',
+            'edit',
+            'update'
+        );
     }
     /**
      * Display a listing of the resource.

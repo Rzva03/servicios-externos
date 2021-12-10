@@ -54,16 +54,24 @@
                                                 <td> {{ $periodo->periodo }} </td>
                                             @endif
                                         @endforeach
-                                        @foreach ($asesoresInternos as $asesorInterno)
-                                            @if ($asesorInterno->idAsesorI === $proyecto->idAsesorI)
-                                                <td> {{ $asesorInterno->nombre }} </td>
-                                            @endif
-                                        @endforeach
-                                        @foreach ($asesoresExternos as $asesorExterno)
-                                            @if ($asesorExterno->idAsesorE === $proyecto->idAsesorE)
-                                                <td> {{ $asesorExterno->nombre }} </td>
-                                            @endif
-                                        @endforeach
+                                        @if ($proyecto->idAsesorI == null)
+                                            <td> SIN ASESOR INTERNO</td>
+                                        @else
+                                            @foreach ($asesoresInternos as $asesorInterno)
+                                                @if ($asesorInterno->idAsesorI === $proyecto->idAsesorI)
+                                                    <td> {{ $asesorInterno->nombre }} </td>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                        @if ($proyecto->idAsesorE == null)
+                                            <td> SIN ASESOR EXTERNO</td>
+                                        @else
+                                            @foreach ($asesoresExternos as $asesorExterno)
+                                                @if ($asesorExterno->idAsesorE === $proyecto->idAsesorE)
+                                                    <td> {{ $asesorExterno->nombre }} </td>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                         @foreach ($instancias as $instancia)
                                             @if ($instancia->idInstancia === $proyecto->idInstancia)
                                                 <td> {{ $instancia->nombre }} </td>
@@ -73,17 +81,34 @@
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('proyecto.edit', $proyecto->idProyecto) }}'"
-                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></button>
-                                                <form action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
-                                                        <i class="bi bi-eraser"></i></button>
-                                                </form>
+                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                @if (Auth::user()->rol == 0)
+                                                    <form hidden
+                                                        action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
+                                                        method="POST" id="form">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
+                                                            <i class="bi bi-eraser"></i></button>
+                                                    </form>
+                                                    <script>
+                                                        nodo = document.getElementById("form");
+                                                        if (nodo.parentNode) {
+                                                            nodo.parentNode.removeChild(nodo);
+                                                        }
+                                                    </script>
+                                                @else
+                                                    <form action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
+                                                            <i class="bi bi-eraser"></i></button>
+                                                    </form>
+                                                @endif
                                             </div>
-
                                         </td>
                                     </tr>
                                 @endforeach

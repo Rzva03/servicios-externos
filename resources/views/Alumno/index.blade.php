@@ -48,14 +48,31 @@
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('alumno.edit', $alumno->idAlumno) }}'"
                                                     class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                                <form action="{{ route('alumno.destroy', $alumno->idAlumno) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="btn btn-outline-danger"
-                                                        onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">
-                                                        <i class="bi bi-eraser"></i></button>
-                                                </form>
+                                                @if (Auth::user()->rol == 0)
+                                                    <form hidden action="{{ route('alumno.destroy', $alumno->idAlumno) }}"
+                                                        method="POST" id="form">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">
+                                                            <i class="bi bi-eraser"></i></button>
+                                                    </form>
+                                                    <script>
+                                                        nodo = document.getElementById("form");
+                                                        if (nodo.parentNode) {
+                                                            nodo.parentNode.removeChild(nodo);
+                                                        }
+                                                    </script>
+                                                @else
+                                                    <form action="{{ route('alumno.destroy', $alumno->idAlumno) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">
+                                                            <i class="bi bi-eraser"></i></button>
+                                                    </form>
+                                                @endif
                                             </div>
 
                                         </td>
