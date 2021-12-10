@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class ProyectoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->except('index', 'create', 'show', 'edit');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +31,7 @@ class ProyectoController extends Controller
             'periodos' => $periodo,
             'asesoresInternos' => $asesorInterno,
             'asesoresExternos' => $asesorExterno,
-            'instancias' => $instancia
+            'instancias' => $instancia,
         ]);
     }
 
@@ -50,7 +54,7 @@ class ProyectoController extends Controller
             'periodos' => $periodo,
             'asesoresInternos' => $asesorInterno,
             'asesoresExternos' => $asesorExterno,
-            'instancias' => $instancia
+            'instancias' => $instancia,
         ]);
     }
 
@@ -62,15 +66,15 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        $proyecto = DB::table('proyecto')->insert(array(
+        $proyecto = DB::table('proyecto')->insert([
             'nomProyecto' => $request->input('txtNombre'),
             'modalidad' => $request->input('txtModalidad'),
             'idAlumno' => $request->input('txtIdAlumno'),
             'idPeriodo' => $request->input('txtIdPeriodo'),
             'idAsesorI' => $request->input('txtIdAsesorInterno'),
             'idAsesorE' => $request->input('txtIdAsesorExterno'),
-            'idInstancia' => $request->input('txtIdInstancia')
-        ));
+            'idInstancia' => $request->input('txtIdInstancia'),
+        ]);
         return redirect()->route('proyecto.index');
     }
 
@@ -97,14 +101,16 @@ class ProyectoController extends Controller
         $asesorInterno = DB::table('asesorinterno')->get();
         $asesorExterno = DB::table('asesorexterno')->get();
         $instancia = DB::table('instancia')->get();
-        $proyecto = DB::table('proyecto')->where('idProyecto', '=', $id)->first();
+        $proyecto = DB::table('proyecto')
+            ->where('idProyecto', '=', $id)
+            ->first();
         return view('Proyecto.actualizar', [
             'alumnos' => $alumno,
             'periodos' => $periodo,
             'asesoresInternos' => $asesorInterno,
             'asesoresExternos' => $asesorExterno,
             'instancias' => $instancia,
-            'proyectos' => $proyecto
+            'proyectos' => $proyecto,
         ]);
     }
 
@@ -117,16 +123,17 @@ class ProyectoController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $proyecto = DB::table('proyecto')->where('idProyecto', '=', $id)->update(array(
-            'nomProyecto' => $request->input('txtNombre'),
-            'modalidad' => $request->input('txtModalidad'),
-            'idAlumno' => $request->input('txtIdAlumno'),
-            'idPeriodo' => $request->input('txtIdPeriodo'),
-            'idAsesorI' => $request->input('txtIdAsesorInterno'),
-            'idAsesorE' => $request->input('txtIdAsesorExterno'),
-            'idInstancia' => $request->input('txtIdInstancia')
-        ));
+        $proyecto = DB::table('proyecto')
+            ->where('idProyecto', '=', $id)
+            ->update([
+                'nomProyecto' => $request->input('txtNombre'),
+                'modalidad' => $request->input('txtModalidad'),
+                'idAlumno' => $request->input('txtIdAlumno'),
+                'idPeriodo' => $request->input('txtIdPeriodo'),
+                'idAsesorI' => $request->input('txtIdAsesorInterno'),
+                'idAsesorE' => $request->input('txtIdAsesorExterno'),
+                'idInstancia' => $request->input('txtIdInstancia'),
+            ]);
         return redirect()->route('proyecto.index');
     }
 
@@ -138,8 +145,9 @@ class ProyectoController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('proyecto')->where('idProyecto', '=', $id)->delete();
+        DB::table('proyecto')
+            ->where('idProyecto', '=', $id)
+            ->delete();
         return redirect()->route('proyecto.index');
     }
 }

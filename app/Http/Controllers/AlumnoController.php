@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class AlumnoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin')->except('index', 'create', 'show', 'edit');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +22,7 @@ class AlumnoController extends Controller
         $alumno = DB::table('alumno')->get();
         return view('Alumno.index', [
             'alumnos' => $alumno,
-            'carreras' => $carrera
+            'carreras' => $carrera,
         ]);
     }
 
@@ -31,7 +35,7 @@ class AlumnoController extends Controller
     {
         $carrera = DB::table('carrera')->get();
         return view('Alumno.nuevo', [
-            'carreras' => $carrera
+            'carreras' => $carrera,
         ]);
     }
 
@@ -44,12 +48,12 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         // $idCarrera = (int)$request->input('txtIdCarrera');
-        $alumno = DB::table('alumno')->insert(array(
+        $alumno = DB::table('alumno')->insert([
             'nombre' => $request->input('txtNombre'),
             'email' => $request->input('txtEmail'),
             'telefono' => $request->input('txtTelefono'),
-            'idCarrera' => $request->input('txtIdCarrera')
-        ));
+            'idCarrera' => $request->input('txtIdCarrera'),
+        ]);
         return redirect()->route('alumno.index');
     }
 
@@ -72,10 +76,12 @@ class AlumnoController extends Controller
     public function edit($id)
     {
         $carrera = DB::table('carrera')->get();
-        $alumno = DB::table('alumno')->where('idAlumno', '=', $id)->first();
+        $alumno = DB::table('alumno')
+            ->where('idAlumno', '=', $id)
+            ->first();
         return view('Alumno.actualizar', [
             'alumnos' => $alumno,
-            'carreras' => $carrera
+            'carreras' => $carrera,
         ]);
     }
 
@@ -89,12 +95,14 @@ class AlumnoController extends Controller
     public function update(Request $request, $id)
     {
         // $idCarrera = (int)$request->input('txtIdCarrera');
-        $alumno = DB::table('alumno')->where('idAlumno', '=', $id)->update(array(
-            'nombre' => $request->input('txtNombre'),
-            'email' => $request->input('txtEmail'),
-            'telefono' => $request->input('txtTelefono'),
-            'idCarrera' => $request->input('txtIdCarrera')
-        ));
+        $alumno = DB::table('alumno')
+            ->where('idAlumno', '=', $id)
+            ->update([
+                'nombre' => $request->input('txtNombre'),
+                'email' => $request->input('txtEmail'),
+                'telefono' => $request->input('txtTelefono'),
+                'idCarrera' => $request->input('txtIdCarrera'),
+            ]);
         return redirect()->route('alumno.index');
     }
 
@@ -106,8 +114,9 @@ class AlumnoController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('alumno')->where('idAlumno', '=', $id)->delete();
+        DB::table('alumno')
+            ->where('idAlumno', '=', $id)
+            ->delete();
         return redirect()->route('alumno.index');
     }
 }

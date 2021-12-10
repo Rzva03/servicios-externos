@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class AsesorExternoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class AsesorExternoController extends Controller
     {
         $asesorExterno = DB::table('asesorexterno')->get();
         return view('AsesorExterno.index', [
-            'asesoresExternos' => $asesorExterno
+            'asesoresExternos' => $asesorExterno,
         ]);
     }
 
@@ -38,11 +42,11 @@ class AsesorExternoController extends Controller
      */
     public function store(Request $request)
     {
-        $asesorExterno = DB::table('asesorexterno')->insert(array(
+        $asesorExterno = DB::table('asesorexterno')->insert([
             'nombre' => $request->input('txtNombre'),
             'email' => $request->input('txtEmail'),
-            'telefono' => $request->input('txtTelefono')
-        ));
+            'telefono' => $request->input('txtTelefono'),
+        ]);
         return redirect()->route('asesor-externo.index');
     }
 
@@ -64,9 +68,11 @@ class AsesorExternoController extends Controller
      */
     public function edit($id)
     {
-        $asesorExterno = DB::table('asesorexterno')->where('idAsesorE', '=', $id)->first();
+        $asesorExterno = DB::table('asesorexterno')
+            ->where('idAsesorE', '=', $id)
+            ->first();
         return view('AsesorExterno.actualizar', [
-            'asesoresExternos' => $asesorExterno
+            'asesoresExternos' => $asesorExterno,
         ]);
     }
 
@@ -79,11 +85,13 @@ class AsesorExternoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $asesorExterno = DB::table('asesorexterno')->where('idAsesorE', '=', $id)->update(array(
-            'nombre' => $request->input('txtNombre'),
-            'email' => $request->input('txtEmail'),
-            'telefono' => $request->input('txtTelefono')
-        ));
+        $asesorExterno = DB::table('asesorexterno')
+            ->where('idAsesorE', '=', $id)
+            ->update([
+                'nombre' => $request->input('txtNombre'),
+                'email' => $request->input('txtEmail'),
+                'telefono' => $request->input('txtTelefono'),
+            ]);
         return redirect()->route('asesor-externo.index');
     }
 
@@ -95,8 +103,9 @@ class AsesorExternoController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('asesorexterno')->where('idAsesorE', '=', $id)->delete();
+        DB::table('asesorexterno')
+            ->where('idAsesorE', '=', $id)
+            ->delete();
         return redirect()->route('asesor-externo.index');
     }
 }

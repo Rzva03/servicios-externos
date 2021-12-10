@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class AsesorInternoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class AsesorInternoController extends Controller
     {
         $asesorInterno = DB::table('asesorinterno')->get();
         return view('AsesorInterno.index', [
-            'asesoresInternos' => $asesorInterno
+            'asesoresInternos' => $asesorInterno,
         ]);
     }
 
@@ -38,11 +42,11 @@ class AsesorInternoController extends Controller
      */
     public function store(Request $request)
     {
-        $asesorInterno = DB::table('asesorinterno')->insert(array(
+        $asesorInterno = DB::table('asesorinterno')->insert([
             'nombre' => $request->input('txtNombre'),
             'email' => $request->input('txtEmail'),
-            'telefono' => $request->input('txtTelefono')
-        ));
+            'telefono' => $request->input('txtTelefono'),
+        ]);
         return redirect()->route('asesor-interno.index');
     }
 
@@ -64,9 +68,11 @@ class AsesorInternoController extends Controller
      */
     public function edit($id)
     {
-        $asesorInterno = DB::table('asesorinterno')->where('idAsesorI', '=', $id)->first();
+        $asesorInterno = DB::table('asesorinterno')
+            ->where('idAsesorI', '=', $id)
+            ->first();
         return view('AsesorInterno.actualizar', [
-            'asesoresInternos' => $asesorInterno
+            'asesoresInternos' => $asesorInterno,
         ]);
     }
 
@@ -79,11 +85,13 @@ class AsesorInternoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $asesorInterno = DB::table('asesorinterno')->where('idAsesorI', '=', $id)->update(array(
-            'nombre' => $request->input('txtNombre'),
-            'email' => $request->input('txtEmail'),
-            'telefono' => $request->input('txtTelefono')
-        ));
+        $asesorInterno = DB::table('asesorinterno')
+            ->where('idAsesorI', '=', $id)
+            ->update([
+                'nombre' => $request->input('txtNombre'),
+                'email' => $request->input('txtEmail'),
+                'telefono' => $request->input('txtTelefono'),
+            ]);
         return redirect()->route('asesor-interno.index');
     }
 
@@ -95,8 +103,9 @@ class AsesorInternoController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('asesorinterno')->where('idAsesorI', '=', $id)->delete();
+        DB::table('asesorinterno')
+            ->where('idAsesorI', '=', $id)
+            ->delete();
         return redirect()->route('asesor-interno.index');
     }
 }

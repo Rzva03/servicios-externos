@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class PeriodoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class PeriodoController extends Controller
     {
         $periodo = DB::table('periodo')->get();
         return view('Periodo.index', [
-            'periodos' => $periodo
+            'periodos' => $periodo,
         ]);
     }
 
@@ -38,9 +42,9 @@ class PeriodoController extends Controller
      */
     public function store(Request $request)
     {
-        $periodo = DB::table('periodo')->insert(array(
-            'periodo' => $request->input('txtNombre')
-        ));
+        $periodo = DB::table('periodo')->insert([
+            'periodo' => $request->input('txtNombre'),
+        ]);
         return redirect()->route('periodo.index');
     }
 
@@ -62,9 +66,11 @@ class PeriodoController extends Controller
      */
     public function edit($id)
     {
-        $periodo = DB::table('periodo')->where('idPeriodo', '=', $id)->first();
+        $periodo = DB::table('periodo')
+            ->where('idPeriodo', '=', $id)
+            ->first();
         return view('Periodo.actualizar', [
-            'periodos' => $periodo
+            'periodos' => $periodo,
         ]);
     }
 
@@ -77,9 +83,11 @@ class PeriodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $periodo = DB::table('periodo')->where('idPeriodo', '=', $id)->update(array(
-            'periodo' => $request->input('txtNombre')
-        ));
+        $periodo = DB::table('periodo')
+            ->where('idPeriodo', '=', $id)
+            ->update([
+                'periodo' => $request->input('txtNombre'),
+            ]);
         return redirect()->route('periodo.index');
     }
 
@@ -91,8 +99,9 @@ class PeriodoController extends Controller
      */
     public function destroy($id)
     {
-
-        DB::table('periodo')->where('idPeriodo', '=', $id)->delete();
+        DB::table('periodo')
+            ->where('idPeriodo', '=', $id)
+            ->delete();
         return redirect()->route('periodo.index');
     }
 }

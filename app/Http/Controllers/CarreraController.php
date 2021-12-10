@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class CarreraController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +20,7 @@ class CarreraController extends Controller
     {
         $carrera = DB::table('carrera')->get();
         return view('Carrera.index', [
-            'carreras' => $carrera
+            'carreras' => $carrera,
         ]);
     }
 
@@ -38,9 +42,9 @@ class CarreraController extends Controller
      */
     public function store(Request $request)
     {
-        $carrera = DB::table('carrera')->insert(array(
-            'nomCarrera' => $request->input('txtNombre')
-        ));
+        $carrera = DB::table('carrera')->insert([
+            'nomCarrera' => $request->input('txtNombre'),
+        ]);
         return redirect()->route('carrera.index');
     }
 
@@ -62,9 +66,11 @@ class CarreraController extends Controller
      */
     public function edit($id)
     {
-        $carrera = DB::table('carrera')->where('idCarrera', '=', $id)->first();
+        $carrera = DB::table('carrera')
+            ->where('idCarrera', '=', $id)
+            ->first();
         return view('Carrera.actualizar', [
-            'carreras' => $carrera
+            'carreras' => $carrera,
         ]);
     }
 
@@ -77,9 +83,11 @@ class CarreraController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $carrera = DB::table('carrera')->where('idCarrera', '=', $id)->update(array(
-            'nomCarrera' => $request->input('txtNombre')
-        ));
+        $carrera = DB::table('carrera')
+            ->where('idCarrera', '=', $id)
+            ->update([
+                'nomCarrera' => $request->input('txtNombre'),
+            ]);
         return redirect()->route('carrera.index');
     }
 
@@ -91,7 +99,9 @@ class CarreraController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('carrera')->where('idCarrera', '=', $id)->delete();
+        DB::table('carrera')
+            ->where('idCarrera', '=', $id)
+            ->delete();
         return redirect()->route('carrera.index');
     }
 }
