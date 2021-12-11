@@ -31,3 +31,12 @@
 .btn-margin {
     margin-left: 20px;
 }
+.button-login {
+    display: block;
+    width: 100%;
+}
+.imgHeader {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
