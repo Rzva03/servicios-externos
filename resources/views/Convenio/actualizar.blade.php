@@ -25,10 +25,25 @@
                                 <input type="date" class="form-control" name="dateFechaFirma" id="txtFechaF"
                                     value="{{ $convenios->fechaFirma }}" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="form-group">
+                                <label for="sltTipoFecha" class="form-label">TIPO DE FECHA DE VIGENCIA</label>
+                                <select name="sltTipoFecha" id="sltTipoFecha" class="form-select"
+                                    onChange="validarTipoFecha(sltTipoFecha)" required>
+                                    @if ($convenios->vigenciaIndefinida == 'NO')
+                                        <option>ELIJA EL TIPO DE FECHA</option>
+                                        <option selected value="NO">POR FECHA</option>
+                                        <option value="SI">INDEFINIDO</option>
+                                    @else
+                                        <option>ELIJA EL TIPO DE FECHA</option>
+                                        <option value="NO">POR FECHA</option>
+                                        <option selected value="SI">INDEFINIDO</option>
+                                    @endif
+                                </select>
+                            </div>
+                            <div hidden class="mb-3" id="divFechaVigencia">
                                 <label for="dateFechaVigencia" class="form-label">FECHA DE VIGENCIA</label>
                                 <input type="date" class="form-control" name="dateFechaVigencia" id="txtFechaV"
-                                    value="{{ $convenios->fechaVigencia }}" required>
+                                    value="{{ $convenios->fechaVigencia }}">
                             </div>
                             <div class="mb-3">
                                 <label for="txtFolio" class="form-label">URL DEL CONVENIO</label>
@@ -156,7 +171,8 @@
                                     @endforeach
                                 @endforeach
                             @endif
-
+                            <input type="text" name="txtTipoFecha" id="txtTipoFecha"
+                                value="{{ $convenios->vigenciaIndefinida }}">
                             <input hidden type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $idCarreras }}">
                             <input hidden type="text" name="txtCarreras" id="txtCarreras"
                                 value="{{ $convenios->carreras }}">
@@ -186,6 +202,7 @@
         window.onload = function() {
             activarCheckCarreras();
             cargarArregloCarrera();
+            validarTipoFecha(sltTipoFecha);
         };
 
         function activarCheckCarreras() {
@@ -209,6 +226,21 @@
                 console.log(elemento);
             });
             txtCarrera.value = array;
+        }
+        let txtTipoFecha = document.getElementById("txtTipoFecha");
+        let divFechaVigencia = document.getElementById("divFechaVigencia");
+        let fechaVigencia = document.getElementById("dateFechaVigencia");
+
+        function validarTipoFecha(idSelector) {
+            let valorSeleccionado = idSelector.value;
+            if (valorSeleccionado == "SI" || valorSeleccionado == "ELIJA EL TIPO DE FECHA") { //indefinido
+                divFechaVigencia.setAttribute("hidden", "");
+                txtTipoFecha.value = "SI";
+            } else {
+                divFechaVigencia.removeAttribute("hidden");
+                txtTipoFecha.value = "NO";
+            }
+
         }
     </script>
 @endsection

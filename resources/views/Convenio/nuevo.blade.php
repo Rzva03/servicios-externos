@@ -21,14 +21,23 @@
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <div class="mb-3">
-                                <label for="txtFechaF" class="form-label">FECHA DE FIRMA</label>
+                                <label for="dateFechaFirma" class="form-label">FECHA DE FIRMA</label>
                                 <input type="date" class="form-control" name="dateFechaFirma" id="dateFechaFirma"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <div class="mb-3">
-                                <label for="txtFechaV" class="form-label">FECHA DE VIGENCIA</label>
+                            <div class="form-group">
+                                <label for="sltTipoFecha" class="form-label">TIPO DE FECHA DE VIGENCIA</label>
+                                <select name="sltTipoFecha" id="sltTipoFecha" class="form-select"
+                                    onChange="validarTipoFecha(sltTipoFecha)" required>
+                                    <option selected>ELIJA EL TIPO DE FECHA</option>
+                                    <option value="NO">POR FECHA</option>
+                                    <option value="SI">INDEFINIDO</option>
+                                </select>
+                            </div>
+                            <div hidden class="mb-3" id="divFechaVigencia">
+                                <label for="dateFechaVigencia" class="form-label">FECHA DE VIGENCIA</label>
                                 <input type="date" class="form-control" name="dateFechaVigencia" id="dateFechaVigencia"
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
                             <div class="form-group">
                                 <label for="sltEstatus" class="form-label">ESTATUS</label>
@@ -102,6 +111,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <input hidden type="text" name="txtTipoFecha" id="txtTipoFecha">
                             <input hidden type="text" name="txtCarreras" id="txtCarreras">
                             <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus">
@@ -117,4 +127,21 @@
             </div>
         </div>
     </div>
+    <script>
+        let txtTipoFecha = document.getElementById("txtTipoFecha");
+        let divFechaVigencia = document.getElementById("divFechaVigencia");
+        let fechaVigencia = document.getElementById("dateFechaVigencia");
+
+        function validarTipoFecha(idSelector) {
+            let valorSeleccionado = idSelector.value;
+            if (valorSeleccionado == "SI" || valorSeleccionado == "ELIJA EL TIPO DE FECHA") { //indefinido
+                divFechaVigencia.setAttribute("hidden", "");
+                txtTipoFecha.value = "SI";
+            } else {
+                divFechaVigencia.removeAttribute("hidden");
+                txtTipoFecha.value = "NO";
+            }
+
+        }
+    </script>
 @endsection

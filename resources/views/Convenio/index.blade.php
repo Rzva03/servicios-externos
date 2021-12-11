@@ -63,7 +63,11 @@
                                             @endif
                                         @endforeach
                                         <td> {{ $convenio->fechaFirma }} </td>
-                                        <td> {{ $convenio->fechaVigencia }} </td>
+                                        @if ($convenio->vigenciaIndefinida == 'SI')
+                                            <td> INDEFINIDO </td>
+                                        @else
+                                            <td> {{ $convenio->fechaVigencia }} </td>
+                                        @endif
                                         <td> {{ $convenio->estatus }} </td>
                                         @foreach ($tipoConvenios as $tipoConvenio)
                                             @if ($tipoConvenio->idTipoConvenio === $convenio->idTipoCon)

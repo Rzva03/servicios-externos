@@ -80,8 +80,13 @@ class ConvenioController extends Controller
      */
     public function store(Request $request)
     {
+        // $verificarTipoFecha = $request->input('txtTipoFecha');
+        // if($verificarTipoFecha=="SI"){
+
+        // }
         $convenio = DB::table('convenio')->insert([
             'folio' => $request->input('txtFolio'),
+            'vigenciaIndefinida' => $request->input('txtTipoFecha'),
             'fechaFirma' => $request->input('dateFechaFirma'),
             'fechaVigencia' => $request->input('dateFechaVigencia'),
             'estatus' => $request->input('txtEstatus'),
@@ -146,12 +151,18 @@ class ConvenioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validarIndefinido = $request->input('txtTipoFecha');
+        $fechaVigencia = $request->input('dateFechaVigencia');
+        if ($validarIndefinido == 'SI') {
+            $fechaVigencia = null;
+        }
         $convenio = DB::table('convenio')
             ->where('idConvenio', '=', $id)
             ->update([
                 'folio' => $request->input('txtFolio'),
+                'vigenciaIndefinida' => $request->input('txtTipoFecha'),
                 'fechaFirma' => $request->input('dateFechaFirma'),
-                'fechaVigencia' => $request->input('dateFechaVigencia'),
+                'fechaVigencia' => $fechaVigencia,
                 'estatus' => $request->input('txtEstatus'),
                 'urlConvenio' => $request->input('txtUrlConvenio'),
                 'carreras' => $request->input('txtCarreras'),
