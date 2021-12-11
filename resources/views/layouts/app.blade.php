@@ -55,7 +55,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            {{-- @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
@@ -65,7 +65,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                            @endif
+                            @endif --}}
                         @else
                             {{-- instancia --}}
                             @if (Auth::user()->rol == 0)
@@ -136,12 +136,6 @@
                                         <a class="dropdown-item" href="{{ route('consulta-proyecto.index') }}">
                                             {{ __('Proyectos') }}
                                         </a>
-
-                                        {{-- <hr class="dropdown-divider">
-
-                                    <a class="dropdown-item" href="{{ route('alumno.index') }}">
-                                        {{ __('Alumno') }}
-                                    </a> --}}
                                     </div>
                                 </li>
                             @else
@@ -278,7 +272,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 
