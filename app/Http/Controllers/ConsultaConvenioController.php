@@ -42,4 +42,44 @@ class ConsultaConvenioController extends Controller
             'fecha' => $fecha,
         ]);
     }
+    public function convenioVigenteTodos()
+    {
+        /* -------------------------------------------------------------------------- */
+        /*                              obtener fecha CMX                             */
+        /* -------------------------------------------------------------------------- */
+        date_default_timezone_set('America/Mexico_City');
+        $fecha = date('d/m/Y');
+        $instancia = DB::table('instancia')->get();
+        /* -------------------------------------------------------------------------- */
+        /*                         variable para obtener el id                        */
+        /* -------------------------------------------------------------------------- */
+        $convenio = DB::table('convenio')
+            ->where('estatus', '=', 'VIGENTE')
+            ->get();
+        return view('ConsultaConvenio.vigentes', [
+            'instancias' => $instancia,
+            'convenios' => $convenio,
+            'fecha' => $fecha,
+        ]);
+    }
+    public function convenioVencidoTodos()
+    {
+        /* -------------------------------------------------------------------------- */
+        /*                              obtener fecha CMX                             */
+        /* -------------------------------------------------------------------------- */
+        date_default_timezone_set('America/Mexico_City');
+        $fecha = date('d/m/Y');
+        $instancia = DB::table('instancia')->get();
+        /* -------------------------------------------------------------------------- */
+        /*                         variable para obtener el id                        */
+        /* -------------------------------------------------------------------------- */
+        $convenio = DB::table('convenio')
+            ->where('estatus', '=', 'FINALIZADO')
+            ->get();
+        return view('ConsultaConvenio.finalizado', [
+            'instancias' => $instancia,
+            'convenios' => $convenio,
+            'fecha' => $fecha,
+        ]);
+    }
 }

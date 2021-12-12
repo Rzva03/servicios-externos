@@ -124,7 +124,7 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ __('REPORTES') }}
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                    <div class="dropdown-menu dropdown-menu-right text-uppercase"
                                         aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('consulta-indicador.index') }}">
                                             {{ __('Indicadores') }}
@@ -136,6 +136,16 @@
                                         <hr class="dropdown-divider">
                                         <a class="dropdown-item" href="{{ route('consulta-convenio.index') }}">
                                             {{ __('Convenios vigentes') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item"
+                                            href="{{ route('consulta-convenio-vigentes.convenioVigenteTodos') }}">
+                                            {{ __('Todo los convenios vigentes') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item"
+                                            href="{{ route('consulta-convenio-finalizado.convenioVencidoTodos') }}">
+                                            {{ __('Todo los convenios vencidos') }}
                                         </a>
                                     </div>
                                 </li>
@@ -246,7 +256,7 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ __('REPORTES') }}
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu text-uppercase"
+                                    <div class="dropdown-menu dropdown-menu-right text-uppercase"
                                         aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('consulta-indicador.index') }}">
                                             {{ __('Indicadores') }}
@@ -258,6 +268,16 @@
                                         <hr class="dropdown-divider">
                                         <a class="dropdown-item" href="{{ route('consulta-convenio.index') }}">
                                             {{ __('Convenios vigentes') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item"
+                                            href="{{ route('consulta-convenio-vigentes.convenioVigenteTodos') }}">
+                                            {{ __('Todo los convenios vigentes') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item"
+                                            href="{{ route('consulta-convenio-finalizado.convenioVencidoTodos') }}">
+                                            {{ __('Todo los convenios vencidos') }}
                                         </a>
                                         {{-- <hr class="dropdown-divider">
 
@@ -277,7 +297,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

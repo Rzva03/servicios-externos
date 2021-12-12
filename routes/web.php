@@ -173,3 +173,17 @@ Route::get('/consulta-convenio', [
     ConsultaConvenioController::class,
     'index',
 ])->name('consulta-convenio.index');
+/* -------------------------------------------------------------------------- */
+/*                    ruta consulta convenio vigentes todos                   */
+/* -------------------------------------------------------------------------- */
+Route::get('/consulta-convenio-vigentes', [
+    ConsultaConvenioController::class,
+    'convenioVigenteTodos',
+])->name('consulta-convenio-vigentes.convenioVigenteTodos');
+/* -------------------------------------------------------------------------- */
+/*                     ruta consulta convenio finalizados                     */
+/* -------------------------------------------------------------------------- */
+Route::get('/consulta-convenio-finalizado', [
+    ConsultaConvenioController::class,
+    'convenioVencidoTodos',
+])->name('consulta-convenio-finalizado.convenioVencidoTodos');
