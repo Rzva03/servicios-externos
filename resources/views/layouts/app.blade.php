@@ -18,6 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -36,9 +37,6 @@
         </div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand text-uppercase" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -74,8 +72,7 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ __('INSTANCIAS') }}
                                     </a>
-                                    <div class="dropdown-menu dropdown-menu text-uppercase"
-                                        aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu dropdown-menu text-uppercase" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('instancia.index') }}">
                                             {{ __('Instancia') }}
                                         </a>
@@ -280,7 +277,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

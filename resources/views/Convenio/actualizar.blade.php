@@ -171,7 +171,7 @@
                                     @endforeach
                                 @endforeach
                             @endif
-                            <input type="text" name="txtTipoFecha" id="txtTipoFecha"
+                            <input hidden type="text" name="txtTipoFecha" id="txtTipoFecha"
                                 value="{{ $convenios->vigenciaIndefinida }}">
                             <input hidden type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $idCarreras }}">
                             <input hidden type="text" name="txtCarreras" id="txtCarreras"

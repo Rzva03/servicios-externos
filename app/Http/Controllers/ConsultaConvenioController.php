@@ -13,7 +13,7 @@ class ConsultaConvenioController extends Controller
         /*                              obtener fecha CMX                             */
         /* -------------------------------------------------------------------------- */
         date_default_timezone_set('America/Mexico_City');
-        $fecha = date('d/m/y');
+        $fecha = date('d/m/Y');
         $instancia = DB::table('instancia')->get();
         /* -------------------------------------------------------------------------- */
         /*                obtener el id de los convenios que sean marco               */

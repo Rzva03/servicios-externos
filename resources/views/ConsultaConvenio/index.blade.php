@@ -13,10 +13,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <h3 class="text-center">CALCULAR INDICADORES POR TRIMESTRE</h3>
-                        <div class="div-flex">
-                            <p>ACUERDOS DE COLABORACÍON ACADÉMICA, CIENTÍFICA, TECNOLÓGICA AL {{ $fecha }}</p>
-                        </div>
+                        <h3 class="text-center">ACUERDOS DE COLABORACÍON ACADÉMICA, CIENTÍFICA, TECNOLÓGICA AL
+                            {{ $fecha }}</h3>
                         <table class="table">
                             <thead>
                                 <tr>
