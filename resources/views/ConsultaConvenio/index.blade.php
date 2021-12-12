@@ -15,6 +15,12 @@
                         @endif
                         <h3 class="text-center">ACUERDOS DE COLABORACÍON ACADÉMICA, CIENTÍFICA, TECNOLÓGICA AL
                             {{ $fecha }}</h3>
+                        @if (count($convenios) > 0)
+                            @php
+                                echo '<p class="text-center"> TOTAL DE CONVENIOS: ' . count($convenios) . '</p>';
+                            @endphp
+                            {{-- <p>count($convenios)</p> --}}
+                        @endif
                         <table class="table">
                             <thead>
                                 <tr>

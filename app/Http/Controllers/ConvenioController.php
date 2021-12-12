@@ -61,7 +61,9 @@ class ConvenioController extends Controller
     public function create()
     {
         $carrera = DB::table('carrera')->get();
-        $indicador = DB::table('indicador')->get();
+        $indicador = DB::table('indicador')
+            ->where('descripcion', 'like', '%FIRMAR%')
+            ->get();
         $tipoConvenio = DB::table('tipoconvenio')->get();
         $instancia = DB::table('instancia')->get();
         return view('Convenio.nuevo', [
@@ -80,10 +82,6 @@ class ConvenioController extends Controller
      */
     public function store(Request $request)
     {
-        // $verificarTipoFecha = $request->input('txtTipoFecha');
-        // if($verificarTipoFecha=="SI"){
-
-        // }
         $convenio = DB::table('convenio')->insert([
             'folio' => $request->input('txtFolio'),
             'vigenciaIndefinida' => $request->input('txtTipoFecha'),

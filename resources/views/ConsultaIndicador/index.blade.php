@@ -123,7 +123,8 @@
                             <input hidden value="{{ $fechaFinal }}" type="text" name="txtFechaFinal" id="txtFechaFinal"
                                 required>
                             <div class="div-center">
-                                <button type="submit" class="btn btn-primary"><i class="bi bi-calculator"></i>
+                                <button id="btnCalcular" type="submit" class="btn btn-primary"><i
+                                        class="bi bi-calculator"></i>
                                     CALCULAR</button>
                             </div>
                         </form>

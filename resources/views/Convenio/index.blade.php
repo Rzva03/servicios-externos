@@ -40,6 +40,12 @@
                                 class="btn btn-primary btn-margin"><i class="bi bi-plus-square-dotted"></i>
                                 NUEVO</button>
                         </div>
+                        @if (count($convenios) > 0)
+                            @php
+                                echo '<p class="text-center"> TOTAL DE CONVENIOS: ' . count($convenios) . '</p>';
+                            @endphp
+                            {{-- <p>count($convenios)</p> --}}
+                        @endif
                         <table class="table" id="tabla">
                             <thead>
                                 <tr>

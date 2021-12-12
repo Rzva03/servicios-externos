@@ -32,7 +32,7 @@
             Swal.fire({
                 position: 'center',
                 icon: 'success',
-                title: '¡ESTATUS ACTUALIZADO CON ÉXITO!',
+                title: '¡ESTATUS DE CONVENIOS ACTUALIZADOS!',
                 showConfirmButton: false,
                 timer: 1500
             })
