@@ -27,7 +27,6 @@ class ConsultaIndicadorController extends Controller
         /* -------------------------------------------------------------------------- */
         /*                         variable para obtener el id                        */
         /* -------------------------------------------------------------------------- */
-        $idTipoConvenio = null;
         foreach ($tipoConvenios as $tipoConvenio) {
             $tipoConvenio = $tipoConvenio->idTipoConvenio;
         }

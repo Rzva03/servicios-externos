@@ -165,3 +165,11 @@ Route::get('/consulta-proyecto', [
     ConsultaProyectoController::class,
     'index',
 ])->name('consulta-proyecto.index');
+/* -------------------------------------------------------------------------- */
+/*                      ruta consulta convenios vigentes                      */
+/* -------------------------------------------------------------------------- */
+use App\Http\Controllers\ConsultaConvenioController;
+Route::get('/consulta-convenio', [
+    ConsultaConvenioController::class,
+    'index',
+])->name('consulta-convenio.index');
