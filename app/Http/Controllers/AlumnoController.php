@@ -9,13 +9,7 @@ class AlumnoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(
-            'index',
-            'create',
-            'store',
-            'edit',
-            'update'
-        );
+        $this->middleware('admin')->except('index', 'create', 'store');
     }
     /**
      * Display a listing of the resource.

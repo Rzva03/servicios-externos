@@ -9,14 +9,7 @@ class InstanciaController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('admin')->except(
-            'index',
-            'create',
-            'show',
-            'store',
-            'edit',
-            'update'
-        );
+        $this->middleware('admin')->except('index', 'create', 'show', 'store');
     }
     /**
      * Display a listing of the resource.
