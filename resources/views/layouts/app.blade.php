@@ -55,7 +55,7 @@
                         @guest
                             {{-- @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
                                 </li>
                             @endif
 
@@ -279,11 +279,6 @@
                                             href="{{ route('consulta-convenio-finalizado.convenioVencidoTodos') }}">
                                             {{ __('Todo los convenios vencidos') }}
                                         </a>
-                                        {{-- <hr class="dropdown-divider">
-
-                                    <a class="dropdown-item" href="{{ route('alumno.index') }}">
-                                        {{ __('Alumno') }}
-                                    </a> --}}
                                     </div>
                                 </li>
                             @endif
@@ -297,7 +292,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 
