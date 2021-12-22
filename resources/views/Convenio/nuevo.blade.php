@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('convenio.store') }}">
+                        <form method="POST" action="{{ route('convenio.store') }}" class="needs-validation" novalidate>
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtFolio" class="form-label">FOLIO</label>
@@ -29,7 +29,7 @@
                                 <label for="sltTipoFecha" class="form-label">TIPO DE FECHA DE VIGENCIA</label>
                                 <select name="sltTipoFecha" id="sltTipoFecha" class="form-select"
                                     onChange="validarTipoFecha(sltTipoFecha)" required>
-                                    <option selected>ELIJA EL TIPO DE FECHA</option>
+                                    <option selected disabled value="">ELIJA EL TIPO DE FECHA</option>
                                     <option value="NO">POR FECHA</option>
                                     <option value="SI">INDEFINIDO</option>
                                 </select>
@@ -43,7 +43,7 @@
                                 <label for="sltEstatus" class="form-label">ESTATUS</label>
                                 <select name="sltEstatus" id="sltEstatus" class="form-select"
                                     onChange="agregarID(sltEstatus, txtEstatus)" required>
-                                    <option selected>ELIJA EL ESTATUS</option>
+                                    <option selected disabled value="">ELIJA EL ESTATUS</option>
                                     <option value="VIGENTE">VIGENTE</option>
                                     <option value="FINALIZADO">FINALIZADO</option>
                                     <option value="CANCELADO">CANCELADO</option>
@@ -58,7 +58,7 @@
                                 <label for="sltTipo" class="form-label">TIPO DE CONVENIO</label>
                                 <select name="sltTipo" id="sltTipo" class="form-select"
                                     onChange="agregarID(sltTipo, txtIdTipoCon)" required>
-                                    <option selected>ELIJA EL TIPO DE CONVENIO</option>
+                                    <option selected disabled value="">ELIJA EL TIPO DE CONVENIO</option>
                                     @foreach ($tiposConvenios as $tipocon)
                                         <option value="{{ $tipocon->idTipoConvenio }}">{{ $tipocon->nomTipoConvenio }}
                                         </option>
@@ -69,7 +69,7 @@
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
                                 <select name="sltInstancia" id="sltInstancia" class="form-select"
                                     onChange="agregarID(sltInstancia, txtIdInstancia)" required>
-                                    <option selected>ELIJA LA INSTANCIA</option>
+                                    <option selected disabled value="">ELIJA LA INSTANCIA</option>
                                     @foreach ($instancias as $instancia)
                                         <option value="{{ $instancia->idInstancia }}">{{ $instancia->nombre }}</option>
                                     @endforeach
@@ -79,7 +79,7 @@
                                 <label for="sltIndicador" class="form-label">INDICADOR</label>
                                 <select name="sltIndicador" id="sltIndicador" class="form-select"
                                     onChange="agregarID(sltIndicador, txtIdIndicador)" required>
-                                    <option selected>ELIJA EL INDICADOR</option>
+                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
                                     @foreach ($indicadores as $indicador)
                                         <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
                                         </option>
@@ -119,8 +119,10 @@
                             <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
                             <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
                                 value=" {{ Auth::user()->id }}">
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
-                                AGREGAR</button>
+                            <div class="row g-3">
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                    AGREGAR</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -134,11 +136,13 @@
 
         function validarTipoFecha(idSelector) {
             let valorSeleccionado = idSelector.value;
-            if (valorSeleccionado == "SI" || valorSeleccionado == "ELIJA EL TIPO DE FECHA") { //indefinido
-                divFechaVigencia.setAttribute("hidden", "");
+            if (valorSeleccionado != "SI") { //indefinido
+                fechaVigencia.required = true;
+                divFechaVigencia.removeAttribute("hidden");
                 txtTipoFecha.value = "SI";
             } else {
-                divFechaVigencia.removeAttribute("hidden");
+                divFechaVigencia.setAttribute("hidden", "");
+                fechaVigencia.removeAttribute("required");
                 txtTipoFecha.value = "NO";
             }
 

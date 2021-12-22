@@ -1,8 +1,20 @@
 /* -------------------------------------------------------------------------- */
 /*                               Custom Scripts                               */
 
-// const { indexOf } = require("lodash");
-
+/* -------------------------------------------------------------------------- */
+/*                                  Variables                                 */
+/* -------------------------------------------------------------------------- */
+//variables que se ocuparan para el siguiente metodo del año
+let fechaInicial;
+let fechaFinal;
+let valorTrimestre;
+let valorAnio;
+let inputInicial = document.getElementById("txtFechaInicial");
+let inputFinal = document.getElementById("txtFechaFinal");
+let array = [];
+let arregloAux = [];
+let txtCarrera = document.getElementById("txtCarreras");
+let nodo, nodo2;
 /* -------------------------------------------------------------------------- */
 function agregarID(idSelector, idInput) {
     let valorSeleccionado = idSelector.value;
@@ -11,6 +23,7 @@ function agregarID(idSelector, idInput) {
 /* -------------------------------------------------------------------------- */
 /*                                  busqueda                                  */
 /* -------------------------------------------------------------------------- */
+
 function busquedaTabla() {
     // Declare variables
     let input, filter, table, tr, td, i;
@@ -38,13 +51,6 @@ function busquedaTabla() {
 /* -------------------------------------------------------------------------- */
 /*           conversion de fecha para el reporte de los indicadores           */
 /* -------------------------------------------------------------------------- */
-//variables que se ocuparan para el siguiente metodo del año
-let fechaInicial;
-let fechaFinal;
-let valorTrimestre;
-let valorAnio;
-let inputInicial = document.getElementById("txtFechaInicial");
-let inputFinal = document.getElementById("txtFechaFinal");
 function convertirFechaPorTrimestre(idSelectorTrimestre) {
     valorTrimestre = idSelectorTrimestre.value; //se obtiene lo que se selecciona del seclt
     switch (valorTrimestre) {
@@ -93,8 +99,6 @@ function convertirFechaPorAnio(idSelectorAnio, idInputFI, idInputFC) {
 /* -------------------------------------------------------------------------- */
 /*                 Obtener carreras que pertenecen al convenio                */
 /* -------------------------------------------------------------------------- */
-let array = [];
-let txtCarrera = document.getElementById("txtCarreras");
 function crearArregloCarrera(idCheck) {
     if (idCheck.checked) {
         array.push(idCheck.value);
@@ -107,7 +111,7 @@ function crearArregloCarrera(idCheck) {
 /* -------------------------------------------------------------------------- */
 /*                         Obtener todas las carreras                         */
 /* -------------------------------------------------------------------------- */
-let arregloAux = [];
+
 let cbTodasCarreras = document.getElementById("flexCheckChecked_todasCarreras");
 function obtenerTodasCarreras(arregloCarrera) {
     if (cbTodasCarreras.checked) {
@@ -119,4 +123,21 @@ function obtenerTodasCarreras(arregloCarrera) {
     }
     txtCarrera.value = arregloAux;
 }
-let nodo;
+(function () {
+    "use strict";
+    let forms = document.querySelectorAll(".needs-validation");
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+            "submit",
+            function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+
+                form.classList.add("was-validated");
+            },
+            false
+        );
+    });
+})();

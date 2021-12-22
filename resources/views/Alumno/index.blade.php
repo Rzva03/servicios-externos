@@ -29,7 +29,9 @@
                                     <th scope="col">EMAIL</th>
                                     <th scope="col">TELÉFONO</th>
                                     <th scope="col">CARRERA</th>
-                                    <th scope="col">ACCIONES</th>
+                                    @if (Auth::user()->rol == 1)
+                                        <th scope="col">ACCIONES</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,39 +45,43 @@
                                                 <td> {{ $carrera->nomCarrera }} </td>
                                             @endif
                                         @endforeach
-                                        <td>
-                                            <div style="display: flex; justify-content: start;">
-                                                <button style="margin-right: 1rem"
-                                                    onclick="location.href='{{ route('alumno.edit', $alumno->idAlumno) }}'"
-                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                                @if (Auth::user()->rol == 0)
-                                                    <form hidden action="{{ route('alumno.destroy', $alumno->idAlumno) }}"
-                                                        method="POST" id="form">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger"
-                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">
-                                                            <i class="bi bi-eraser"></i></button>
-                                                    </form>
-                                                    <script>
-                                                        nodo = document.getElementById("form");
-                                                        if (nodo.parentNode) {
-                                                            nodo.parentNode.removeChild(nodo);
-                                                        }
-                                                    </script>
-                                                @else
-                                                    <form action="{{ route('alumno.destroy', $alumno->idAlumno) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger"
-                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">
-                                                            <i class="bi bi-eraser"></i></button>
-                                                    </form>
-                                                @endif
-                                            </div>
+                                        @if (Auth::user()->rol == 1)
+                                            <td>
+                                                <div style="display: flex; justify-content: start;">
+                                                    <button style="margin-right: 1rem"
+                                                        onclick="location.href='{{ route('alumno.edit', $alumno->idAlumno) }}'"
+                                                        class="btn btn-outline-primary"><i
+                                                            class="bi bi-pencil"></i></button>
+                                                    @if (Auth::user()->rol == 0)
+                                                        <form hidden
+                                                            action="{{ route('alumno.destroy', $alumno->idAlumno) }}"
+                                                            method="POST" id="form">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-outline-danger"
+                                                                onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">
+                                                                <i class="bi bi-eraser"></i></button>
+                                                        </form>
+                                                        <script>
+                                                            nodo = document.getElementById("form");
+                                                            if (nodo.parentNode) {
+                                                                nodo.parentNode.removeChild(nodo);
+                                                            }
+                                                        </script>
+                                                    @else
+                                                        <form action="{{ route('alumno.destroy', $alumno->idAlumno) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-outline-danger"
+                                                                onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $alumno->nombre }}?') ">
+                                                                <i class="bi bi-eraser"></i></button>
+                                                        </form>
+                                                    @endif
+                                                </div>
 
-                                        </td>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -13,7 +13,8 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('alumno.store') }}" id="form" name="form">
+                        <form method="POST" action="{{ route('alumno.store') }}" id="form" name="form"
+                            class="needs-validation" novalidate>
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">NOMBRE</label>
@@ -34,7 +35,7 @@
                                 <label for="sltCarrera" class="form-label">CARRERA</label>
                                 <select name="sltCarrera" class="form-select"
                                     onChange="agregarID(sltCarrera, txtIdCarrera)" required>
-                                    <option selected>ELIJA LA CARRERA</option>
+                                    <option selected disabled value="">ELIJA LA CARRERA</option>
                                     @foreach ($carreras as $carrera)
                                         <option value="{{ $carrera->idCarrera }}">
                                             {{ $carrera->nomCarrera }}
@@ -44,8 +45,11 @@
                             </div>
                             <input hidden type="text" name="txtIdCarrera" id="txtIdCarrera">
                             <br>
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
-                                AGREGAR</button>
+                            <div class="row g-3">
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                    AGREGAR</button>
+                            </div>
+
                         </form>
                     </div>
                 </div>

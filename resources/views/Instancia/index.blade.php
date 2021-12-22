@@ -48,15 +48,19 @@
                                         @else
                                             <td> {{ $instancia->telefono }} </td>
                                         @endif
+                                        {{-- @if (Auth::user()->rol == 1) --}}
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
                                                     onclick="location.href='{{ route('instancia.show', $instancia->idInstancia) }}'"
                                                     class="btn btn-outline-secondary"><i class="bi bi-info-circle"></i>
                                                 </button>
-                                                <button style="margin-right: 1rem"
-                                                    onclick="location.href='{{ route('instancia.edit', $instancia->idInstancia) }}'"
-                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
+                                                @if (Auth::user()->rol == 1)
+                                                    <button style="margin-right: 1rem"
+                                                        onclick="location.href='{{ route('instancia.edit', $instancia->idInstancia) }}'"
+                                                        class="btn btn-outline-primary"><i
+                                                            class="bi bi-pencil"></i></button>
+                                                @endif
                                                 @if (Auth::user()->rol == 0)
                                                     <form hidden
                                                         action="{{ route('instancia.destroy', $instancia->idInstancia) }}"
@@ -86,6 +90,7 @@
                                                 @endif
                                             </div>
                                         </td>
+                                        {{-- @endif --}}
                                     </tr>
                                 @endforeach
                             </tbody>

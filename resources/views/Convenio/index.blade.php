@@ -55,7 +55,9 @@
                                     <th scope="col">FECHA DE VIGENCIA</th>
                                     <th scope="col">ESTATUS</th>
                                     <th scope="col">TIPO DE CONVENIO</th>
-                                    <th scope="col">ACCIONES</th>
+                                    @if (Auth::user()->rol == 1)
+                                        <th scope="col">ACCIONES</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -80,41 +82,52 @@
                                                 <td> {{ $tipoConvenio->nomTipoConvenio }} </td>
                                             @endif
                                         @endforeach
-                                        <td>
-                                            <div style="display: flex; justify-content: start;">
-                                                <button style="margin-right: 1rem"
-                                                    onclick="location.href='{{ route('convenio.edit', $convenio->idConvenio) }}'"
-                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i>
-                                                </button>
-                                                @if (Auth::user()->rol == 0)
-                                                    <form hidden
-                                                        action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
-                                                        method="POST" id="form">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger"
-                                                            onclick="return confirm( '¿ESTÁ SEGURO DE BORRAR {{ $convenio->folio }}?') "><i
-                                                                class="bi bi-eraser"></i></button>
-                                                    </form>
-                                                    <script>
-                                                        nodo = document.getElementById("form");
-                                                        if (nodo.parentNode) {
-                                                            nodo.parentNode.removeChild(nodo);
-                                                        }
-                                                    </script>
-                                                @else
-                                                    <form action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger"
-                                                            onclick="return confirm( '¿ESTÁ SEGURO DE BORRAR {{ $convenio->folio }}?') "><i
-                                                                class="bi bi-eraser"></i></button>
-                                                    </form>
-                                                @endif
-                                            </div>
-
-                                        </td>
+                                        @if (Auth::user()->rol == 1)
+                                            <td>
+                                                <div style="display: flex; justify-content: start;">
+                                                    @if (Auth::user()->rol == 0)
+                                                        <button hidden style="margin-right: 1rem"
+                                                            onclick="location.href='{{ route('convenio.edit', $convenio->idConvenio) }}'"
+                                                            class="btn btn-outline-primary"><i class="bi bi-pencil"
+                                                                id="btnEditar"></i>
+                                                        </button>
+                                                        <form hidden
+                                                            action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
+                                                            method="POST" id="form">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-outline-danger"
+                                                                onclick="return confirm( '¿ESTÁ SEGURO DE BORRAR {{ $convenio->folio }}?') "><i
+                                                                    class="bi bi-eraser"></i></button>
+                                                        </form>
+                                                        <script>
+                                                            nodo = document.getElementById("form");
+                                                            if (nodo.parentNode) {
+                                                                nodo.parentNode.removeChild(nodo);
+                                                            }
+                                                            nodo2 = document.getElementById("btnEditar");
+                                                            if (nodo2.parentNode) {
+                                                                nodo2.parentNode.removeChild(nodo2);
+                                                            }
+                                                        </script>
+                                                    @else
+                                                        <button style="margin-right: 1rem"
+                                                            onclick="location.href='{{ route('convenio.edit', $convenio->idConvenio) }}'"
+                                                            class="btn btn-outline-primary"><i class="bi bi-pencil"></i>
+                                                        </button>
+                                                        <form
+                                                            action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-outline-danger"
+                                                                onclick="return confirm( '¿ESTÁ SEGURO DE BORRAR {{ $convenio->folio }}?') "><i
+                                                                    class="bi bi-eraser"></i></button>
+                                                        </form>
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

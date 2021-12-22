@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('instancia.store') }}">
+                        <form method="POST" action="{{ route('instancia.store') }}" class="needs-validation" novalidate>
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtResponsable" class="form-label">NOMBRE</label>
@@ -39,7 +39,7 @@
                                 <label for="sltGiro" class="form-label">GIRO</label>
                                 <select name="sltGiro" class="form-select" onChange="agregarID(sltGiro, txtIdGiro)"
                                     required>
-                                    <option selected>ELIJA EL GIRO</option>
+                                    <option selected disabled value="">ELIJA EL GIRO</option>
                                     @foreach ($giros as $giro)
                                         <option value="{{ $giro->idGiro }}">{{ $giro->nomGiro }}</option>
                                     @endforeach
@@ -49,7 +49,7 @@
                                 <label for="sltSector" class="form-label">SECTOR</label>
                                 <select name="sltSector" class="form-select" onChange="agregarID(sltSector, txtIdSector)"
                                     required>
-                                    <option selected>ELIJA EL SECTOR</option>
+                                    <option selected disabled value="">ELIJA EL SECTOR</option>
                                     @foreach ($sectores as $sector)
                                         <option value="{{ $sector->idSector }}">{{ $sector->nomSector }}</option>
                                     @endforeach
@@ -59,7 +59,7 @@
                                 <label for="sltTipoSector" class="form-label">TIPO DE SECTOR</label>
                                 <select name="sltTipoSector" class="form-select"
                                     onChange="agregarID(sltTipoSector, txtIdTipoSec)" required>
-                                    <option selected>ELIJA EL TIPO DE SECTOR</option>
+                                    <option selected disabled value="">ELIJA EL TIPO DE SECTOR</option>
                                     @foreach ($tipoSectores as $tipoSector)
                                         <option value="{{ $tipoSector->idTipoSec }}">{{ $tipoSector->nomTipoSec }}
                                         </option>
@@ -70,7 +70,7 @@
                                 <label for="sltTamanio" class="form-label">TAMAÑO</label>
                                 <select name="sltTamanio" class="form-select"
                                     onChange="agregarID(sltTamanio, txtIdTamanio)" required>
-                                    <option selected>ELIJA EL TAMAÑO</option>
+                                    <option selected disabled value="">ELIJA EL TAMAÑO</option>
                                     @foreach ($tamanios as $tamanio)
                                         <option value="{{ $tamanio->idTamanio }}">{{ $tamanio->nomTamanio }}</option>
                                     @endforeach
@@ -80,7 +80,7 @@
                                 <label for="sltAreaConocimiento" class="form-label">ÁREA DE CONOCIMIENTO</label>
                                 <select name="sltAreaConocimiento" class=" form-select"
                                     onChange="agregarID(sltAreaConocimiento, txtIdAreaC)" required>
-                                    <option selected>ELIJA EL ÁREA DE CONOCIMIENTO</option>
+                                    <option selected disabled value="">ELIJA EL ÁREA DE CONOCIMIENTO</option>
                                     @foreach ($areaConocimientos as $areaConocimiento)
                                         <option value="{{ $areaConocimiento->idAreaC }}">
                                             {{ $areaConocimiento->nomAreaC }}</option>
@@ -91,7 +91,7 @@
                                 <label for="sltAlcance" class="form-label">ALCANCE</label>
                                 <select name="sltAlcance" class="form-select"
                                     onChange="agregarID(sltAlcance, txtIdAlcance)" required>
-                                    <option selected>ELIJA EL ALCANCE</option>
+                                    <option selected disabled value="">ELIJA EL ALCANCE</option>
                                     @foreach ($alcances as $alcance)
                                         <option value="{{ $alcance->idAlcance }}">{{ $alcance->nombre }}</option>
                                     @endforeach
@@ -103,8 +103,11 @@
                             <input type="text" hidden name="txtIdTamanio" id="txtIdTamanio">
                             <input type="text" hidden name="txtIdAreaC" id="txtIdAreaC">
                             <input type="text" hidden name="txtIdAlcance" id="txtIdAlcance">
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
-                                AGREGAR</button>
+                            <br>
+                            <div class="row g-3">
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                    AGREGAR</button>
+                            </div>
                         </form>
                     </div>
                 </div>

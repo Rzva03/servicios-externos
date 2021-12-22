@@ -32,7 +32,9 @@
                                     <th scope="col">ASESOR INTERNO</th>
                                     <th scope="col">ASESOR EXTERNO</th>
                                     <th scope="col">INSTANCIA</th>
-                                    <th scope="col">ACCIONES</th>
+                                    @if (Auth::user()->rol == 1)
+                                        <th scope="col">ACCIONES</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -77,39 +79,43 @@
                                                 <td> {{ $instancia->nombre }} </td>
                                             @endif
                                         @endforeach
-                                        <td>
-                                            <div style="display: flex; justify-content: start;">
-                                                <button style="margin-right: 1rem"
-                                                    onclick="location.href='{{ route('proyecto.edit', $proyecto->idProyecto) }}'"
-                                                    class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                                @if (Auth::user()->rol == 0)
-                                                    <form hidden
-                                                        action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
-                                                        method="POST" id="form">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger"
-                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
-                                                            <i class="bi bi-eraser"></i></button>
-                                                    </form>
-                                                    <script>
-                                                        nodo = document.getElementById("form");
-                                                        if (nodo.parentNode) {
-                                                            nodo.parentNode.removeChild(nodo);
-                                                        }
-                                                    </script>
-                                                @else
-                                                    <form action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger"
-                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
-                                                            <i class="bi bi-eraser"></i></button>
-                                                    </form>
-                                                @endif
-                                            </div>
-                                        </td>
+                                        @if (Auth::user()->rol == 1)
+                                            <td>
+                                                <div style="display: flex; justify-content: start;">
+                                                    <button style="margin-right: 1rem"
+                                                        onclick="location.href='{{ route('proyecto.edit', $proyecto->idProyecto) }}'"
+                                                        class="btn btn-outline-primary"><i
+                                                            class="bi bi-pencil"></i></button>
+                                                    @if (Auth::user()->rol == 0)
+                                                        <form hidden
+                                                            action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
+                                                            method="POST" id="form">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-outline-danger"
+                                                                onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
+                                                                <i class="bi bi-eraser"></i></button>
+                                                        </form>
+                                                        <script>
+                                                            nodo = document.getElementById("form");
+                                                            if (nodo.parentNode) {
+                                                                nodo.parentNode.removeChild(nodo);
+                                                            }
+                                                        </script>
+                                                    @else
+                                                        <form
+                                                            action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('delete')
+                                                            <button type="submit" class="btn btn-outline-danger"
+                                                                onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
+                                                                <i class="bi bi-eraser"></i></button>
+                                                        </form>
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
