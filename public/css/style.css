@@ -56,4 +56,8 @@
     #app img {
         width: 100%;
     }
+    .div-flex,
+    .form-flex {
+        flex-direction: column;
+    }
 }
