@@ -13,7 +13,8 @@
                             </div>
                         @endif
                         <h3 class="text-center">CALCULAR INDICADORES POR TRIMESTRE</h3>
-                        <form action="{{ route('consulta-indicador.index') }}" method="GET">
+                        <form action="{{ route('consulta-indicador.index') }}" method="GET" class="needs-validation"
+                            novalidate>
                             <div class="div-flex">
                                 <div class="form-group col-4">
                                     <label for="sltTrimestre" class="form-label">TRIMESTRE</label>
@@ -61,7 +62,7 @@
                                         @default
                                             <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
-                                                <option selected>ELIJA EL TRIMESTRE</option>
+                                                <option selected disabled value="">ELIJA EL TRIMESTRE</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
@@ -77,7 +78,7 @@
                                         @php
                                             $anio = date('Y');
                                             $anios = null;
-                                            echo '<option selected>ELIJA EL AÑO</option>';
+                                            echo '<option selected disabled value="">ELIJA EL AÑO</option>';
                                             for ($i = 2017; $i <= $anio; $i++) {
                                                 if ($anioRequest == $i) {
                                                     echo '<option selected value=' . $i . '>' . $i . '</option>';
@@ -95,7 +96,7 @@
                                     <label for="sltIndicador" class="form-label">INDICADOR</label>
                                     <select name="sltIndicador" id="sltIndicador" class="form-select" required>
                                         @if ($indicadorRequest === null)
-                                            <option selected>ELIJA EL INDICADOR</option>
+                                            <option selected disabled value="">ELIJA EL INDICADOR</option>
                                             @foreach ($indicadores as $indicador)
                                                 <option value="{{ $indicador->idIndicador }}">
                                                     {{ $indicador->descripcion }}

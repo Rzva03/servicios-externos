@@ -134,17 +134,17 @@
                                         </a>
                                         <hr class="dropdown-divider">
                                         <a class="dropdown-item" href="{{ route('consulta-convenio.index') }}">
-                                            {{ __('Convenios vigentes') }}
+                                            {{ __('Convenios marcos vigentes') }}
                                         </a>
                                         <hr class="dropdown-divider">
                                         <a class="dropdown-item"
                                             href="{{ route('consulta-convenio-vigentes.convenioVigenteTodos') }}">
-                                            {{ __('Todo los convenios vigentes') }}
+                                            {{ __('Todos los convenios vigentes') }}
                                         </a>
                                         <hr class="dropdown-divider">
                                         <a class="dropdown-item"
                                             href="{{ route('consulta-convenio-finalizado.convenioVencidoTodos') }}">
-                                            {{ __('Todo los convenios vencidos') }}
+                                            {{ __('Todos los convenios vencidos') }}
                                         </a>
                                     </div>
                                 </li>
@@ -266,17 +266,17 @@
                                         </a>
                                         <hr class="dropdown-divider">
                                         <a class="dropdown-item" href="{{ route('consulta-convenio.index') }}">
-                                            {{ __('Convenios vigentes') }}
+                                            {{ __('Convenios marcos vigentes') }}
                                         </a>
                                         <hr class="dropdown-divider">
                                         <a class="dropdown-item"
                                             href="{{ route('consulta-convenio-vigentes.convenioVigenteTodos') }}">
-                                            {{ __('Todo los convenios vigentes') }}
+                                            {{ __('Todos los convenios vigentes') }}
                                         </a>
                                         <hr class="dropdown-divider">
                                         <a class="dropdown-item"
                                             href="{{ route('consulta-convenio-finalizado.convenioVencidoTodos') }}">
-                                            {{ __('Todo los convenios vencidos') }}
+                                            {{ __('Todos los convenios vencidos') }}
                                         </a>
                                     </div>
                                 </li>
@@ -291,7 +291,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

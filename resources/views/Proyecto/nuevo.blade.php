@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('proyecto.store') }}">
+                        <form method="POST" action="{{ route('proyecto.store') }}" class="needs-validation" novalidate>
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">NOMBRE DEL PROYECTO</label>
@@ -24,7 +24,7 @@
                                 <label for="sltModalidad" class="form-label">MODALIDAD</label>
                                 <select name="sltModalidad" id="sltModalidad" class="form-select"
                                     onChange="agregarID(sltModalidad, txtModalidad)" required>
-                                    <option selected>ELIJA LA MODALIDAD</option>
+                                    <option selected disabled value="">ELIJA LA MODALIDAD</option>
                                     <option value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
                                     <option value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
                                 </select>
@@ -33,7 +33,7 @@
                                 <label for="sltPeriodo" class="form-label">PERIODO</label>
                                 <select name="sltPeriodo" class="form-select"
                                     onChange="agregarID(sltPeriodo, txtIdPeriodo)" required>
-                                    <option selected>ELIJA EL PERIODO</option>
+                                    <option selected disabled value="">ELIJA EL PERIODO</option>
                                     @foreach ($periodos as $periodo)
                                         <option value="{{ $periodo->idPeriodo }}">{{ $periodo->periodo }}</option>
                                     @endforeach
@@ -43,7 +43,7 @@
                                 <label for="sltAlumno" class="form-label">ALUMNO</label>
                                 <select name="sltAlumno" class="form-select" onChange="agregarID(sltAlumno, txtIdAlumno)"
                                     required>
-                                    <option selected>ELIJA ALUMNO</option>
+                                    <option selected disabled value="">ELIJA ALUMNO</option>
                                     @foreach ($alumnos as $alumno)
                                         <option value="{{ $alumno->idAlumno }}">{{ $alumno->nombre }}</option>
                                     @endforeach
@@ -53,7 +53,7 @@
                                 <label for="sltAsesorI" class="form-label">ASESOR INTERNO</label>
                                 <select name="sltAsesorI" class="form-select"
                                     onChange="agregarID(sltAsesorI, txtIdAsesorInterno)" required>
-                                    <option selected>ELIJA ASESOR INTERNO</option>
+                                    <option selected disabled value="">ELIJA ASESOR INTERNO</option>
                                     @foreach ($asesoresInternos as $asesorInterno)
                                         <option value="{{ $asesorInterno->idAsesorI }}">{{ $asesorInterno->nombre }}
                                         </option>
@@ -64,7 +64,7 @@
                                 <label for="sltAsesorE" class="form-label">ASESOR EXTERNO</label>
                                 <select name="sltAsesorE" class="form-select"
                                     onChange="agregarID(sltAsesorE, txtIdAsesorExterno)" required>
-                                    <option selected>ELIJA ASESOR EXTERNO</option>
+                                    <option selected disabled value="">ELIJA ASESOR EXTERNO</option>
                                     @foreach ($asesoresExternos as $asesorExterno)
                                         <option value="{{ $asesorExterno->idAsesorE }}">{{ $asesorExterno->nombre }}
                                         </option>
@@ -75,7 +75,7 @@
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
                                 <select name="sltInstancia" class="form-select"
                                     onChange="agregarID(sltInstancia, txtIdInstancia)" required>
-                                    <option selected>ELIJA INSTANCIA</option>
+                                    <option selected disabled value="">ELIJA INSTANCIA</option>
                                     @foreach ($instancias as $instancia)
                                         <option value="{{ $instancia->idInstancia }}">{{ $instancia->nombre }}
                                         </option>
@@ -88,8 +88,10 @@
                             <input hidden type="text" name="txtIdAsesorInterno" id="txtIdAsesorInterno">
                             <input hidden type="text" name="txtIdAsesorExterno" id="txtIdAsesorExterno">
                             <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
-                                AGREGAR</button>
+                            <div class="row g-3">
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                    AGREGAR</button>
+                            </div>
                         </form>
                     </div>
                 </div>

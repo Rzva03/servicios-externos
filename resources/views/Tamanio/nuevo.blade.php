@@ -13,15 +13,17 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form method="POST" action="{{ route('tamanio.store') }}">
+                        <form method="POST" action="{{ route('tamanio.store') }}" class="needs-validation" novalidate>
                             {{ csrf_field() }}
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">TAMAÑO</label>
                                 <input type="text" class="form-control" name="txtNombre" id="txtNombre"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
-                                AGREGAR</button>
+                            <div class="row g-3">
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-plus-square-dotted"></i>
+                                    AGREGAR</button>
+                            </div>
                         </form>
                     </div>
                 </div>
