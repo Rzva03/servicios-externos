@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="card-body"
-                        style="height: 60vh; background-image: url(https://plataforma.voaxaca.tecnm.mx/pluginfile.php/1/theme_moove/sliderimage1/1629958313/banner_itvo.jpg); background-size: cover"
+                        style=" background-image: url({{ asset('img/bg-juarez.jpg') }}); background-size: cover"
                         @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
