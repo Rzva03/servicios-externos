@@ -9,7 +9,7 @@
                         <h2>{{ __('PLATAFORMA DE LA OFICINA SERVICIOS EXTERNOS') }}</h2>
                     </div>
 
-                    <div class="card-body"
+                    <div class="card-body" id="body-main"
                         style=" background-image: url({{ asset('img/bg-juarez.jpg') }}); background-size: cover"
                         @if (session('status'))
                         <div class="alert alert-success" role="alert">
