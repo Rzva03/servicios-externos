@@ -124,4 +124,28 @@
             </div>
         </div>
     </div>
+    <script>
+        /* -------------------------------------------------------------------------- */
+        /*                  Habilitar y Deshabilitar email y telefono                 */
+        /* -------------------------------------------------------------------------- */
+        inlineCheckboxEmail.addEventListener("click", (e) => {
+            if (inlineCheckboxEmail.checked) {
+                txtEmail.required = true;
+                divEmail.removeAttribute("hidden");
+            } else {
+                divEmail.setAttribute("hidden", "");
+                txtEmail.removeAttribute("required");
+            }
+        });
+        inlineCheckboxTel.addEventListener("click", (e) => {
+            if (inlineCheckboxTel.checked) {
+                //indefinido
+                txtTelefono.required = true;
+                divTelefono.removeAttribute("hidden");
+            } else {
+                divTelefono.setAttribute("hidden", "");
+                txtTelefono.removeAttribute("required");
+            }
+        });
+    </script>
 @endsection

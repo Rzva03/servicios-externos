@@ -57,10 +57,21 @@
                             <div class="form-group">
                                 <label for="sltTipo" class="form-label">TIPO DE CONVENIO</label>
                                 <select name="sltTipo" id="sltTipo" class="form-select"
-                                    onChange="agregarID(sltTipo, txtIdTipoCon)" required>
+                                    onChange="agregarIdOcultarMarco(sltTipo, txtIdTipoCon)" required>
                                     <option selected disabled value="">ELIJA EL TIPO DE CONVENIO</option>
                                     @foreach ($tiposConvenios as $tipocon)
                                         <option value="{{ $tipocon->idTipoConvenio }}">{{ $tipocon->nomTipoConvenio }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group" id="divIndicador" hidden>
+                                <label for="sltIndicador" class="form-label">INDICADOR</label>
+                                <select name="sltIndicador" id="sltIndicador" class="form-select"
+                                    onChange="agregarId(sltIndicador, txtIdIndicador)">
+                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
+                                    @foreach ($indicadores as $indicador)
+                                        <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -72,17 +83,6 @@
                                     <option selected disabled value="">ELIJA LA INSTANCIA</option>
                                     @foreach ($instancias as $instancia)
                                         <option value="{{ $instancia->idInstancia }}">{{ $instancia->nombre }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="sltIndicador" class="form-label">INDICADOR</label>
-                                <select name="sltIndicador" id="sltIndicador" class="form-select"
-                                    onChange="agregarID(sltIndicador, txtIdIndicador)" required>
-                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
-                                    @foreach ($indicadores as $indicador)
-                                        <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
-                                        </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -146,6 +146,20 @@
                 txtTipoFecha.value = "NO";
             }
 
+        }
+
+        function agregarIdOcultarMarco(idSelector, idInput) {
+            let valorSeleccionado = idSelector.value;
+            idInput.value = valorSeleccionado;
+            if (valorSeleccionado === "3") {
+                let divIndicador = document.getElementById("divIndicador"),
+                    sltIndicador = document.getElementById("sltIndicador");
+                sltIndicador.required = true;
+                divIndicador.removeAttribute("hidden");
+            } else {
+                sltIndicador.required = false;
+                divIndicador.setAttribute("hidden", "");
+            }
         }
     </script>
 @endsection

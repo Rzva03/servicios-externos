@@ -15,6 +15,12 @@ let array = [];
 let arregloAux = [];
 let txtCarrera = document.getElementById("txtCarreras");
 let nodo, nodo2;
+let inlineCheckboxEmail = document.getElementById("inlineCheckboxEmail"),
+    inlineCheckboxTel = document.getElementById("inlineCheckboxTel"),
+    divEmail = document.getElementById("divEmail"),
+    divTelefono = document.getElementById("divTelefono"),
+    txtEmail = document.getElementById("txtEmail"),
+    txtTelefono = document.getElementById("txtTelefono");
 /* -------------------------------------------------------------------------- */
 function agregarID(idSelector, idInput) {
     let valorSeleccionado = idSelector.value;
@@ -141,32 +147,3 @@ function obtenerTodasCarreras(arregloCarrera) {
         );
     });
 })();
-
-/* -------------------------------------------------------------------------- */
-/*                  Habilitar y Deshabilitar email y telefono                 */
-/* -------------------------------------------------------------------------- */
-let inlineCheckboxEmail = document.getElementById("inlineCheckboxEmail"),
-    inlineCheckboxTel = document.getElementById("inlineCheckboxTel"),
-    divEmail = document.getElementById("divEmail"),
-    divTelefono = document.getElementById("divTelefono"),
-    txtEmail = document.getElementById("txtEmail"),
-    txtTelefono = document.getElementById("txtTelefono");
-inlineCheckboxEmail.addEventListener("click", (e) => {
-    if (inlineCheckboxEmail.checked) {
-        txtEmail.required = true;
-        divEmail.removeAttribute("hidden");
-    } else {
-        divEmail.setAttribute("hidden", "");
-        txtEmail.removeAttribute("required");
-    }
-});
-inlineCheckboxTel.addEventListener("click", (e) => {
-    if (inlineCheckboxTel.checked) {
-        //indefinido
-        txtTelefono.required = true;
-        divTelefono.removeAttribute("hidden");
-    } else {
-        divTelefono.setAttribute("hidden", "");
-        txtTelefono.removeAttribute("required");
-    }
-});
