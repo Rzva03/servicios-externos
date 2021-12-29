@@ -185,10 +185,19 @@
                             <button onclick="location.href='{{ route('instancia.index') }}'" class="btn btn-primary"><i
                                     class="bi bi-arrow-left"></i> REGRESAR</button>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        (function() {
+            if (!txtEmail.value) {
+                txtEmail.value = "SIN EMAIL";
+            }
+            if (!txtTelefono.value) {
+                txtTelefono.value = "SIN TELÉFONO";
+            }
+        })();
+    </script>
 @endsection
