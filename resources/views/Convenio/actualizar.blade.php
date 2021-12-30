@@ -174,7 +174,7 @@
                             <input hidden type="text" name="txtTipoFecha" id="txtTipoFecha"
                                 value="{{ $convenios->vigenciaIndefinida }}">
                             <input hidden type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $idCarreras }}">
-                            <input hidden type="text" name="txtCarreras" id="txtCarreras"
+                            <input htrueidden type="text" name="txtCarreras" id="txtCarreras"
                                 value="{{ $convenios->carreras }}">
                             <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                 value="{{ $convenios->idConvenio }}">
@@ -197,7 +197,7 @@
     </div>
     <script>
         /* -------------------------------------------------------------------------- */
-        /*            Activar la casilla de las carreras de acuerdo a la BD           */
+        /* Activar la casilla de las carreras de acuerdo a la BD */
         /* -------------------------------------------------------------------------- */
         window.onload = function() {
             activarCheckCarreras();

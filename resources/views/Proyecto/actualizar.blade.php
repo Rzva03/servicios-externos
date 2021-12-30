@@ -22,20 +22,6 @@
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <div class="form-group">
-                                <label for="sltModalidad" class="form-label">MODALIDAD</label>
-                                <select name="sltModalidad" id="sltModalidad" class="form-select"
-                                    onChange="agregarID(sltModalidad, txtModalidad)" required>
-                                    <option>ELIJA LA MODALIDAD</option>
-                                    @if ($proyectos->modalidad === 'SERVICIO SOCIAL')
-                                        <option selected value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
-                                        <option value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
-                                    @else
-                                        <option value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
-                                        <option selected value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
-                                    @endif
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label for="sltPeriodo" class="form-label">PERIODO</label>
                                 <select name="sltPeriodo" class="form-select"
                                     onChange="agregarID(sltPeriodo, txtIdPeriodo)" required>
@@ -66,40 +52,22 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="sltAsesorI" class="form-label">ASESOR INTERNO</label>
-                                <select name="sltAsesorI" class="form-select"
-                                    onChange="agregarID(sltAsesorI, txtIdAsesorInterno)" required>
-                                    <option>ELIJA ASESOR INTERNO</option>
-                                    @foreach ($asesoresInternos as $asesorInterno)
-                                        @if ($asesorInterno->idAsesorI === $proyectos->idAsesorI)
-                                            <option selected value="{{ $asesorInterno->idAsesorI }}">
-                                                {{ $asesorInterno->nombre }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $asesorInterno->idAsesorI }}">
-                                                {{ $asesorInterno->nombre }}
-                                            </option>
-                                        @endif
-                                    @endforeach
+                                <label for="sltModalidad" class="form-label">MODALIDAD</label>
+                                <select name="sltModalidad" id="sltModalidad" class="form-select"
+                                    onChange="agregarIDYOcultarAsesores(sltModalidad, txtModalidad)" required>
+                                    <option>ELIJA LA MODALIDAD</option>
+                                    @if ($proyectos->modalidad === 'SERVICIO SOCIAL')
+                                        <option selected value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
+                                        <option value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
+                                    @else
+                                        <option value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
+                                        <option selected value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
+                                    @endif
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="sltAsesorE" class="form-label">ASESOR EXTERNO</label>
-                                <select name="sltAsesorE" class="form-select"
-                                    onChange="agregarID(sltAsesorE, txtIdAsesorExterno)" required>
-                                    <option>ELIJA ASESOR EXTERNO</option>
-                                    @foreach ($asesoresExternos as $asesorExterno)
-                                        @if ($asesorExterno->idAsesorE === $proyectos->idAsesorE)
-                                            <option selected value="{{ $asesorExterno->idAsesorE }}">
-                                                {{ $asesorExterno->nombre }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $asesorExterno->idAsesorE }}">
-                                                {{ $asesorExterno->nombre }}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                </select>
+                            <div class="form-group" id="divAsesorInterno">
+                            </div>
+                            <div class="form-group" id="divAsesorExterno">
                             </div>
                             <div class="form-group">
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
@@ -136,4 +104,84 @@
             </div>
         </div>
     </div>
+    <script>
+        let divAsesorInterno = document.getElementById("divAsesorInterno"),
+            divAsesorExterno = document.getElementById("divAsesorExterno"),
+            asesorInterno,
+            asesorExterno;
+        (function() {
+            let valorSeleccionado = document.getElementById("txtModalidad").value;
+            if (valorSeleccionado === "RESIDENCIA PROFESIONAL") {
+                asesorInterno = `<label for="sltAsesorI" class="form-label">ASESOR INTERNO</label>
+                                <select name="sltAsesorI" class="form-select"
+                                    onChange="agregarID(sltAsesorI, txtIdAsesorInterno)" required>
+                                    <option>ELIJA ASESOR INTERNO</option>
+                                    @foreach ($asesoresInternos as $asesorInterno)
+                                        @if ($asesorInterno->idAsesorI === $proyectos->idAsesorI)
+                                            <option selected value="{{ $asesorInterno->idAsesorI }}">
+                                                {{ $asesorInterno->nombre }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $asesorInterno->idAsesorI }}">
+                                                {{ $asesorInterno->nombre }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>`;
+                asesorExterno = `<label for="sltAsesorE" class="form-label">ASESOR EXTERNO</label>
+                                <select name="sltAsesorE" class="form-select"
+                                    onChange="agregarID(sltAsesorE, txtIdAsesorExterno)" required>
+                                    <option>ELIJA ASESOR EXTERNO</option>
+                                    @foreach ($asesoresExternos as $asesorExterno)
+                                        @if ($asesorExterno->idAsesorE === $proyectos->idAsesorE)
+                                            <option selected value="{{ $asesorExterno->idAsesorE }}">
+                                                {{ $asesorExterno->nombre }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $asesorExterno->idAsesorE }}">
+                                                {{ $asesorExterno->nombre }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>`;
+            }
+            if (valorSeleccionado === "SERVICIO SOCIAL") {
+                asesorInterno = "";
+                asesorExterno = "";
+            }
+            divAsesorInterno.innerHTML = asesorInterno;
+            divAsesorExterno.innerHTML = asesorExterno;
+        })();
+
+        function agregarIDYOcultarAsesores(idSelector, idInput) {
+            let valorSeleccionado = idSelector.value;
+            idInput.value = valorSeleccionado;
+            if (valorSeleccionado === "RESIDENCIA PROFESIONAL") {
+                asesorInterno = `<label for="sltAsesorI" class="form-label">ASESOR INTERNO</label>
+                                    <select name="sltAsesorI" class="form-select"
+                                    onChange="agregarID(sltAsesorI, txtIdAsesorInterno)" required>
+                                    <option selected disabled value="">ELIJA ASESOR INTERNO</option>
+                                    @foreach ($asesoresInternos as $asesorInterno)
+                                        <option value="{{ $asesorInterno->idAsesorI }}">{{ $asesorInterno->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>`;
+                asesorExterno = ` <label for="sltAsesorE" class="form-label">ASESOR EXTERNO</label>
+                                <select name="sltAsesorE" class="form-select"
+                                    onChange="agregarID(sltAsesorE, txtIdAsesorExterno)" required>
+                                    <option selected disabled value="">ELIJA ASESOR EXTERNO</option>
+                                    @foreach ($asesoresExternos as $asesorExterno)
+                                        <option value="{{ $asesorExterno->idAsesorE }}">{{ $asesorExterno->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>`;
+            }
+            if (valorSeleccionado === "SERVICIO SOCIAL") {
+                asesorInterno = "";
+                asesorExterno = "";
+            }
+            divAsesorInterno.innerHTML = asesorInterno;
+            divAsesorExterno.innerHTML = asesorExterno;
+        }
+    </script>
 @endsection

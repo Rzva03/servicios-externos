@@ -21,15 +21,6 @@
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
                             <div class="form-group">
-                                <label for="sltModalidad" class="form-label">MODALIDAD</label>
-                                <select name="sltModalidad" id="sltModalidad" class="form-select"
-                                    onChange="agregarID(sltModalidad, txtModalidad)" required>
-                                    <option selected disabled value="">ELIJA LA MODALIDAD</option>
-                                    <option value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
-                                    <option value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
                                 <label for="sltPeriodo" class="form-label">PERIODO</label>
                                 <select name="sltPeriodo" class="form-select"
                                     onChange="agregarID(sltPeriodo, txtIdPeriodo)" required>
@@ -50,26 +41,17 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="sltAsesorI" class="form-label">ASESOR INTERNO</label>
-                                <select name="sltAsesorI" class="form-select"
-                                    onChange="agregarID(sltAsesorI, txtIdAsesorInterno)" required>
-                                    <option selected disabled value="">ELIJA ASESOR INTERNO</option>
-                                    @foreach ($asesoresInternos as $asesorInterno)
-                                        <option value="{{ $asesorInterno->idAsesorI }}">{{ $asesorInterno->nombre }}
-                                        </option>
-                                    @endforeach
+                                <label for="sltModalidad" class="form-label">MODALIDAD</label>
+                                <select name="sltModalidad" id="sltModalidad" class="form-select"
+                                    onChange="agregarIDYOcultarAsesores(sltModalidad, txtModalidad)" required>
+                                    <option selected disabled value="">ELIJA LA MODALIDAD</option>
+                                    <option value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
+                                    <option value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label for="sltAsesorE" class="form-label">ASESOR EXTERNO</label>
-                                <select name="sltAsesorE" class="form-select"
-                                    onChange="agregarID(sltAsesorE, txtIdAsesorExterno)" required>
-                                    <option selected disabled value="">ELIJA ASESOR EXTERNO</option>
-                                    @foreach ($asesoresExternos as $asesorExterno)
-                                        <option value="{{ $asesorExterno->idAsesorE }}">{{ $asesorExterno->nombre }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                            <div class="form-group" id="divAsesorInterno">
+                            </div>
+                            <div class="form-group" id="divAsesorExterno">
                             </div>
                             <div class="form-group">
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
@@ -98,4 +80,40 @@
             </div>
         </div>
     </div>
+    <script>
+        function agregarIDYOcultarAsesores(idSelector, idInput) {
+            let divAsesorInterno = document.getElementById("divAsesorInterno"),
+                divAsesorExterno = document.getElementById("divAsesorExterno"),
+                asesorInterno,
+                asesorExterno;
+            let valorSeleccionado = idSelector.value;
+            idInput.value = valorSeleccionado;
+            if (valorSeleccionado === "RESIDENCIA PROFESIONAL") {
+                asesorInterno = `<label for="sltAsesorI" class="form-label">ASESOR INTERNO</label>
+                                    <select name="sltAsesorI" class="form-select"
+                                    onChange="agregarID(sltAsesorI, txtIdAsesorInterno)" required>
+                                    <option selected disabled value="">ELIJA ASESOR INTERNO</option>
+                                    @foreach ($asesoresInternos as $asesorInterno)
+                                        <option value="{{ $asesorInterno->idAsesorI }}">{{ $asesorInterno->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>`;
+                asesorExterno = ` <label for="sltAsesorE" class="form-label">ASESOR EXTERNO</label>
+                                <select name="sltAsesorE" class="form-select"
+                                    onChange="agregarID(sltAsesorE, txtIdAsesorExterno)" required>
+                                    <option selected disabled value="">ELIJA ASESOR EXTERNO</option>
+                                    @foreach ($asesoresExternos as $asesorExterno)
+                                        <option value="{{ $asesorExterno->idAsesorE }}">{{ $asesorExterno->nombre }}
+                                        </option>
+                                    @endforeach
+                                </select>`;
+            }
+            if (valorSeleccionado === "SERVICIO SOCIAL") {
+                asesorInterno = "";
+                asesorExterno = "";
+            }
+            divAsesorInterno.innerHTML = asesorInterno;
+            divAsesorExterno.innerHTML = asesorExterno;
+        }
+    </script>
 @endsection
