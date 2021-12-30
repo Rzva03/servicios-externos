@@ -76,7 +76,7 @@
                             <div class="form-group">
                                 <label for="sltTipo" class="form-label">TIPO DE CONVENIO</label>
                                 <select name="sltTipo" id="sltTipo" class="form-select"
-                                    onChange="agregarID(sltTipo, txtIdTipoCon)" required>
+                                    onChange="agregarIdOcultarMarco(sltTipo, txtIdTipoCon)" required>
                                     <option>ELIJA EL TIPO DE CONVENIO</option>
                                     @foreach ($tipoConvenios as $tipocon)
                                         @if ($tipocon->idTipoConvenio === $convenios->idTipoCon)
@@ -91,6 +91,8 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group" id="divIndicador">
+                            </div>
                             <div class="form-group">
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
                                 <select name="sltInstancia" id="sltInstancia" class="form-select"
@@ -103,24 +105,6 @@
                                             </option>
                                         @else
                                             <option value="{{ $instancia->idInstancia }}">{{ $instancia->nombre }}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="sltIndicador" class="form-label">INDICADOR</label>
-                                <select name="sltIndicador" id="sltIndicador" class="form-select"
-                                    onChange="agregarID(sltIndicador, txtIdIndicador)" required>
-                                    <option>ELIJA EL INDICADOR</option>
-                                    @foreach ($indicadores as $indicador)
-                                        @if ($indicador->idIndicador === $convenios->idIndicador)
-                                            <option selected value="{{ $indicador->idIndicador }}">
-                                                {{ $indicador->descripcion }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $indicador->idIndicador }}">
-                                                {{ $indicador->descripcion }}
                                             </option>
                                         @endif
                                     @endforeach
@@ -174,7 +158,7 @@
                             <input hidden type="text" name="txtTipoFecha" id="txtTipoFecha"
                                 value="{{ $convenios->vigenciaIndefinida }}">
                             <input hidden type="text" name="txtCarreraObj" id="txtCarreraObj" value="{{ $idCarreras }}">
-                            <input htrueidden type="text" name="txtCarreras" id="txtCarreras"
+                            <input hidden type="text" name="txtCarreras" id="txtCarreras"
                                 value="{{ $convenios->carreras }}">
                             <input hidden type="text" name="txtIdConvenio" id="txtIdConvenio"
                                 value="{{ $convenios->idConvenio }}">
@@ -209,7 +193,6 @@
             let idCarreras = document.getElementById("txtCarreras").value.split(",");
             let objCarreras = document.getElementById("txtCarreraObj").value.split(",");
             if (objCarreras.length == idCarreras.length) {
-                console.log("TODAS LAS CARRERAS");
                 let cbTodasCarreras = document.getElementById(
                     "flexCheckChecked_todasCarreras"
                 );
@@ -223,7 +206,6 @@
             let arregloCarrera = txtCarrera.value.split(",");
             arregloCarrera.forEach((elemento) => {
                 array.push(elemento);
-                console.log(elemento);
             });
             txtCarrera.value = array;
         }
@@ -240,7 +222,52 @@
                 divFechaVigencia.removeAttribute("hidden");
                 txtTipoFecha.value = "NO";
             }
+        }
+        (function() {
+            let txtIndicador = document.getElementById("txtIdIndicador");
+            if (txtIndicador.value) {
+                let divIndicador = document.getElementById("divIndicador"),
+                    indicador = "";
+                indicador = `<label for="sltIndicador" class="form-label">INDICADOR</label>
+                                <select name="sltIndicador" id="sltIndicador" class="form-select"
+                                    onChange="agregarId(sltIndicador, txtIdIndicador)" required>
+                                    <option>ELIJA EL INDICADOR</option>
+                                    @foreach ($indicadores as $indicador)
+                                        @if ($indicador->idIndicador === $convenios->idIndicador)
+                                            <option selected value="{{ $indicador->idIndicador }}">
+                                                {{ $indicador->descripcion }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $indicador->idIndicador }}">
+                                                {{ $indicador->descripcion }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>`;
+                divIndicador.innerHTML = indicador;
+            }
+        })();
 
+        function agregarIdOcultarMarco(idSelector, idInput) {
+            let valorSeleccionado = idSelector.value;
+            idInput.value = valorSeleccionado;
+            let divIndicador = document.getElementById("divIndicador"),
+                indicador = "";
+            if (valorSeleccionado === "3") {
+                indicador = `<label for="sltIndicador" class="form-label">INDICADOR</label>
+                                <select name="sltIndicador" id="sltIndicador" class="form-select"
+                                    onChange="agregarID(sltIndicador, txtIdIndicador)">
+                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
+                                    @foreach ($indicadores as $indicador)
+                                        <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
+                                        </option>
+                                    @endforeach
+                                </select>`;
+            } else {
+                indicador = "";
+                document.getElementById("txtIdIndicador").value = "";
+            }
+            divIndicador.innerHTML = indicador;
         }
     </script>
 @endsection

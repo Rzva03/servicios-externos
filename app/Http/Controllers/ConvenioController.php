@@ -76,11 +76,16 @@ class ConvenioController extends Controller
      */
     public function store(Request $request)
     {
+        $validarIndefinido = $request->input('txtTipoFecha');
+        $fechaVigencia = $request->input('dateFechaVigencia');
+        if ($validarIndefinido == 'SI') {
+            $fechaVigencia = null;
+        }
         $convenio = DB::table('convenio')->insert([
             'folio' => $request->input('txtFolio'),
             'vigenciaIndefinida' => $request->input('txtTipoFecha'),
             'fechaFirma' => $request->input('dateFechaFirma'),
-            'fechaVigencia' => $request->input('dateFechaVigencia'),
+            'fechaVigencia' => $fechaVigencia,
             'estatus' => $request->input('txtEstatus'),
             'urlConvenio' => $request->input('txtUrlConvenio'),
             'carreras' => $request->input('txtCarreras'),
@@ -113,7 +118,9 @@ class ConvenioController extends Controller
         $idCarreraBD = DB::table('carrera')
             ->select('idCarrera')
             ->get();
-        $indicador = DB::table('indicador')->get();
+        $indicador = DB::table('indicador')
+            ->where('descripcion', 'like', '%FIRMAR%')
+            ->get();
         $carrera = DB::table('carrera')->get();
         $tipoConvenio = DB::table('tipoconvenio')->get();
         $instancia = DB::table('instancia')->get();

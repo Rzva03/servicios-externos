@@ -65,16 +65,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group" id="divIndicador" hidden>
-                                <label for="sltIndicador" class="form-label">INDICADOR</label>
-                                <select name="sltIndicador" id="sltIndicador" class="form-select"
-                                    onChange="agregarId(sltIndicador, txtIdIndicador)">
-                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
-                                    @foreach ($indicadores as $indicador)
-                                        <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                            <div class="form-group" id="divIndicador">
                             </div>
                             <div class="form-group">
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
@@ -111,7 +102,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input hidden type="text" name="txtTipoFecha" id="txtTipoFecha">
+                            <input type="text" name="txtTipoFecha" id="txtTipoFecha">
                             <input hidden type="text" name="txtCarreras" id="txtCarreras">
                             <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus">
@@ -136,13 +127,19 @@
 
         function validarTipoFecha(idSelector) {
             let valorSeleccionado = idSelector.value;
-            if (valorSeleccionado != "SI") { //indefinido
-                fechaVigencia.required = true;
-                divFechaVigencia.removeAttribute("hidden");
-                txtTipoFecha.value = "SI";
-            } else {
+            if (valorSeleccionado == "SI") { //indefinido
+                // fechaVigencia.required = true;
+                // divFechaVigencia.removeAttribute("hidden");
+                // txtTipoFecha.value = "SI";
                 divFechaVigencia.setAttribute("hidden", "");
                 fechaVigencia.removeAttribute("required");
+                txtTipoFecha.value = "SI";
+            } else {
+                // divFechaVigencia.setAttribute("hidden", "");
+                // fechaVigencia.removeAttribute("required");
+                // txtTipoFecha.value = "NO";
+                fechaVigencia.required = true;
+                divFechaVigencia.removeAttribute("hidden");
                 txtTipoFecha.value = "NO";
             }
 
@@ -151,15 +148,22 @@
         function agregarIdOcultarMarco(idSelector, idInput) {
             let valorSeleccionado = idSelector.value;
             idInput.value = valorSeleccionado;
+            let divIndicador = document.getElementById("divIndicador"),
+                indicador = "";
             if (valorSeleccionado === "3") {
-                let divIndicador = document.getElementById("divIndicador"),
-                    sltIndicador = document.getElementById("sltIndicador");
-                sltIndicador.required = true;
-                divIndicador.removeAttribute("hidden");
+                indicador = `<label for="sltIndicador" class="form-label">INDICADOR</label>
+                                <select name="sltIndicador" id="sltIndicador" class="form-select"
+                                    onChange="agregarID(sltIndicador, txtIdIndicador)">
+                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
+                                    @foreach ($indicadores as $indicador)
+                                        <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
+                                        </option>
+                                    @endforeach
+                                </select>`;
             } else {
-                sltIndicador.required = false;
-                divIndicador.setAttribute("hidden", "");
+                indicador = "";
             }
+            divIndicador.innerHTML = indicador;
         }
     </script>
 @endsection
