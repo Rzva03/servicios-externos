@@ -35,15 +35,9 @@
                                 <label class="form-check-label text-uppercase" for="inlineCheckboxTel">¿Tiene el
                                     teléfono?</label>
                             </div>
-                            <div class="mb-3" hidden id="divEmail">
-                                <label for="txtEmail" class="form-label">EMAIL</label>
-                                <input type="email" class="form-control" name="txtEmail" id="txtEmail"
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
+                            <div class="mb-3" id="divEmail">
                             </div>
-                            <div class="mb-3" hidden id="divTelefono">
-                                <label for="txtTelefono" class="form-label">TELÉFONO</label>
-                                <input type="tel" class="form-control" name="txtTelefono" id="txtTelefono"
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
+                            <div class="mb-3" id="divTelefono">
                             </div>
                             <div class="form-group">
                                 <label for="sltGiro" class="form-label">GIRO</label>
@@ -129,23 +123,27 @@
         /*                  Habilitar y Deshabilitar email y telefono                 */
         /* -------------------------------------------------------------------------- */
         inlineCheckboxEmail.addEventListener("click", (e) => {
+            let email = "";
             if (inlineCheckboxEmail.checked) {
-                txtEmail.required = true;
-                divEmail.removeAttribute("hidden");
+                email = `<label for="txtEmail" class="form-label">EMAIL</label>
+                                <input type="email" class="form-control" name="txtEmail" id="txtEmail"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>`;
             } else {
-                divEmail.setAttribute("hidden", "");
-                txtEmail.removeAttribute("required");
+                email = "";
             }
+            divEmail.innerHTML = email;
         });
         inlineCheckboxTel.addEventListener("click", (e) => {
+            let telefono = "";
             if (inlineCheckboxTel.checked) {
-                //indefinido
-                txtTelefono.required = true;
-                divTelefono.removeAttribute("hidden");
+                telefono = `<label for="txtTelefono" class="form-label">TELÉFONO</label>
+                                <input type="tel" class="form-control" name="txtTelefono" id="txtTelefono"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();" required>`;
             } else {
-                divTelefono.setAttribute("hidden", "");
-                txtTelefono.removeAttribute("required");
+                telefono = "";
+
             }
+            divTelefono.innerHTML = telefono;
         });
     </script>
 @endsection

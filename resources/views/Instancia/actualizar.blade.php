@@ -27,18 +27,6 @@
                                     value="{{ $instancias->responsable }}" required
                                     onkeyup="javascript:this.value=this.value.toUpperCase();">
                             </div>
-                            {{-- <div class="mb-3">
-                                <label for="txtEmail" class="form-label">EMAIL</label>
-                                <input type="email" class="form-control" name="txtEmail" id="txtEmail"
-                                    value="{{ $instancias->email }}" required
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
-                            </div>
-                            <div class="mb-3">
-                                <label for="txtTelefono" class="form-label">TELÉFONO</label>
-                                <input type="tel" class="form-control" name="txtTelefono" id="txtTelefono"
-                                    value="{{ $instancias->telefono }}" required
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();">
-                            </div> --}}
                             <div class="form-check form-check-inline mb-3">
                                 <input class="form-check-input" type="checkbox" id="inlineCheckboxEmail" value="option1">
                                 <label class="form-check-label text-uppercase" for="inlineCheckboxEmail">¿Tiene el
@@ -50,16 +38,8 @@
                                     teléfono?</label>
                             </div>
                             <div class="mb-3" hidden id="divEmail">
-                                <label for="txtEmail" class="form-label">EMAIL</label>
-                                <input type="email" class="form-control" name="txtEmail" id="txtEmail"
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();"
-                                    value="{{ $instancias->email }}">
                             </div>
                             <div class="mb-3" hidden id="divTelefono">
-                                <label for="txtTelefono" class="form-label">TELÉFONO</label>
-                                <input type="tel" class="form-control" name="txtTelefono" id="txtTelefono"
-                                    onkeyup="javascript:this.value=this.value.toUpperCase();"
-                                    value="{{ $instancias->telefono }}">
                             </div>
                             <div class="form-group">
                                 <label for="sltGiro" class="form-label">GIRO</label>
@@ -167,6 +147,10 @@
                                 value="{{ $instancias->idAreaC }}">
                             <input type="text" hidden name="txtIdAlcance" id="txtIdAlcance"
                                 value="{{ $instancias->idAlcance }}">
+                            <input hidden type="email" class="form-control" id="txtEmail"
+                                value="{{ $instancias->email }}">
+                            <input hidden type="tel" class="form-control" id="txtTelefono"
+                                value="{{ $instancias->telefono }}">
                             <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i> MODIFICAR</button>
                         </form>
                     </div>
@@ -176,17 +160,23 @@
     </div>
     <script>
         (function() {
+            let email = "";
             if (txtEmail.value) {
-                txtEmail.required = true;
                 inlineCheckboxEmail.checked = true;
-                txtEmail.removeAttribute("hidden");
-                divEmail.removeAttribute("hidden");
+                email = `<label for="txtEmail" class="form-label">EMAIL</label>
+                                <input type="email" class="form-control" name="txtEmail"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();"
+                                    value="{{ $instancias->email }}">`;
+                divEmail.innerHTML = email;
             }
             if (txtTelefono.value) {
-                txtTelefono.required = true;
                 inlineCheckboxTel.checked = true;
-                txtTelefono.removeAttribute("hidden");
-                divTelefono.removeAttribute("hidden");
+                let telefono = "";
+                telefono = ` <label for="txtTelefono" class="form-label">TELÉFONO</label>
+                                <input type="tel" class="form-control" name="txtTelefono"
+                                    onkeyup="javascript:this.value=this.value.toUpperCase();"
+                                    value="{{ $instancias->telefono }}">`;
+                divTelefono.innerHTML = telefono;
             }
         })();
     </script>
