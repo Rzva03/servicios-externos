@@ -44,6 +44,7 @@ class ConvenioController extends Controller
             'instancias' => $instancia,
             'carreras' => $carrera,
             'convenios' => $convenio,
+            'carreraRequest' => $carreraRequest,
         ]);
     }
 

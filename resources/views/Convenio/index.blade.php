@@ -14,19 +14,46 @@
                             </div>
                         @endif
                         <div class="div-flex">
-                            <form class="col-8 form-flex" action="{{ route('convenio.index') }}" method="GET">
+                            <form class="col-8 form-flex needs-validation" action="{{ route('convenio.index') }}"
+                                method="GET" novalidate>
                                 <div class="col-5">
-                                    <select name="sltCarrera" id="sltCarrera" class="form-select" required>
-                                        <option selected>ELIJA LA CARRERA</option>
-                                        <option value="0">
-                                            TODAS LAS CARRERAS
-                                        </option>
-                                        @foreach ($carreras as $carrera)
-                                            <option value="{{ $carrera->idCarrera }}">
-                                                {{ $carrera->nomCarrera }}
+                                    @if ($carreraRequest == null)
+                                        <select name="sltCarrera" id="sltCarrera" class="form-select" required>
+                                            <option selected disabled value="">ELIJA LA CARRERA</option>
+                                            <option value="0">
+                                                TODAS LAS CARRERAS
                                             </option>
-                                        @endforeach
-                                    </select>
+                                            @foreach ($carreras as $carrera)
+                                                <option value="{{ $carrera->idCarrera }}">
+                                                    {{ $carrera->nomCarrera }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    @else
+                                        <select name="sltCarrera" id="sltCarrera" class="form-select" required>
+                                            <option disabled value="">ELIJA LA CARRERA</option>
+                                            @if ($carreraRequest == '0')
+                                                <option selected value="0">
+                                                    TODAS LAS CARRERAS
+                                                </option>
+                                            @else
+                                                <option value="0">
+                                                    TODAS LAS CARRERAS
+                                                </option>
+                                            @endif
+                                            @foreach ($carreras as $carrera)
+                                                @if ($carreraRequest == $carrera->idCarrera)
+                                                    <option selected value="{{ $carrera->idCarrera }}">
+                                                        {{ $carrera->nomCarrera }}
+                                                    </option>
+                                                @else
+                                                    <option value="{{ $carrera->idCarrera }}">
+                                                        {{ $carrera->nomCarrera }}
+                                                    </option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    @endif
                                 </div>
                                 <button type="submit" class="btn btn-secondary"><i class="bi bi-funnel"></i>
                                     FILTRAR</button>
@@ -44,7 +71,6 @@
                             @php
                                 echo '<p class="text-center"> TOTAL DE CONVENIOS: ' . count($convenios) . '</p>';
                             @endphp
-                            {{-- <p>count($convenios)</p> --}}
                         @endif
                         <table class="table" id="tabla">
                             <thead>
