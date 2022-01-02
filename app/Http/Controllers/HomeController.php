@@ -24,14 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+        /* -------------------------------------------------------------------------- */
+        /*          cambiar la hora de acuerdo a la region y obtener la fecha         */
+        /* -------------------------------------------------------------------------- */
         date_default_timezone_set('America/Mexico_City');
         $fecha = date('Y-m-d');
         /* -------------------------------------------------------------------------- */
         /*                              realizar consulta                             */
         /* -------------------------------------------------------------------------- */
         $convenios = DB::table('convenio')
+            ->select('fechaVigencia', 'idConvenio')
             ->where('estatus', '=', 'VIGENTE')
-            ->where('fechaVigencia', '=', $fecha)
+            ->where('fechaVigencia', '<=', $fecha)
             ->get();
         /* -------------------------------------------------------------------------- */
         /*               Recorrer convenios con fecha de vigencia actual              */
