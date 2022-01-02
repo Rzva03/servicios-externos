@@ -215,7 +215,7 @@
 
         function validarTipoFecha(idSelector) {
             let valorSeleccionado = idSelector.value;
-            if (valorSeleccionado == "SI" || valorSeleccionado == "ELIJA EL TIPO DE FECHA") { //indefinido
+            if (valorSeleccionado == "SI" || valorSeleccionado == "ELIJA EL TIPO DE FECHA") {
                 divFechaVigencia.setAttribute("hidden", "");
                 txtTipoFecha.value = "SI";
             } else {

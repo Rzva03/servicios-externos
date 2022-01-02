@@ -102,7 +102,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="text" name="txtTipoFecha" id="txtTipoFecha">
+                            <input hidden type="text" name="txtTipoFecha" id="txtTipoFecha">
                             <input hidden type="text" name="txtCarreras" id="txtCarreras">
                             <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus">

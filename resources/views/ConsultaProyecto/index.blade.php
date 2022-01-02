@@ -13,13 +13,14 @@
                             </div>
                         @endif
                         <h3 class="text-center">REPORTE DE LOS PROYECTOS</h3>
-                        <form action="{{ route('consulta-proyecto.index') }}" method="GET">
+                        <form action="{{ route('consulta-proyecto.index') }}" method="GET" class="needs-validation"
+                            novalidate>
                             <div class="div-flex">
                                 <div class="form-group col-3 text-left">
                                     <label for="sltPeriodo" class="form-label">PERIODO</label>
                                     <select name="sltPeriodo" id="sltPeriodo" class="form-select" required>
                                         @if ($periodoRequest === null)
-                                            <option selected>ELIJA EL PERIODO</option>
+                                            <option selected disabled value="">ELIJA EL PERIODO</option>
                                             @foreach ($periodos as $periodo)
                                                 <option value="{{ $periodo->idPeriodo }}">
                                                     {{ $periodo->periodo }}
@@ -45,14 +46,16 @@
                                     <label for="sltModalidad" class="form-label">MODALIDAD</label>
                                     <select name="sltModalidad" id="sltPeriodo" class="form-select" required>
                                         @if ($modalidadRequest === null)
-                                            <option selected>ELIJA LA MODALIDAD</option>
+                                            <option selected disabled value="">ELIJA LA MODALIDAD</option>
                                             <option value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
                                             <option value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
                                         @else
                                             <option>ELIJA LA MODALIDAD</option>
                                             @if ('SERVICIO SOCIAL' == $modalidadRequest)
                                                 <option selected value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
+                                                <option value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL</option>
                                             @else
+                                                <option value="SERVICIO SOCIAL">SERVICIO SOCIAL</option>
                                                 <option selected value="RESIDENCIA PROFESIONAL">RESIDENCIA PROFESIONAL
                                                 </option>
                                             @endif
@@ -63,7 +66,7 @@
                                     <label for="sltInstancia" class="form-label">INSTANCIA</label>
                                     <select name="sltInstancia" id="sltPeriodo" class="form-select" required>
                                         @if ($instanciaRequest === null)
-                                            <option selected>ELIJA LA INSTANCIA</option>
+                                            <option selected disabled value="">ELIJA LA INSTANCIA</option>
                                             @foreach ($instancias as $instancia)
                                                 <option value="{{ $instancia->idInstancia }}">
                                                     {{ $instancia->nombre }}
