@@ -21,7 +21,10 @@
                                     value="{{ $tamanios->nomTamanio }}"
                                     onkeyup="javascript:this.value=this.value.toUpperCase();" required>
                             </div>
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i> MODIFICAR</button>
+                            <div class="row g-3">
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i>
+                                    MODIFICAR</button>
+                            </div>
                         </form>
                     </div>
                 </div>

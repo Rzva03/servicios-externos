@@ -151,7 +151,10 @@
                                 value="{{ $instancias->email }}">
                             <input hidden type="tel" class="form-control" id="txtTelefono"
                                 value="{{ $instancias->telefono }}">
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i> MODIFICAR</button>
+                            <div class="row g-3">
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i>
+                                    MODIFICAR</button>
+                            </div>
                         </form>
                     </div>
                 </div>

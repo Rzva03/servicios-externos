@@ -97,7 +97,10 @@
                                 value="{{ $proyectos->idAsesorE }}">
                             <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia"
                                 value="{{ $proyectos->idInstancia }}">
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i> MODIFICAR</button>
+                            <div class="row g-3">
+                                <button type="submit" class="btn btn-primary"><i class="bi bi-eraser"></i>
+                                    MODIFICAR</button>
+                            </div>
                         </form>
                     </div>
                 </div>
