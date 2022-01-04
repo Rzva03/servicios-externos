@@ -21,44 +21,47 @@ Auth::routes([
     'verify' => false, // Email Verification Routes...
 ]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name(
-    'home'
-);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home')
+    ->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                             rutas sector                             */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\SectorController;
 
-Route::resource('sector', SectorController::class);
+Route::resource('sector', SectorController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                              rutas tipo sector                             */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\TipoSectorController;
 
-Route::resource('tipo-sector', TipoSectorController::class);
+Route::resource('tipo-sector', TipoSectorController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                                rutas tamanio                               */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\TamanioController;
 
-Route::resource('tamanio', TamanioController::class);
+Route::resource('tamanio', TamanioController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                           rutas area conocimiento                          */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\AreaConocimientoController;
 
-Route::resource('area-conocimiento', AreaConocimientoController::class);
+Route::resource(
+    'area-conocimiento',
+    AreaConocimientoController::class
+)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                                 rutas giro                                 */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\GiroController;
 
-Route::resource('giro', GiroController::class);
+Route::resource('giro', GiroController::class)->middleware('auth');
 
 /* -------------------------------------------------------------------------- */
 /*                               rutas instancia                              */
@@ -66,83 +69,92 @@ Route::resource('giro', GiroController::class);
 
 use App\Http\Controllers\InstanciaController;
 
-Route::resource('instancia', InstanciaController::class);
+Route::resource('instancia', InstanciaController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                            rutas asesor externo                            */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\AsesorExternoController;
 
-Route::resource('asesor-externo', AsesorExternoController::class);
+Route::resource('asesor-externo', AsesorExternoController::class)->middleware(
+    'auth'
+);
 /* -------------------------------------------------------------------------- */
 /*                            rutas asesor interno                            */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\AsesorInternoController;
 
-Route::resource('asesor-interno', AsesorInternoController::class);
+Route::resource('asesor-interno', AsesorInternoController::class)->middleware(
+    'auth'
+);
 /* -------------------------------------------------------------------------- */
 /*                            rutas        Periodo                            */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\PeriodoController;
 
-Route::resource('periodo', PeriodoController::class);
+Route::resource('periodo', PeriodoController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                            rutas        Carrera                            */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\CarreraController;
 
-Route::resource('carrera', CarreraController::class);
+Route::resource('carrera', CarreraController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                                rutas alumno                                */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\AlumnoController;
 
-Route::resource('alumno', AlumnoController::class);
+Route::resource('alumno', AlumnoController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                               rutas proyecto                               */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\ProyectoController;
 
-Route::resource('proyecto', ProyectoController::class);
+Route::resource('proyecto', ProyectoController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                             rutas tipo convenio                            */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\TipoConvenioController;
 
-Route::resource('tipo-convenio', TipoConvenioController::class);
+Route::resource('tipo-convenio', TipoConvenioController::class)->middleware(
+    'auth'
+);
 /* -------------------------------------------------------------------------- */
 /*                             rutas      convenio                            */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\ConvenioController;
 
-Route::resource('convenio', ConvenioController::class);
+Route::resource('convenio', ConvenioController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                                rutas indicador                             */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\IndicadorController;
 
-Route::resource('indicador', IndicadorController::class);
+Route::resource('indicador', IndicadorController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                                 rutas alcance                              */
 /* -------------------------------------------------------------------------- */
 
 use App\Http\Controllers\AlcanceController;
 
-Route::resource('alcance', AlcanceController::class);
+Route::resource('alcance', AlcanceController::class)->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                           ruta consulta indicador                          */
 /* -------------------------------------------------------------------------- */
 use App\Http\Controllers\ConsultaIndicadorController;
 
-Route::resource('consulta-indicador', ConsultaIndicadorController::class);
+Route::resource(
+    'consulta-indicador',
+    ConsultaIndicadorController::class
+)->middleware('auth');
 
 /* -------------------------------------------------------------------------- */
 /*                          ruta consulta obtener pdf                         */
@@ -161,29 +173,31 @@ Route::resource('consulta-indicador', ConsultaIndicadorController::class);
 /*                           ruta consulta proyecto                           */
 /* -------------------------------------------------------------------------- */
 use App\Http\Controllers\ConsultaProyectoController;
-Route::get('/consulta-proyecto', [
-    ConsultaProyectoController::class,
-    'index',
-])->name('consulta-proyecto.index');
+Route::get('/consulta-proyecto', [ConsultaProyectoController::class, 'index'])
+    ->name('consulta-proyecto.index')
+    ->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                      ruta consulta convenios vigentes                      */
 /* -------------------------------------------------------------------------- */
 use App\Http\Controllers\ConsultaConvenioController;
-Route::get('/consulta-convenio', [
-    ConsultaConvenioController::class,
-    'index',
-])->name('consulta-convenio.index');
+Route::get('/consulta-convenio', [ConsultaConvenioController::class, 'index'])
+    ->name('consulta-convenio.index')
+    ->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                    ruta consulta convenio vigentes todos                   */
 /* -------------------------------------------------------------------------- */
 Route::get('/consulta-convenio-vigentes', [
     ConsultaConvenioController::class,
     'convenioVigenteTodos',
-])->name('consulta-convenio-vigentes.convenioVigenteTodos');
+])
+    ->name('consulta-convenio-vigentes.convenioVigenteTodos')
+    ->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                     ruta consulta convenio finalizados                     */
 /* -------------------------------------------------------------------------- */
 Route::get('/consulta-convenio-finalizado', [
     ConsultaConvenioController::class,
     'convenioVencidoTodos',
-])->name('consulta-convenio-finalizado.convenioVencidoTodos');
+])
+    ->name('consulta-convenio-finalizado.convenioVencidoTodos')
+    ->middleware('auth');
