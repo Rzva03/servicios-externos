@@ -59,19 +59,19 @@ function convertirFechaPorTrimestre(idSelectorTrimestre) {
     switch (valorTrimestre) {
         case "1":
             fechaInicial = "-01-01";
-            fechaFinal = "-03-01";
+            fechaFinal = "-03-31";
             break;
         case "2":
             fechaInicial = "-04-01";
-            fechaFinal = "-06-01";
+            fechaFinal = "-06-31";
             break;
         case "3":
             fechaInicial = "-07-01";
-            fechaFinal = "-09-01";
+            fechaFinal = "-09-31";
             break;
         case "4":
             fechaInicial = "-10-01";
-            fechaFinal = "-12-01";
+            fechaFinal = "-12-31";
             break;
     }
     if (valorAnio === undefined) {

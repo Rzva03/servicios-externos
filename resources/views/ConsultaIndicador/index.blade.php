@@ -19,7 +19,7 @@
                                 <div class="form-group col-4">
                                     <label for="sltTrimestre" class="form-label">TRIMESTRE</label>
                                     @switch($trimestreRequest)
-                                        @case(" 1")
+                                        @case(' 1')
                                             <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option>ELIJA EL TRIMESTRE</option>
@@ -29,7 +29,7 @@
                                                 <option value="4">4</option>
                                             </select>
                                         @break
-                                        @case(" 2")
+                                        @case(' 2')
                                             <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option>ELIJA EL TRIMESTRE</option>
@@ -39,7 +39,7 @@
                                                 <option value="4">4</option>
                                             </select>
                                         @break
-                                        @case(" 3")
+                                        @case(' 3')
                                             <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option>ELIJA EL TRIMESTRE</option>
@@ -49,7 +49,7 @@
                                                 <option value="4">4</option>
                                             </select>
                                         @break
-                                        @case(" 4")
+                                        @case(' 4')
                                             <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
                                                 <option>ELIJA EL TRIMESTRE</option>
@@ -138,14 +138,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($indicadoresCount == 0)
+                                @if ($indicadoresCount == '')
                                     <tr>
                                         <td colspan="1">NO HAY CONVENIOS</td>
+                                    <tr>
                                     @else
                                     <tr>
                                         <th scope="row">{{ $indicadoresCount }}</th>
                                     </tr>
                                 @endif
+                                {{-- @if ($indicadoresCount == null)
+                                    <tr>
+                                        <td colspan="1">NO HAY CONVENIOS</td>
+                                    <tr>
+                                    @else
+                                    <tr>
+                                        <th scope="row">{{ $indicadoresCount }}</th>
+                                    </tr>
+                                @endif --}}
                             </tbody>
                         </table>
                     </div>

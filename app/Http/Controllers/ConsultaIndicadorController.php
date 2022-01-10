@@ -41,13 +41,13 @@ class ConsultaIndicadorController extends Controller
         /* -------------------------------------------------------------------------- */
         /*                obtener el numero del indicador para mostrar                */
         /* -------------------------------------------------------------------------- */
-        $convenioIndicador = DB::table('convenio')
+        $indicadorCount = DB::table('convenio')
             ->where('idTipoCon', '=', $tipoConvenio)
             ->where('idIndicador', '=', $indicadorRequest)
             ->where('estatus', '=', 'VIGENTE')
             ->whereBetween('fechaFirma', [$fechaInicio, $fechaFinal])
-            ->get();
-        $indicadorCount = count($convenioIndicador);
+            ->count();
+        // $indicadorCount = count($convenioIndicador);
         $indicador = DB::table('indicador')
             ->where('descripcion', 'like', '%FIRMAR%')
             ->get();
