@@ -31,14 +31,11 @@ function agregarID(idSelector, idInput) {
 /* -------------------------------------------------------------------------- */
 
 function busquedaTabla() {
-    // Declare variables
     let input, filter, table, tr, td, i;
     input = document.getElementById("busqueda");
     filter = input.value.toUpperCase();
     table = document.getElementById("tabla");
     tr = table.getElementsByTagName("tr");
-
-    // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td");
         for (j = 0; j < td.length; j++) {
@@ -58,7 +55,7 @@ function busquedaTabla() {
 /*           conversion de fecha para el reporte de los indicadores           */
 /* -------------------------------------------------------------------------- */
 function convertirFechaPorTrimestre(idSelectorTrimestre) {
-    valorTrimestre = idSelectorTrimestre.value; //se obtiene lo que se selecciona del seclt
+    valorTrimestre = idSelectorTrimestre.value;
     switch (valorTrimestre) {
         case "1":
             fechaInicial = "-01-01";
@@ -91,7 +88,7 @@ function convertirFechaPorAnio(idSelectorAnio, idInputFI, idInputFC) {
     let anioCompletoI;
     let anioCompletoF;
     valorAnio = idSelectorAnio.value;
-    localStorage.setItem("anio", valorAnio); //se obtiene lo que se selecciona del seclt
+    localStorage.setItem("anio", valorAnio);
     if (fechaFinal === undefined && fechaInicial === undefined) {
         anioCompletoI = valorAnio + localStorage.getItem("fechaInicial");
         anioCompletoF = valorAnio + localStorage.getItem("fechaFinal");

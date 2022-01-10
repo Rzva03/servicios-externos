@@ -181,9 +181,11 @@
                             </tbody>
                         </table>
                         <br>
-                        <div class="mb-3">
-                            <button onclick="location.href='{{ route('instancia.index') }}'" class="btn btn-primary"><i
-                                    class="bi bi-arrow-left"></i> REGRESAR</button>
+                        <div class="mb-3 row g-3">
+                            <button onclick=" location.href='{{ route('instancia.index') }}'"
+                                class="
+                            btn btn-primary"><i class="bi bi-arrow-left"></i>
+                                REGRESAR</button>
                         </div>
                     </div>
                 </div>
