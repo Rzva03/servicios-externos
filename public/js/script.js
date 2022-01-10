@@ -1,5 +1,6 @@
 /* -------------------------------------------------------------------------- */
 /*                               Custom Scripts                               */
+/* -------------------------------------------------------------------------- */
 
 /* -------------------------------------------------------------------------- */
 /*                                  Variables                                 */
@@ -21,7 +22,7 @@ let inlineCheckboxEmail = document.getElementById("inlineCheckboxEmail"),
     divTelefono = document.getElementById("divTelefono"),
     txtEmail = document.getElementById("txtEmail"),
     txtTelefono = document.getElementById("txtTelefono");
-/* -------------------------------------------------------------------------- */
+
 function agregarID(idSelector, idInput) {
     let valorSeleccionado = idSelector.value;
     idInput.value = valorSeleccionado;
