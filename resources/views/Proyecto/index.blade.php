@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10 col-xs-12">
+            <div class="col-md-12 col-xs-12">
                 <div class="card">
                     <div class="card-header">{{ __('LISTADO DE PROYECTOS') }}</div>
 
@@ -86,33 +86,14 @@
                                                         onclick="location.href='{{ route('proyecto.edit', $proyecto->idProyecto) }}'"
                                                         class="btn btn-outline-primary"><i
                                                             class="bi bi-pencil"></i></button>
-                                                    @if (Auth::user()->rol == 0)
-                                                        <form hidden
-                                                            action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
-                                                            method="POST" id="form">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="btn btn-outline-danger"
-                                                                onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
-                                                                <i class="bi bi-eraser"></i></button>
-                                                        </form>
-                                                        <script>
-                                                            nodo = document.getElementById("form");
-                                                            if (nodo.parentNode) {
-                                                                nodo.parentNode.removeChild(nodo);
-                                                            }
-                                                        </script>
-                                                    @else
-                                                        <form
-                                                            action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="btn btn-outline-danger"
-                                                                onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
-                                                                <i class="bi bi-eraser"></i></button>
-                                                        </form>
-                                                    @endif
+                                                    <form action="{{ route('proyecto.destroy', $proyecto->idProyecto) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $proyecto->nomProyecto }}?') ">
+                                                            <i class="bi bi-eraser"></i></button>
+                                                    </form>
                                                 </div>
                                             </td>
                                         @endif

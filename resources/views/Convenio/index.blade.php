@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-10 col-xs-12">
+            <div class="col-md-12 col-xs-12">
                 <div class="card">
                     <div class="card-header">{{ __('LISTADO DE CONVENIOS') }}</div>
 
@@ -68,9 +68,7 @@
                                 NUEVO</button>
                         </div>
                         @if (count($convenios) > 0)
-                            @php
-                                echo '<p class="text-center"> TOTAL DE CONVENIOS: ' . count($convenios) . '</p>';
-                            @endphp
+                            <p class="text-center">TOTAL DE CONVENIOS: {{ count($convenios) }}</p>
                         @endif
                         <table class="table" id="tabla">
                             <thead>
@@ -111,32 +109,7 @@
                                         @if (Auth::user()->rol == 1)
                                             <td>
                                                 <div style="display: flex; justify-content: start;">
-                                                    @if (Auth::user()->rol == 0)
-                                                        <button hidden style="margin-right: 1rem"
-                                                            onclick="location.href='{{ route('convenio.edit', $convenio->idConvenio) }}'"
-                                                            class="btn btn-outline-primary"><i class="bi bi-pencil"
-                                                                id="btnEditar"></i>
-                                                        </button>
-                                                        <form hidden
-                                                            action="{{ route('convenio.destroy', $convenio->idConvenio) }}"
-                                                            method="POST" id="form">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="btn btn-outline-danger"
-                                                                onclick="return confirm( '¿ESTÁ SEGURO DE BORRAR {{ $convenio->folio }}?') "><i
-                                                                    class="bi bi-eraser"></i></button>
-                                                        </form>
-                                                        <script>
-                                                            nodo = document.getElementById("form");
-                                                            if (nodo.parentNode) {
-                                                                nodo.parentNode.removeChild(nodo);
-                                                            }
-                                                            nodo2 = document.getElementById("btnEditar");
-                                                            if (nodo2.parentNode) {
-                                                                nodo2.parentNode.removeChild(nodo2);
-                                                            }
-                                                        </script>
-                                                    @else
+                                                    @if (Auth::user()->rol == 1)
                                                         <button style="margin-right: 1rem"
                                                             onclick="location.href='{{ route('convenio.edit', $convenio->idConvenio) }}'"
                                                             class="btn btn-outline-primary"><i class="bi bi-pencil"></i>

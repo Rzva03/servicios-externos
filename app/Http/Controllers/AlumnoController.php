@@ -47,7 +47,6 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        // $idCarrera = (int)$request->input('txtIdCarrera');
         $alumno = DB::table('alumno')->insert([
             'nombre' => $request->input('txtNombre'),
             'email' => $request->input('txtEmail'),

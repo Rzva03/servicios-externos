@@ -48,7 +48,6 @@
                                         @else
                                             <td> {{ $instancia->telefono }} </td>
                                         @endif
-                                        {{-- @if (Auth::user()->rol == 1) --}}
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
@@ -60,24 +59,6 @@
                                                         onclick="location.href='{{ route('instancia.edit', $instancia->idInstancia) }}'"
                                                         class="btn btn-outline-primary"><i
                                                             class="bi bi-pencil"></i></button>
-                                                @endif
-                                                @if (Auth::user()->rol == 0)
-                                                    <form hidden
-                                                        action="{{ route('instancia.destroy', $instancia->idInstancia) }}"
-                                                        method="POST" id="form">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit" class="btn btn-outline-danger"
-                                                            onclick="return confirm( '¿ESTÁ SEGURO DE ELIMINAR {{ $instancia->nombre }}?') ">
-                                                            <i class="bi bi-eraser"></i></button>
-                                                    </form>
-                                                    <script>
-                                                        nodo = document.getElementById("form");
-                                                        if (nodo.parentNode) {
-                                                            nodo.parentNode.removeChild(nodo);
-                                                        }
-                                                    </script>
-                                                @else
                                                     <form
                                                         action="{{ route('instancia.destroy', $instancia->idInstancia) }}"
                                                         method="POST" id="form">
@@ -90,7 +71,6 @@
                                                 @endif
                                             </div>
                                         </td>
-                                        {{-- @endif --}}
                                     </tr>
                                 @endforeach
                             </tbody>

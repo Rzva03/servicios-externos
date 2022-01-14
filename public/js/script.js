@@ -5,7 +5,6 @@
 /* -------------------------------------------------------------------------- */
 /*                                  Variables                                 */
 /* -------------------------------------------------------------------------- */
-//variables que se ocuparan para el siguiente metodo del año
 let fechaInicial;
 let fechaFinal;
 let valorTrimestre;
@@ -15,14 +14,15 @@ let inputFinal = document.getElementById("txtFechaFinal");
 let array = [];
 let arregloAux = [];
 let txtCarrera = document.getElementById("txtCarreras");
-let nodo, nodo2;
 let inlineCheckboxEmail = document.getElementById("inlineCheckboxEmail"),
     inlineCheckboxTel = document.getElementById("inlineCheckboxTel"),
     divEmail = document.getElementById("divEmail"),
     divTelefono = document.getElementById("divTelefono"),
     txtEmail = document.getElementById("txtEmail"),
     txtTelefono = document.getElementById("txtTelefono");
-
+/* -------------------------------------------------------------------------- */
+/*       funcion para obtener el id del opcion selecionada de un select       */
+/* -------------------------------------------------------------------------- */
 function agregarID(idSelector, idInput) {
     let valorSeleccionado = idSelector.value;
     idInput.value = valorSeleccionado;
@@ -78,7 +78,7 @@ function convertirFechaPorTrimestre(idSelectorTrimestre) {
     if (valorAnio === undefined) {
         let fechaInicialAux = localStorage.getItem("anio") + fechaInicial;
         let fechaFinalAux = localStorage.getItem("anio") + fechaFinal;
-        inputInicial.value = fechaInicialAux; //lo vacia al txt
+        inputInicial.value = fechaInicialAux;
         inputFinal.value = fechaFinalAux;
         console.log(fechaInicialAux, fechaFinalAux);
     }

@@ -41,7 +41,6 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        //alumno, periodo, asesorI, asesorE, instancia
         $alumno = DB::table('alumno')->get();
         $periodo = DB::table('periodo')->get();
         $asesorInterno = DB::table('asesorinterno')->get();
