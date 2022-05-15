@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <label for="sltTipo" class="form-label">TIPO DE CONVENIO</label>
                                 <select name="sltTipo" id="sltTipo" class="form-select"
-                                    onChange="agregarIdOcultarMarco(sltTipo, txtIdTipoCon)" required>
+                                    onChange="agregarID(sltTipo, txtIdTipoCon)" required>
                                     <option selected disabled value="">ELIJA EL TIPO DE CONVENIO</option>
                                     @foreach ($tiposConvenios as $tipocon)
                                         <option value="{{ $tipocon->idTipoConvenio }}">{{ $tipocon->nomTipoConvenio }}
@@ -72,6 +72,17 @@
                                     <option selected disabled value="">ELIJA EL INDICADOR</option>
                                    @foreach ($indicadores as $indicador)
                                      <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sltOtroIndicador" class="form-label">OTRO INDICADOR</label>
+                             <select name="sltIOtrondicador" id="sltIOtrondicador" class="form-select"
+                                    onChange="agregarID(sltIOtrondicador, txtIdOtroIndicador)">
+                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
+                                   @foreach ($otrosIndicadores as $otroIndicador)
+                                     <option value="{{ $otroIndicador->idOtroIndicador }}">{{ $otroIndicador->descripcion }}
                                         </option>
                                     @endforeach
                                 </select>
@@ -114,6 +125,7 @@
                             <input hidden type="text" name="txtTipoFecha" id="txtTipoFecha">
                             <input hidden type="text" name="txtCarreras" id="txtCarreras">
                             <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador">
+                            <input hidden type="text" name="txtIdOtroIndicador" id="txtIdOtroIndicador">
                             <input hidden type="text" name="txtEstatus" id="txtEstatus">
                             <input hidden type="text" name="txtIdTipoCon" id="txtIdTipoCon">
                             <input hidden type="text" name="txtIdInstancia" id="txtIdInstancia">

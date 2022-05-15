@@ -56,15 +56,15 @@ class ConvenioController extends Controller
     public function create()
     {
         $carrera = DB::table('carrera')->get();
-        $indicador = DB::table('indicador')
-            ->where('descripcion', 'like', '%FIRMAR%')
-            ->get();
+        $indicador = DB::table('indicador')->get();
+        $otroIndicador = DB::table('otroIndicador')->get();
         $tipoConvenio = DB::table('tipoconvenio')->get();
         $instancia = DB::table('instancia')->get();
         return view('Convenio.nuevo', [
             'tiposConvenios' => $tipoConvenio,
             'instancias' => $instancia,
             'indicadores' => $indicador,
+            'otrosIndicadores' => $otroIndicador,
             'carreras' => $carrera,
         ]);
     }
@@ -77,11 +77,13 @@ class ConvenioController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->input('txtIdTipoCon'));
         $validarIndefinido = $request->input('txtTipoFecha');
         $fechaVigencia = $request->input('dateFechaVigencia');
         if ($validarIndefinido == 'SI') {
             $fechaVigencia = null;
         }
+        // dd($fechaVigencia);
         $convenio = DB::table('convenio')->insert([
             'folio' => $request->input('txtFolio'),
             'vigenciaIndefinida' => $request->input('txtTipoFecha'),
@@ -94,6 +96,7 @@ class ConvenioController extends Controller
             'idInstancia' => $request->input('txtIdInstancia'),
             'idUsuario' => $request->input('txtIdUsuario'),
             'idIndicador' => $request->input('txtIdIndicador'),
+            'idOtroIndicador' => $request->input('txtIdOtroIndicador'),
         ]);
         return redirect()->route('convenio.index');
     }
@@ -119,9 +122,8 @@ class ConvenioController extends Controller
         $idCarreraBD = DB::table('carrera')
             ->select('idCarrera')
             ->get();
-        $indicador = DB::table('indicador')
-            ->where('descripcion', 'like', '%FIRMAR%')
-            ->get();
+        $indicador = DB::table('indicador')->get();
+        $otroIndicador = DB::table('otroIndicador')->get();
         $carrera = DB::table('carrera')->get();
         $tipoConvenio = DB::table('tipoconvenio')->get();
         $instancia = DB::table('instancia')->get();
@@ -139,6 +141,7 @@ class ConvenioController extends Controller
             'carreras' => $carrera,
             'idCarreras' => $idCarreraBD,
             'arregloIdCarreras' => $arregloIdCarreras,
+            'otrosIndicadores' => $otroIndicador,
         ]);
     }
 
@@ -170,6 +173,7 @@ class ConvenioController extends Controller
                 'idInstancia' => $request->input('txtIdInstancia'),
                 'idUsuario' => $request->input('txtIdUsuario'),
                 'idIndicador' => $request->input('txtIdIndicador'),
+                'idOtroIndicador' => $request->input('txtIdOtroIndicador'),
             ]);
         return redirect()->route('convenio.index');
     }

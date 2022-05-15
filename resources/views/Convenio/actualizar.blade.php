@@ -76,7 +76,7 @@
                             <div class="form-group">
                                 <label for="sltTipo" class="form-label">TIPO DE CONVENIO</label>
                                 <select name="sltTipo" id="sltTipo" class="form-select"
-                                    onChange="agregarIdOcultarMarco(sltTipo, txtIdTipoCon)" required>
+                                    onChange="agregarId(sltTipo, txtIdTipoCon)" required>
                                     <option>ELIJA EL TIPO DE CONVENIO</option>
                                     @foreach ($tipoConvenios as $tipocon)
                                         @if ($tipocon->idTipoConvenio === $convenios->idTipoCon)
@@ -92,7 +92,7 @@
                                 </select>
                             </div>
                             <div class="form-group" id="divIndicador">
-                                <label for="sltIndicador" class="form-label">INDICADOR</label>
+                                <label for="sltIndicador" class="form-label">INDICADOR SYSAD</label>
                                 <select name="sltIndicador" id="sltIndicador" class="form-select"
                                     onChange="agregarId(sltIndicador, txtIdIndicador)" required>
                                     <option>ELIJA EL INDICADOR</option>
@@ -104,6 +104,22 @@
                                         @else
                                             <option value="{{ $indicador->idIndicador }}">
                                                 {{ $indicador->descripcion }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sltOtroIndicador" class="form-label">OTRO INDICADOR</label>
+                             <select name="sltIOtrondicador" id="sltIOtrondicador" class="form-select"
+                                    onChange="agregarID(sltIOtrondicador, txtIdOtroIndicador)">
+                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
+                                   @foreach ($otrosIndicadores as $otroIndicador)
+                                        @if ($otroIndicador->idOtroIndicador === $convenios->idOtroIndicador)
+                                            <option selected value="{{ $otroIndicador->idOtroIndicador }}">{{ $otroIndicador->descripcion }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $otroIndicador->idOtroIndicador }}">{{ $otroIndicador->descripcion }}
                                             </option>
                                         @endif
                                     @endforeach
@@ -186,6 +202,7 @@
                                 value="{{ $convenios->idInstancia }}">
                             <input hidden type="text" name="txtIdIndicador" id="txtIdIndicador"
                                 value="{{ $convenios->idIndicador }}">
+                            <input hidden type="text" name="txtIdOtroIndicador" id="txtIdOtroIndicador" value="{{ $convenios->idOtroIndicador }}">
                             <input hidden type="text" name="txtIdUsuario" id="txtIdUsuario"
                                 value=" {{ Auth::user()->id }}">
                             <div class="row g-3">
