@@ -198,8 +198,12 @@
                                             {{ __('Tipo de convenio') }}
                                         </a>
                                         <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('indicador-sysad.index') }}">
+                                            {{ __('Indicador sysad') }}
+                                        </a>
+                                        <hr class="dropdown-divider">
                                         <a class="dropdown-item" href="{{ route('indicador.index') }}">
-                                            {{ __('Indicador') }}
+                                            {{ __('Otros Indicadores') }}
                                         </a>
                                         <hr class="dropdown-divider">
                                         <a class="dropdown-item" href="{{ route('convenio.index') }}">
@@ -292,7 +296,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

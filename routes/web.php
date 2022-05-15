@@ -138,7 +138,18 @@ Route::resource('convenio', ConvenioController::class)->middleware('auth');
 
 use App\Http\Controllers\IndicadorController;
 
-Route::resource('indicador', IndicadorController::class)->middleware('auth');
+Route::resource('indicador-sysad', IndicadorController::class)->middleware(
+    'auth'
+);
+/* -------------------------------------------------------------------------- */
+/*                                rutas otro indicador                             */
+/* -------------------------------------------------------------------------- */
+
+use App\Http\Controllers\OtroIndicadorController;
+
+Route::resource('indicador', OtroIndicadorController::class)->middleware(
+    'auth'
+);
 /* -------------------------------------------------------------------------- */
 /*                                 rutas alcance                              */
 /* -------------------------------------------------------------------------- */

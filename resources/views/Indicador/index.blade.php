@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('LISTADO DE INDICADORES') }}</div>
+                    <div class="card-header">{{ __('LISTADO DE INDICADORES SYSAD') }}</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,7 +14,8 @@
                             </div>
                         @endif
                         <div class="div-flex">
-                            <button onclick="location.href='{{ route('indicador.create') }}'" class="btn btn-primary ">
+                            <button onclick="location.href='{{ route('indicador-sysad.create') }}'"
+                                class="btn btn-primary ">
                                 <i class="bi bi-plus-square-dotted"></i> NUEVO</button>
                             <div class="input-group col-5">
                                 <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
@@ -38,9 +39,10 @@
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
-                                                    onclick="location.href='{{ route('indicador.edit', $indicador->idIndicador) }}'"
+                                                    onclick="location.href='{{ route('indicador-sysad.edit', $indicador->idIndicador) }}'"
                                                     class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                                <form action="{{ route('indicador.destroy', $indicador->idIndicador) }}"
+                                                <form
+                                                    action="{{ route('indicador-sysad.destroy', $indicador->idIndicador) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')

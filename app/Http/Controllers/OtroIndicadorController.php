@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class IndicadorController extends Controller
+class OtroIndicadorController extends Controller
 {
     public function __construct()
     {
@@ -18,8 +18,8 @@ class IndicadorController extends Controller
      */
     public function index()
     {
-        $indicador = DB::table('indicador')->get();
-        return view('Indicador.index', [
+        $indicador = DB::table('otroIndicador')->get();
+        return view('OtroIndicador.index', [
             'indicadores' => $indicador,
         ]);
     }
@@ -31,7 +31,7 @@ class IndicadorController extends Controller
      */
     public function create()
     {
-        return view('Indicador.nuevo');
+        return view('OtroIndicador.nuevo');
     }
 
     /**
@@ -42,11 +42,11 @@ class IndicadorController extends Controller
      */
     public function store(Request $request)
     {
-        $indicador = DB::table('indicador')->insert([
+        $indicador = DB::table('otroIndicador')->insert([
             'nombre' => $request->input('txtNombre'),
             'descripcion' => $request->input('txtDescripcion'),
         ]);
-        return redirect()->route('indicador-sysad.index');
+        return redirect()->route('indicador.index');
     }
 
     /**
@@ -67,10 +67,10 @@ class IndicadorController extends Controller
      */
     public function edit($id)
     {
-        $indicador = DB::table('indicador')
-            ->where('idIndicador', '=', $id)
+        $indicador = DB::table('otroIndicador')
+            ->where('idOtroIndicador', '=', $id)
             ->first();
-        return view('Indicador.actualizar', [
+        return view('OtroIndicador.actualizar', [
             'indicadores' => $indicador,
         ]);
     }
@@ -84,13 +84,13 @@ class IndicadorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $indicador = DB::table('indicador')
-            ->where('idIndicador', '=', $id)
+        $indicador = DB::table('otroIndicador')
+            ->where('idOtroIndicador', '=', $id)
             ->update([
                 'nombre' => $request->input('txtNombre'),
                 'descripcion' => $request->input('txtDescripcion'),
             ]);
-        return redirect()->route('indicador-sysad.index');
+        return redirect()->route('indicador.index');
     }
 
     /**
@@ -101,9 +101,9 @@ class IndicadorController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('indicador')
-            ->where('idIndicador', '=', $id)
+        DB::table('otroIndicador')
+            ->where('idOtroIndicador', '=', $id)
             ->delete();
-        return redirect()->route('indicador-sysad.index');
+        return redirect()->route('indicador.index');
     }
 }

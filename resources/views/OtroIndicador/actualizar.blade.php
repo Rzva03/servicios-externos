@@ -13,7 +13,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form action="{{ route('indicador.update', $indicadores->idIndicador) }}" method="POST">
+                        <form action="{{ route('indicador.update', $indicadores->idOtroIndicador) }}" method="POST">
                             @csrf @method('PUT')
                             <div class="mb-3">
                                 <label for="txtNombre" class="form-label">NOMBRE INDICADOR</label>

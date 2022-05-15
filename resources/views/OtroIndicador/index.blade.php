@@ -38,9 +38,10 @@
                                         <td>
                                             <div style="display: flex; justify-content: start;">
                                                 <button style="margin-right: 1rem"
-                                                    onclick="location.href='{{ route('indicador.edit', $indicador->idIndicador) }}'"
+                                                    onclick="location.href='{{ route('indicador.edit', $indicador->idOtroIndicador) }}'"
                                                     class="btn btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                                <form action="{{ route('indicador.destroy', $indicador->idIndicador) }}"
+                                                <form
+                                                    action="{{ route('indicador.destroy', $indicador->idOtroIndicador) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('delete')
