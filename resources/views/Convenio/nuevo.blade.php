@@ -66,6 +66,15 @@
                                 </select>
                             </div>
                             <div class="form-group" id="divIndicador">
+                                <label for="sltIndicador" class="form-label">INDICADOR SYSAD</label>
+                             <select name="sltIndicador" id="sltIndicador" class="form-select"
+                                    onChange="agregarID(sltIndicador, txtIdIndicador)">
+                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
+                                   @foreach ($indicadores as $indicador)
+                                     <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
@@ -145,25 +154,25 @@
 
         }
 
-        function agregarIdOcultarMarco(idSelector, idInput) {
-            let valorSeleccionado = idSelector.value;
-            idInput.value = valorSeleccionado;
-            let divIndicador = document.getElementById("divIndicador"),
-                indicador = "";
-            if (valorSeleccionado === "3") {
-                indicador = `<label for="sltIndicador" class="form-label">INDICADOR</label>
-                                <select name="sltIndicador" id="sltIndicador" class="form-select"
-                                    onChange="agregarID(sltIndicador, txtIdIndicador)">
-                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
-                                    @foreach ($indicadores as $indicador)
-                                        <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
-                                        </option>
-                                    @endforeach
-                                </select>`;
-            } else {
-                indicador = "";
-            }
-            divIndicador.innerHTML = indicador;
-        }
+        // function agregarIdOcultarMarco(idSelector, idInput) {
+        //     let valorSeleccionado = idSelector.value;
+        //     idInput.value = valorSeleccionado;
+        //     let divIndicador = document.getElementById("divIndicador"),
+        //         indicador = "";
+        //     if (valorSeleccionado === "3") {
+        //         indicador = `<label for="sltIndicador" class="form-label">INDICADOR</label>
+        //                         <select name="sltIndicador" id="sltIndicador" class="form-select"
+        //                             onChange="agregarID(sltIndicador, txtIdIndicador)">
+        //                             <option selected disabled value="">ELIJA EL INDICADOR</option>
+                                    // @foreach ($indicadores as $indicador)
+        //                                 <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
+        //                                 </option>
+        //                             @endforeach
+        //                         </select>`;
+        //     } else {
+        //         indicador = "";
+        //     }
+        //     divIndicador.innerHTML = indicador;
+        // }
     </script>
 @endsection

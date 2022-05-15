@@ -92,6 +92,22 @@
                                 </select>
                             </div>
                             <div class="form-group" id="divIndicador">
+                                <label for="sltIndicador" class="form-label">INDICADOR</label>
+                                <select name="sltIndicador" id="sltIndicador" class="form-select"
+                                    onChange="agregarId(sltIndicador, txtIdIndicador)" required>
+                                    <option>ELIJA EL INDICADOR</option>
+                                    @foreach ($indicadores as $indicador)
+                                        @if ($indicador->idIndicador === $convenios->idIndicador)
+                                            <option selected value="{{ $indicador->idIndicador }}">
+                                                {{ $indicador->descripcion }}
+                                            </option>
+                                        @else
+                                            <option value="{{ $indicador->idIndicador }}">
+                                                {{ $indicador->descripcion }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="sltInstancia" class="form-label">INSTANCIA</label>
@@ -226,51 +242,51 @@
                 txtTipoFecha.value = "NO";
             }
         }
-        (function() {
-            let txtIndicador = document.getElementById("txtIdIndicador");
-            if (txtIndicador.value) {
-                let divIndicador = document.getElementById("divIndicador"),
-                    indicador = "";
-                indicador = `<label for="sltIndicador" class="form-label">INDICADOR</label>
-                                <select name="sltIndicador" id="sltIndicador" class="form-select"
-                                    onChange="agregarId(sltIndicador, txtIdIndicador)" required>
-                                    <option>ELIJA EL INDICADOR</option>
-                                    @foreach ($indicadores as $indicador)
-                                        @if ($indicador->idIndicador === $convenios->idIndicador)
-                                            <option selected value="{{ $indicador->idIndicador }}">
-                                                {{ $indicador->descripcion }}
-                                            </option>
-                                        @else
-                                            <option value="{{ $indicador->idIndicador }}">
-                                                {{ $indicador->descripcion }}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                </select>`;
-                divIndicador.innerHTML = indicador;
-            }
-        })();
+        // (function() {
+        //     let txtIndicador = document.getElementById("txtIdIndicador");
+        //     if (txtIndicador.value) {
+        //         let divIndicador = document.getElementById("divIndicador"),
+        //             indicador = "";
+        //         indicador = `<label for="sltIndicador" class="form-label">INDICADOR</label>
+        //                         <select name="sltIndicador" id="sltIndicador" class="form-select"
+        //                             onChange="agregarId(sltIndicador, txtIdIndicador)" required>
+        //                             <option>ELIJA EL INDICADOR</option>
+        //                             @foreach ($indicadores as $indicador)
+        //                                 @if ($indicador->idIndicador === $convenios->idIndicador)
+        //                                     <option selected value="{{ $indicador->idIndicador }}">
+        //                                         {{ $indicador->descripcion }}
+        //                                     </option>
+        //                                 @else
+        //                                     <option value="{{ $indicador->idIndicador }}">
+        //                                         {{ $indicador->descripcion }}
+        //                                     </option>
+        //                                 @endif
+        //                             @endforeach
+        //                         </select>`;
+        //         divIndicador.innerHTML = indicador;
+        //     }
+        // })();
 
-        function agregarIdOcultarMarco(idSelector, idInput) {
-            let valorSeleccionado = idSelector.value;
-            idInput.value = valorSeleccionado;
-            let divIndicador = document.getElementById("divIndicador"),
-                indicador = "";
-            if (valorSeleccionado === "3") {
-                indicador = `<label for="sltIndicador" class="form-label">INDICADOR</label>
-                                <select name="sltIndicador" id="sltIndicador" class="form-select"
-                                    onChange="agregarID(sltIndicador, txtIdIndicador)">
-                                    <option selected disabled value="">ELIJA EL INDICADOR</option>
-                                    @foreach ($indicadores as $indicador)
-                                        <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
-                                        </option>
-                                    @endforeach
-                                </select>`;
-            } else {
-                indicador = "";
-                document.getElementById("txtIdIndicador").value = "";
-            }
-            divIndicador.innerHTML = indicador;
-        }
+        // function agregarIdOcultarMarco(idSelector, idInput) {
+        //     let valorSeleccionado = idSelector.value;
+        //     idInput.value = valorSeleccionado;
+        //     let divIndicador = document.getElementById("divIndicador"),
+        //         indicador = "";
+        //     if (valorSeleccionado === "3") {
+        //         indicador = `<label for="sltIndicador" class="form-label">INDICADOR</label>
+        //                         <select name="sltIndicador" id="sltIndicador" class="form-select"
+        //                             onChange="agregarID(sltIndicador, txtIdIndicador)">
+        //                             <option selected disabled value="">ELIJA EL INDICADOR</option>
+        //                             @foreach ($indicadores as $indicador)
+        //                                 <option value="{{ $indicador->idIndicador }}">{{ $indicador->descripcion }}
+        //                                 </option>
+        //                             @endforeach
+        //                         </select>`;
+        //     } else {
+        //         indicador = "";
+        //         document.getElementById("txtIdIndicador").value = "";
+        //     }
+        //     divIndicador.innerHTML = indicador;
+        // }
     </script>
 @endsection
