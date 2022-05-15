@@ -5,14 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('REPORTE INDICADOR') }}</div>
+                    <div class="card-header">{{ __('REPORTE INDICADOR SYSAD') }}</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <h3 class="text-center">CALCULAR INDICADORES POR TRIMESTRE</h3>
+                        <h3 class="text-center">CALCULAR INDICADORES SYSAD POR TRIMESTRE</h3>
                         <form action="{{ route('consulta-indicador.index') }}" method="GET" class="needs-validation"
                             novalidate>
                             <div class="div-flex">
@@ -29,6 +29,7 @@
                                                 <option value="4">4</option>
                                             </select>
                                         @break
+
                                         @case(' 2')
                                             <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
@@ -39,6 +40,7 @@
                                                 <option value="4">4</option>
                                             </select>
                                         @break
+
                                         @case(' 3')
                                             <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
@@ -49,6 +51,7 @@
                                                 <option value="4">4</option>
                                             </select>
                                         @break
+
                                         @case(' 4')
                                             <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
@@ -59,6 +62,7 @@
                                                 <option selected value="4">4</option>
                                             </select>
                                         @break
+
                                         @default
                                             <select name="sltTrimestre" id="sltTrimestre" class="form-select"
                                                 onChange="convertirFechaPorTrimestre(sltTrimestre)" required>
@@ -131,33 +135,48 @@
                         </form>
                         <br>
                         <input hidden type="text" id="indicadorRequest" value="{{ $indicadorRequest }}">
-                        <table hidden class="table table-hover col-5 table-center" id="tablaIndicador">
-                            <thead>
-                                <tr>
-                                    <th scope="col">CANTIDAD</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if ($indicadoresCount == '')
+                        @if (count($convenios) > 0)
+                            <p class="text-center">TOTAL DE CONVENIOS: {{ count($convenios) }}</p>
+                            <table class="table" id="tabla">
+                                <thead>
                                     <tr>
-                                        <td colspan="1">NO HAY CONVENIOS</td>
-                                    <tr>
-                                    @else
-                                    <tr>
-                                        <th scope="row">{{ $indicadoresCount }}</th>
+                                        <th scope="col">FOLIO</th>
+                                        <th scope="col">INSTANCIA</th>
+                                        <th scope="col">FECHA DE FIRMA</th>
+                                        <th scope="col">FECHA DE VIGENCIA</th>
+                                        <th scope="col">ESTATUS</th>
+                                        <th scope="col">TIPO DE CONVENIO</th>
                                     </tr>
-                                @endif
-                                {{-- @if ($indicadoresCount == null)
-                                    <tr>
-                                        <td colspan="1">NO HAY CONVENIOS</td>
-                                    <tr>
-                                    @else
-                                    <tr>
-                                        <th scope="row">{{ $indicadoresCount }}</th>
-                                    </tr>
-                                @endif --}}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    @foreach ($convenios as $convenio)
+                                        <tr>
+                                            <td> {{ $convenio->folio }} </td>
+                                            @foreach ($instancias as $instancia)
+                                                @if ($instancia->idInstancia === $convenio->idInstancia)
+                                                    <td><a href="{{ $convenio->urlConvenio }}" class="link-primary"
+                                                            target="_blank">{{ $instancia->nombre }}</a></td>
+                                                @endif
+                                            @endforeach
+                                            <td> {{ $convenio->fechaFirma }} </td>
+                                            @if ($convenio->vigenciaIndefinida == 'SI')
+                                                <td> INDEFINIDO </td>
+                                            @else
+                                                <td> {{ $convenio->fechaVigencia }} </td>
+                                            @endif
+                                            <td> {{ $convenio->estatus }} </td>
+                                            @foreach ($tipoConvenios as $tipoConvenio)
+                                                @if ($tipoConvenio->idTipoConvenio === $convenio->idTipoCon)
+                                                    <td> {{ $tipoConvenio->nomTipoConvenio }} </td>
+                                                @endif
+                                            @endforeach
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <p class="text-center">NINGUN CONVENIO COINCIDE</p>
+                        @endif
                     </div>
                 </div>
             </div>

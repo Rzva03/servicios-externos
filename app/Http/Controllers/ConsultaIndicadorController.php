@@ -13,23 +13,27 @@ class ConsultaIndicadorController extends Controller
      */
     public function index(Request $request)
     {
+        $carrera = DB::table('carrera')->get();
+        $instancia = DB::table('instancia')->get();
+        $tipoConvenio = DB::table('tipoconvenio')->get();
+
         /* -------------------------------------------------------------------------- */
         /*                obtener el id de los convenios que sean marco               */
         /* -------------------------------------------------------------------------- */
-        $tipoConvenios = DB::table('tipoconvenio')
-            ->select('idTipoConvenio')
-            ->where(
-                'nomtipoConvenio',
-                '=',
-                'CONVENIO MARCO DE COLABORACIÓN ACADÉMICA, CIENTÍFICA Y TECNOLÓGICA'
-            )
-            ->get();
+        // $tipoConvenios = DB::table('tipoconvenio')
+        //     ->select('idTipoConvenio')
+        //     ->where(
+        //         'nomtipoConvenio',
+        //         '=',
+        //         'CONVENIO MARCO DE COLABORACIÓN ACADÉMICA, CIENTÍFICA Y TECNOLÓGICA'
+        //     )
+        //     ->get();
         /* -------------------------------------------------------------------------- */
         /*                         variable para obtener el id                        */
         /* -------------------------------------------------------------------------- */
-        foreach ($tipoConvenios as $tipoConvenio) {
-            $tipoConvenio = $tipoConvenio->idTipoConvenio;
-        }
+        // foreach ($tipoConvenios as $tipoConvenio) {
+        //     $tipoConvenio = $tipoConvenio->idTipoConvenio;
+        // }
         /* -------------------------------------------------------------------------- */
         /*                         obtener fechas e indicador                         */
         /* -------------------------------------------------------------------------- */
@@ -41,24 +45,27 @@ class ConsultaIndicadorController extends Controller
         /* -------------------------------------------------------------------------- */
         /*                obtener el numero del indicador para mostrar                */
         /* -------------------------------------------------------------------------- */
-        $indicadorCount = DB::table('convenio')
-            ->where('idTipoCon', '=', $tipoConvenio)
+        $convenios = DB::table('convenio')
+            // ->where('idTipoCon', '=', $tipoConvenio)
             ->where('idIndicador', '=', $indicadorRequest)
             ->where('estatus', '=', 'VIGENTE')
             ->whereBetween('fechaFirma', [$fechaInicio, $fechaFinal])
-            ->count();
+            ->get();
         // $indicadorCount = count($convenioIndicador);
         $indicador = DB::table('indicador')
             ->where('descripcion', 'like', '%FIRMAR%')
             ->get();
         return view('ConsultaIndicador.index', [
             'indicadores' => $indicador,
-            'indicadoresCount' => $indicadorCount,
+            'convenios' => $convenios,
             'indicadorRequest' => $indicadorRequest,
             'trimestreRequest' => $trimestreRequest,
             'anioRequest' => $anioRequest,
             'fechaInicio' => $fechaInicio,
             'fechaFinal' => $fechaFinal,
+            'tipoConvenios' => $tipoConvenio,
+            'instancias' => $instancia,
+            'carreras' => $carrera,
         ]);
     }
 
