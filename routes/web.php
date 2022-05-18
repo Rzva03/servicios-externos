@@ -161,12 +161,30 @@ Route::resource('alcance', AlcanceController::class)->middleware('auth');
 /*                           ruta consulta indicador                          */
 /* -------------------------------------------------------------------------- */
 use App\Http\Controllers\ConsultaIndicadorController;
+use App\Http\Controllers\ConsultaIndicadoresController;
 
 Route::resource(
-    'consulta-indicador',
+    'consulta-indicador-sysad',
     ConsultaIndicadorController::class
 )->middleware('auth');
-
+/* -------------------------------------------------------------------------- */
+/*                         Consulta otros indicadores                         */
+/* -------------------------------------------------------------------------- */
+Route::get('consulta-indicador', [
+    ConsultaIndicadoresController::class,
+    'index',
+])
+    ->name('consulta-indicador.index')
+    ->middleware('auth');
+/* -------------------------------------------------------------------------- */
+/*                      Consulta convenios por trimestre                      */
+/* -------------------------------------------------------------------------- */
+Route::get('consulta-convenios-trimestre', [
+    ConsultaIndicadoresController::class,
+    'consultaConveniosPorTrimestre',
+])
+    ->name('consulta-convenios-trimestre.index')
+    ->middleware('auth');
 /* -------------------------------------------------------------------------- */
 /*                          ruta consulta obtener pdf                         */
 /* -------------------------------------------------------------------------- */

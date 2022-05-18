@@ -53,7 +53,7 @@ class ConsultaIndicadorController extends Controller
             ->get();
         // $indicadorCount = count($convenioIndicador);
         $indicador = DB::table('indicador')
-            ->where('descripcion', 'like', '%FIRMAR%')
+            // ->where('descripcion', 'like', '%FIRMAR%')
             ->get();
         return view('ConsultaIndicador.index', [
             'indicadores' => $indicador,

@@ -5,15 +5,15 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('REPORTE INDICADOR SYSAD') }}</div>
+                    <div class="card-header">{{ __('REPORTE INDICADOR') }}</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <h3 class="text-center">CALCULAR INDICADORES SYSAD POR TRIMESTRE</h3>
-                        <form action="{{ route('consulta-indicador-sysad.index') }}" method="GET" class="needs-validation"
+                        <h3 class="text-center">CALCULAR INDICADORES POR TRIMESTRE</h3>
+                        <form action="{{ route('consulta-indicador.index') }}" method="GET" class="needs-validation"
                             novalidate>
                             <div class="div-flex">
                                 <div class="form-group col-4">
@@ -102,19 +102,19 @@
                                         @if ($indicadorRequest === null)
                                             <option selected disabled value="">ELIJA EL INDICADOR</option>
                                             @foreach ($indicadores as $indicador)
-                                                <option value="{{ $indicador->idIndicador }}">
+                                                <option value="{{ $indicador->idOtroIndicador }}">
                                                     {{ $indicador->descripcion }}
                                                 </option>
                                             @endforeach
                                         @else
                                             <option>ELIJA EL INDICADOR</option>
                                             @foreach ($indicadores as $indicador)
-                                                @if ($indicador->idIndicador == $indicadorRequest)
-                                                    <option selected value="{{ $indicador->idIndicador }}">
+                                                @if ($indicador->idOtroIndicador == $indicadorRequest)
+                                                    <option selected value="{{ $indicador->idOtroIndicador }}">
                                                         {{ $indicador->descripcion }}
                                                     </option>
                                                 @else
-                                                    <option value="{{ $indicador->idIndicador }}">
+                                                    <option value="{{ $indicador->idOtroIndicador }}">
                                                         {{ $indicador->descripcion }}
                                                     </option>
                                                 @endif

@@ -5,16 +5,16 @@
         <div class="row justify-content-center">
             <div class="col-md-12 col-xs-12">
                 <div class="card">
-                    <div class="card-header">{{ __('REPORTE INDICADOR SYSAD') }}</div>
+                    <div class="card-header">{{ __('REPORTE DE CONVENIOS POR TRIMESTRE') }}</div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <h3 class="text-center">CALCULAR INDICADORES SYSAD POR TRIMESTRE</h3>
-                        <form action="{{ route('consulta-indicador-sysad.index') }}" method="GET" class="needs-validation"
-                            novalidate>
+                        <h3 class="text-center">CONVENIOS POR TRIMESTRE</h3>
+                        <form action="{{ route('consulta-convenios-trimestre.index') }}" method="GET"
+                            class="needs-validation" novalidate>
                             <div class="div-flex">
                                 <div class="form-group col-4">
                                     <label for="sltTrimestre" class="form-label">TRIMESTRE</label>
@@ -73,7 +73,6 @@
                                                 <option value="4">4</option>
                                             </select>
                                     @endswitch
-
                                 </div>
                                 <div class="form-group col-4">
                                     <label for="sltAnio" class="form-label">AÑO</label>
@@ -95,33 +94,6 @@
                                         @endphp
                                     </select>
                                 </div>
-
-                                <div class="form-group col-13 text-left">
-                                    <label for="sltIndicador" class="form-label">INDICADOR</label>
-                                    <select name="sltIndicador" id="sltIndicador" class="form-select" required>
-                                        @if ($indicadorRequest === null)
-                                            <option selected disabled value="">ELIJA EL INDICADOR</option>
-                                            @foreach ($indicadores as $indicador)
-                                                <option value="{{ $indicador->idIndicador }}">
-                                                    {{ $indicador->descripcion }}
-                                                </option>
-                                            @endforeach
-                                        @else
-                                            <option>ELIJA EL INDICADOR</option>
-                                            @foreach ($indicadores as $indicador)
-                                                @if ($indicador->idIndicador == $indicadorRequest)
-                                                    <option selected value="{{ $indicador->idIndicador }}">
-                                                        {{ $indicador->descripcion }}
-                                                    </option>
-                                                @else
-                                                    <option value="{{ $indicador->idIndicador }}">
-                                                        {{ $indicador->descripcion }}
-                                                    </option>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
                             </div>
                             <input hidden value="{{ $fechaInicio }}" type="text" name="txtFechaInicial" required
                                 id="txtFechaInicial">
@@ -134,7 +106,6 @@
                             </div>
                         </form>
                         <br>
-                        <input hidden type="text" id="indicadorRequest" value="{{ $indicadorRequest }}">
                         @if (count($convenios) > 0)
                             <p class="text-center">TOTAL DE CONVENIOS: {{ count($convenios) }}</p>
                             <table class="table" id="tabla">
@@ -181,22 +152,4 @@
                 </div>
             </div>
         </div>
-        <script>
-            /* -------------------------------------------------------------------------- */
-            /*                    Validar tabla en reporte indicadores                    */
-            /* -------------------------------------------------------------------------- */
-            // window.onload = function() {
-            //     // validarTablaIndicador();
-            // };
-
-            // // function validarTablaIndicador() {
-            // //     let indicador = document.getElementById("indicadorRequest").value;
-            // //     let tablaIndicador = document.getElementById("tablaIndicador");
-            // //     let p_convenio = document.getElementById("p-convenio");
-            // //     if (indicador == "") {
-            // //         // tablaIndicador.removeAttribute("hidden");
-            // //         p_convenio.removeAttribute("hidden");
-            // //     }
-            // // }
-        </script>
     @endsection
