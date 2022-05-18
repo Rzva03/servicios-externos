@@ -35,6 +35,10 @@
         </div>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
+                <a class="navbar-brand" href="{{ url('/') }}" id="home">
+                    {{-- {{ config('app.name', 'Laravel') }} --}}
+                    <img src="{{ asset('img/itvo.ico') }}" class="navbar__logo" alt="ITVO">
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
@@ -64,6 +68,7 @@
                                 </li>
                             @endif
                         @else
+                            {{-- <img src="{{ asset('') }}" alt=""> --}}
                             {{-- instancia --}}
                             @if (Auth::user()->rol == 0)
                                 <li class="nav-item dropdown ">
@@ -314,7 +319,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 
