@@ -96,6 +96,7 @@ class ConsultaConvenioController extends Controller
         /* -------------------------------------------------------------------------- */
         $convenios = DB::table('convenio')
             ->whereBetween('fechaVigencia', [$fechaInicio, $fechaFinal])
+            // ->where('estatus', '=', 'VIGENTE')
             ->orderBy('fechaVigencia', 'asc')
             ->get();
         return view('ConsultaConvenio.convenios-anio', [
@@ -105,8 +106,5 @@ class ConsultaConvenioController extends Controller
             'tipoConvenios' => $tipoConvenio,
             'instancias' => $instancia,
         ]);
-    }
-    public function convenioPorAnio()
-    {
     }
 }
