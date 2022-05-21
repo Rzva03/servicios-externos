@@ -82,4 +82,31 @@ class ConsultaConvenioController extends Controller
             'fecha' => $fecha,
         ]);
     }
+    public function formularioConvenioPorAnio(Request $request)
+    {
+        $instancia = DB::table('instancia')->get();
+        $tipoConvenio = DB::table('tipoconvenio')->get();
+        /* -------------------------------------------------------------------------- */
+        /*                         obtener fechas e indicador                         */
+        /* -------------------------------------------------------------------------- */
+        $fechaInicio = $request->input('dateFechaInicial');
+        $fechaFinal = $request->input('dateFechaFinal');
+        /* -------------------------------------------------------------------------- */
+        /*                obtener el numero del indicador para mostrar                */
+        /* -------------------------------------------------------------------------- */
+        $convenios = DB::table('convenio')
+            ->whereBetween('fechaVigencia', [$fechaInicio, $fechaFinal])
+            ->orderBy('fechaVigencia', 'asc')
+            ->get();
+        return view('ConsultaConvenio.convenios-anio', [
+            'convenios' => $convenios,
+            'fechaInicio' => $fechaInicio,
+            'fechaFinal' => $fechaFinal,
+            'tipoConvenios' => $tipoConvenio,
+            'instancias' => $instancia,
+        ]);
+    }
+    public function convenioPorAnio()
+    {
+    }
 }

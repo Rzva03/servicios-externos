@@ -230,3 +230,12 @@ Route::get('/consulta-convenio-finalizado', [
 ])
     ->name('consulta-convenio-finalizado.convenioVencidoTodos')
     ->middleware('auth');
+/* -------------------------------------------------------------------------- */
+/*                       ruta consulta convenios por año                      */
+/* -------------------------------------------------------------------------- */
+Route::get('/consulta-convenio-por-año', [
+    ConsultaConvenioController::class,
+    'formularioConvenioPorAnio',
+])
+    ->name('consulta-convenio-por-año')
+    ->middleware('auth');

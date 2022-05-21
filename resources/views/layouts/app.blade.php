@@ -161,6 +161,10 @@
                                             href="{{ route('consulta-convenios-trimestre.index') }}">
                                             {{ __('Convenios por trimestre') }}
                                         </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('consulta-convenio-por-año') }}">
+                                            {{ __('Convenios por año') }}
+                                        </a>
                                     </div>
                                 </li>
                             @else
@@ -306,6 +310,10 @@
                                             href="{{ route('consulta-convenios-trimestre.index') }}">
                                             {{ __('Convenios por trimestre') }}
                                         </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('consulta-convenio-por-año') }}">
+                                            {{ __('Convenios por año') }}
+                                        </a>
                                     </div>
                                 </li>
                             @endif
@@ -319,7 +327,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

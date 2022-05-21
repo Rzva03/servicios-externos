@@ -181,22 +181,4 @@
                 </div>
             </div>
         </div>
-        <script>
-            /* -------------------------------------------------------------------------- */
-            /*                    Validar tabla en reporte indicadores                    */
-            /* -------------------------------------------------------------------------- */
-            // window.onload = function() {
-            //     // validarTablaIndicador();
-            // };
-
-            // // function validarTablaIndicador() {
-            // //     let indicador = document.getElementById("indicadorRequest").value;
-            // //     let tablaIndicador = document.getElementById("tablaIndicador");
-            // //     let p_convenio = document.getElementById("p-convenio");
-            // //     if (indicador == "") {
-            // //         // tablaIndicador.removeAttribute("hidden");
-            // //         p_convenio.removeAttribute("hidden");
-            // //     }
-            // // }
-        </script>
     @endsection
