@@ -165,6 +165,10 @@
                                         <a class="dropdown-item" href="{{ route('consulta-convenio-por-año') }}">
                                             {{ __('Convenios por año') }}
                                         </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('consulta-convenio-por-fecha') }}">
+                                            {{ __('Convenios vigentes por fecha') }}
+                                        </a>
                                     </div>
                                 </li>
                             @else
@@ -314,6 +318,10 @@
                                         <a class="dropdown-item" href="{{ route('consulta-convenio-por-año') }}">
                                             {{ __('Convenios por año') }}
                                         </a>
+                                        <hr class="dropdown-divider">
+                                        <a class="dropdown-item" href="{{ route('consulta-convenio-por-fecha') }}">
+                                            {{ __('Convenios vigentes por fecha') }}
+                                        </a>
                                     </div>
                                 </li>
                             @endif
@@ -327,7 +335,7 @@
                                     aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Salir') }}
                                     </a>
 

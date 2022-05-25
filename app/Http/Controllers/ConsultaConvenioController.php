@@ -107,4 +107,31 @@ class ConsultaConvenioController extends Controller
             'instancias' => $instancia,
         ]);
     }
+    public function formularioConvenioPorFecha(Request $request)
+    {
+        $instancia = DB::table('instancia')->get();
+        $tipoConvenio = DB::table('tipoconvenio')->get();
+        /* -------------------------------------------------------------------------- */
+        /*                         obtener fechas e indicador                         */
+        /* -------------------------------------------------------------------------- */
+        $fecha = $request->input('dateFecha');
+        /* -------------------------------------------------------------------------- */
+        /*                obtener el numero del indicador para mostrar                */
+        /* -------------------------------------------------------------------------- */
+        // $convenios = DB::table('convenio')
+        //     ->where('fechaVigencia', '<=', $fecha)
+        //     ->orWhere('fechaFirma', '<=', $fecha)
+        //     ->where('estatus', '=', 'VIGENTE')
+        //     ->get();
+        $convenios = DB::select(
+            'select * from convenio where (fechaFirma <= ? OR fechaVigencia <= ? ) AND estatus = "VIGENTE"',
+            [$fecha, $fecha]
+        );
+        return view('ConsultaConvenio.convenios-fecha', [
+            'convenios' => $convenios,
+            'fecha' => $fecha,
+            'tipoConvenios' => $tipoConvenio,
+            'instancias' => $instancia,
+        ]);
+    }
 }
