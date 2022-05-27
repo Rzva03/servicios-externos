@@ -26,10 +26,76 @@
                                 <button id="btnCalcular" type="submit" class="btn btn-primary"><i
                                         class="bi bi-calculator"></i>
                                     CALCULAR</button>
+                                <a tid="modal-btn" ype="button" href="#" class="btn btn-primary ml-5" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                    <i class="bi bi-calculator"></i>
+                                    VER CANTIDAD
+                                </a>
                             </div>
                         </form>
                         <br>
                         @if (count($convenios) > 0)
+                            {{-- <script>
+                                document.getElementById('modal').addEventListener('submit', (e) {
+                                    e.preventDefault();
+
+                                });
+                            </script> --}}
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">CANTIDAD DE CONVENIOS POR
+                                                INDICADORES</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table" id="tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">CANTIDAD</th>
+                                                        <th scope="col">INDICADOR SYSAD</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @for ($i = 0; $i < count($conteoIndicadores); $i++)
+                                                        <tr>
+                                                            <td>{{ $conteoIndicadores[$i] }}</td>
+                                                            <td>{{ $indicadores[$i]->descripcion }}</td>
+                                                        </tr>
+                                                    @endfor
+                                                </tbody>
+                                            </table>
+                                            <table class="table" id="tabla">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">CANTIDAD</th>
+                                                        <th scope="col">OTRO INDICADOR</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @for ($i = 0; $i < count($conteoOtrosIndicadores); $i++)
+                                                        <tr>
+                                                            <td>{{ $conteoOtrosIndicadores[$i] }}</td>
+                                                            <td>{{ $otrosIndicadores[$i]->descripcion }}</td>
+                                                        </tr>
+                                                    @endfor
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <p class="text-center">TOTAL DE CONVENIOS: {{ count($convenios) }}</p>
                             <table class="table" id="tabla">
                                 <thead>
@@ -40,6 +106,8 @@
                                         <th scope="col">FECHA DE VIGENCIA</th>
                                         <th scope="col">ESTATUS ACTUAL</th>
                                         <th scope="col">TIPO DE CONVENIO</th>
+                                        <th scope="col">INDICADOR SYSAD</th>
+                                        <th scope="col">OTRO INDICADOR</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -62,6 +130,16 @@
                                             @foreach ($tipoConvenios as $tipoConvenio)
                                                 @if ($tipoConvenio->idTipoConvenio === $convenio->idTipoCon)
                                                     <td> {{ $tipoConvenio->nomTipoConvenio }} </td>
+                                                @endif
+                                            @endforeach
+                                            @foreach ($indicadores as $indicador)
+                                                @if ($indicador->idIndicador === $convenio->idIndicador)
+                                                    <td> {{ $indicador->descripcion }} </td>
+                                                @endif
+                                            @endforeach
+                                            @foreach ($otrosIndicadores as $otroIndicador)
+                                                @if ($otroIndicador->idOtroIndicador === $convenio->idOtroIndicador)
+                                                    <td> {{ $otroIndicador->descripcion }} </td>
                                                 @endif
                                             @endforeach
                                         </tr>

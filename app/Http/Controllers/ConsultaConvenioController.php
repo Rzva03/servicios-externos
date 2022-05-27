@@ -109,20 +109,48 @@ class ConsultaConvenioController extends Controller
     }
     public function formularioConvenioPorFecha(Request $request)
     {
-        $instancia = DB::table('instancia')->get();
-        $tipoConvenio = DB::table('tipoconvenio')->get();
         /* -------------------------------------------------------------------------- */
         /*                         obtener fechas e indicador                         */
         /* -------------------------------------------------------------------------- */
         $fecha = $request->input('dateFecha');
+        $instancia = DB::table('instancia')->get();
+        $tipoConvenio = DB::table('tipoconvenio')->get();
+        $indicador = DB::table('indicador')->get();
+        $otroIndicador = DB::table('otroIndicador')->get();
         /* -------------------------------------------------------------------------- */
-        /*                obtener el numero del indicador para mostrar                */
+        /*               obtener la cantidad de indicadores por convenio              */
         /* -------------------------------------------------------------------------- */
-        // $convenios = DB::table('convenio')
-        //     ->where('fechaVigencia', '<=', $fecha)
-        //     ->orWhere('fechaFirma', '<=', $fecha)
-        //     ->where('estatus', '=', 'VIGENTE')
-        //     ->get();
+        $arregloOtroIndicador = [];
+        foreach ($otroIndicador as $indicadorOtro) {
+            $conteoOtroIndicador = count(
+                DB::select(
+                    'select * from convenio where (fechaFirma <= ? OR fechaVigencia <= ? ) AND estatus = "VIGENTE" AND idOtroIndicador = ?',
+                    [$fecha, $fecha, $indicadorOtro->idOtroIndicador]
+                )
+            );
+            // $arregloOtroIndicador[] = [
+            //     'nombre' => $indicadorOtro->nombre,
+            //     'num' => $conteoOtroIndicador,
+            // ];
+            array_push($arregloOtroIndicador, $conteoOtroIndicador);
+        }
+        $arregloIndicador = [];
+        foreach ($indicador as $indicadorSysad) {
+            $conteoIndicador = count(
+                DB::select(
+                    'select * from convenio where (fechaFirma <= ? OR fechaVigencia <= ? ) AND estatus = "VIGENTE" AND idIndicador = ?',
+                    [$fecha, $fecha, $indicadorSysad->idIndicador]
+                )
+            );
+            // $arregloIndicador[] = [
+            //     'nombre' => $indicadorSysad->nombre,
+            //     'num' => $conteoIndicador,
+            // ];
+            array_push($arregloIndicador, $conteoIndicador);
+        }
+        /* -------------------------------------------------------------------------- */
+        /*                obtener los convenios                                       */
+        /* -------------------------------------------------------------------------- */
         $convenios = DB::select(
             'select * from convenio where (fechaFirma <= ? OR fechaVigencia <= ? ) AND estatus = "VIGENTE"',
             [$fecha, $fecha]
@@ -132,6 +160,10 @@ class ConsultaConvenioController extends Controller
             'fecha' => $fecha,
             'tipoConvenios' => $tipoConvenio,
             'instancias' => $instancia,
+            'indicadores' => $indicador,
+            'otrosIndicadores' => $otroIndicador,
+            'conteoOtrosIndicadores' => $arregloOtroIndicador,
+            'conteoIndicadores' => $arregloIndicador,
         ]);
     }
 }
